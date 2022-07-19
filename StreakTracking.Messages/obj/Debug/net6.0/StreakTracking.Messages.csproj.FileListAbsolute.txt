@@ -1,0 +1,12 @@
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/bin/Debug/net6.0/StreakTracking.Messages.deps.json
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/bin/Debug/net6.0/StreakTracking.Messages.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/bin/Debug/net6.0/StreakTracking.Messages.pdb
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.csproj.AssemblyReference.cache
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.GeneratedMSBuildEditorConfig.editorconfig
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.AssemblyInfoInputs.cache
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.AssemblyInfo.cs
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.csproj.CoreCompileInputs.cache
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/refint/StreakTracking.Messages.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.pdb
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/ref/StreakTracking.Messages.dll

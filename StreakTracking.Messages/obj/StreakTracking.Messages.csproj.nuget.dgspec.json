@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {}
+  },
+  "projects": {
+    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+        "projectName": "StreakTracking.Messages",
+        "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+        "packagesPath": "/home/dylan/.nuget/packages/",
+        "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dylan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
