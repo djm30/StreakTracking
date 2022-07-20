@@ -3,6 +3,8 @@ using Microsoft.Extensions.Hosting;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using StreakTracking.EventHandler.Consumers;
+using StreakTracking.EventHandler.Repositories;
+using StreakTracking.Services;
 
 namespace StreakTracking.EventHandler
 {
@@ -20,18 +22,27 @@ namespace StreakTracking.EventHandler
                     services.AddMassTransit(x =>
                     {
                         x.AddConsumer<AddStreakConsumer>();
+                        x.AddConsumer<UpdateStreakConsumer>();
+                        x.AddConsumer<DeleteStreakConsumer>();
+                        x.AddConsumer<StreakCompleteConsumer>();
                         x.UsingRabbitMq((ctx, cfg) =>
                         {
                             
                             cfg.ReceiveEndpoint("streaks-queue", c =>
                             {
                                 c.ConfigureConsumer<AddStreakConsumer>(ctx);
+                                c.ConfigureConsumer<UpdateStreakConsumer>(ctx);
+                                c.ConfigureConsumer<DeleteStreakConsumer>(ctx);
+                                c.ConfigureConsumer<StreakCompleteConsumer>(ctx);
                             });
     
                             
                         });
                     });
+                    services.AddTransient<ISqlConnectionService,SqlConnectionService>();
                     services.AddTransient<IStreakWriteRepository, StreakWriteRepository>();
+                    services.AddTransient<IStreakDayWriteRepository, StreakDayWriteRepository>();
+                    services.AddScoped<IStreakDayService, StreakDayService>();
                     // services.AddHostedService<EventHandlingService>();
                 });
     }

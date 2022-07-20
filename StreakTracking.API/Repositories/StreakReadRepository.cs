@@ -1,8 +1,8 @@
-using StreakTracking.Streaks.Models;
 using Dapper;
 using Npgsql;
+using StreakTracking.Models;
 
-namespace StreakTracking.Streaks;
+namespace StreakTracking.Repositories;
 
 public class StreakReadRepository : IStreakReadRepository
 {
@@ -31,5 +31,11 @@ public class StreakReadRepository : IStreakReadRepository
         var result  = await connection.QueryAsync<Streak>(query, parameters);
         var streak = result.FirstOrDefault();
         return streak;
+    }
+
+    public Task<int> GetCurrent(string id)
+    {
+        using var connection = new NpgsqlConnection(_configuration.GetValue<string>("ConnectionString"));
+        return Task.FromResult(10);
     }
 }

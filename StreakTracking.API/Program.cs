@@ -1,5 +1,5 @@
 using MassTransit;
-using StreakTracking.Streaks;
+using StreakTracking.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

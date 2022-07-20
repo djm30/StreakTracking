@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using StreakTracking.EventHandler.Models;
+using StreakTracking.EventHandler.Repositories;
 using StreakTracking.Events.Events;
 
 namespace StreakTracking.EventHandler.Consumers
@@ -29,7 +30,7 @@ namespace StreakTracking.EventHandler.Consumers
                 StreakId = Guid.NewGuid(),
                 StreakName = context.Message.Name,
                 StreakDescription = context.Message.Description,
-                HighestStreak = 0
+                LongestStreak  = 0
             };
             _logger.LogInformation("Recieved message: {message}, consuming it now", context.Message);
             await _repository.Create(streak: streak);
