@@ -26,8 +26,8 @@ public class UpdateStreakConsumer : IConsumer<UpdateStreakEvent>
         var streak = new Streak
         {
             StreakId = message.StreakId,
-            StreakDescription = message.Description,
-            StreakName = message.Name,
+            StreakName = message.StreakName,
+            StreakDescription = message.StreakDescription,
             LongestStreak = message.LongestStreak
         };
         await _repository.Update(streak);

@@ -22,7 +22,7 @@ public class StreakWriteRepository : IStreakWriteRepository
 
     public async Task Create(Streak streak)
     {
-        using var connection = _connection.GetConnection();
+        await using var connection = _connection.GetConnection();
         try
         {
             var query = "INSERT INTO streak(streakid, streakname, streakdescription, longeststreak) " +
@@ -38,7 +38,7 @@ public class StreakWriteRepository : IStreakWriteRepository
 
     public async Task Update(Streak streak)
     {
-        using var connection = _connection.GetConnection();
+        await using var connection = _connection.GetConnection();
         try
         {
             var queryParams = new
@@ -60,7 +60,7 @@ public class StreakWriteRepository : IStreakWriteRepository
 
     public async Task Delete(string Id)
     {
-        using var connection = _connection.GetConnection();
+        await using var connection = _connection.GetConnection();
         try
         {
             var queryParams = new { StreakId = Id };

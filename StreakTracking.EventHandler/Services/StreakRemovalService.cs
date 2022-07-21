@@ -11,22 +11,23 @@ namespace StreakTracking.Services;
 /// So i've moved that logic here into a 'business layer'
 /// I hope im doing this convention correctly
 /// </summary>
-public class StreakDayService : IStreakDayService
+public class StreakRemovalService : IStreakRemovalService
 {
     private readonly IStreakWriteRepository _streakRepository;
     private readonly IStreakDayWriteRepository _streakDayRepository;
-    private readonly ILogger<StreakDayService> _logger;
+    private readonly ILogger<StreakRemovalService> _logger;
 
-    public StreakDayService(IStreakWriteRepository streakRepository, IStreakDayWriteRepository streakDayRepository,
-        ILogger<StreakDayService> logger)
+    public StreakRemovalService(IStreakWriteRepository streakRepository, IStreakDayWriteRepository streakDayRepository,
+        ILogger<StreakRemovalService> logger)
     {
         _streakRepository = streakRepository ?? throw new ArgumentNullException(nameof(streakRepository));
         _streakDayRepository = streakDayRepository ?? throw new ArgumentNullException(nameof(streakDayRepository));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public Task DeleteStreak(string streakId)
+    public async Task DeleteStreak(string streakId)
     {
-        throw new NotImplementedException();
+        await _streakDayRepository.DeleteAll(streakId);
+        await _streakRepository.Delete(streakId);
     }
 }

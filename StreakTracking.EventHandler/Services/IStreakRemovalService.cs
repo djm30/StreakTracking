@@ -3,7 +3,7 @@ using StreakTracking.EventHandler.Models;
 
 namespace StreakTracking.Services;
 
-public interface IStreakDayService
+public interface IStreakRemovalService
 {
     public Task DeleteStreak(string streakId);
 }

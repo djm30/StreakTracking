@@ -27,7 +27,7 @@ public class StreakCompleteConsumer : IConsumer<StreakCompleteEvent>
         var streakDay = new StreakDay
         {
             Id = message.Date,
-            StreakId = message.Id,
+            StreakId = message.StreakId,
             Complete = message.Complete,
         };
         // 

@@ -42,7 +42,7 @@ namespace StreakTracking.EventHandler
                     services.AddTransient<ISqlConnectionService,SqlConnectionService>();
                     services.AddTransient<IStreakWriteRepository, StreakWriteRepository>();
                     services.AddTransient<IStreakDayWriteRepository, StreakDayWriteRepository>();
-                    services.AddScoped<IStreakDayService, StreakDayService>();
+                    services.AddScoped<IStreakRemovalService, StreakRemovalService>();
                     // services.AddHostedService<EventHandlingService>();
                 });
     }

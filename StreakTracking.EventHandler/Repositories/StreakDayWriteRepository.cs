@@ -23,19 +23,19 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
 
     public async Task Create(StreakDay day)
     {
-        using var connection = _connection.GetConnection();
+        await using var connection = _connection.GetConnection();
         try
         {
             var queryParams = new 
             { 
                 Id = day.Id.Date,
-                Complete = day.Complete,
-                StreakId = day.StreakId
+                day.Complete,
+                day.StreakId
                     
             };
             var query =
                 "INSERT INTO streak_day(id, complete, streakid) VALUES (@Id, @Complete , @StreakId);";
-            _logger.LogInformation("Attemping to make Streak complete for day: {day} for streak: {streak}", day.Id, day.StreakId);
+            _logger.LogInformation("Attempting to make Streak complete for day: {day} for streak: {streak}", day.Id, day.StreakId);
             await connection.QueryAsync(query, queryParams);
         }
         catch (PostgresException e)
@@ -46,7 +46,7 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
 
     public async Task Update(StreakDay day)
     {
-        using var connection = _connection.GetConnection();
+        await using var connection = _connection.GetConnection();
         try
         {
             var queryParams = new 
@@ -58,7 +58,7 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
             };
             var query =
                 "UPDATE streak_day SET complete = @Complete WHERE Id = @Id AND streakid::text = @StreakId";
-            _logger.LogInformation("Attemping to update streak completion for day: {day} for streak: {streak}", day.Id, day.StreakId);
+            _logger.LogInformation("Attempting to update streak completion for day: {day} for streak: {streak}", day.Id, day.StreakId);
             await connection.QueryAsync(query, queryParams);
         }
         catch (PostgresException e)
@@ -69,7 +69,7 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
 
     public async Task Delete(StreakDay day)
     {
-        using var connection = _connection.GetConnection();
+        await using var connection = _connection.GetConnection();
         try
         {
             var queryParams = new 
@@ -91,7 +91,7 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
 
     public async Task DeleteAll(string streakId)
     {
-        using var connection = _connection.GetConnection();
+        await using var connection = _connection.GetConnection();
         try
         {
             var queryParams = new 
