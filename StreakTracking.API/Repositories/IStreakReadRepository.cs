@@ -6,6 +6,6 @@ public interface IStreakReadRepository
 {
     Task<IEnumerable<Streak>> GetStreaks();
     Task<Streak> GetStreakById(string id);
-    Task<int> GetCurrent(string id);
+    Task<CurrentStreak> GetCurrent(string id);
 }
 

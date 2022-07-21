@@ -41,3 +41,5 @@
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/Newtonsoft.Json.dll
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/Dapper.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/AutoMapper.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

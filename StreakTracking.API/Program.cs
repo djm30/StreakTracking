@@ -1,5 +1,6 @@
 using MassTransit;
 using StreakTracking.Repositories;
+using StreakTracking.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IStreakReadRepository, StreakReadRepository>();
 builder.Services.AddMassTransit(x => { x.UsingRabbitMq(); });
 builder.Services.AddMassTransitHostedService();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient<ISqlConnectionService,SqlConnectionService>();
 
 var app = builder.Build();
 

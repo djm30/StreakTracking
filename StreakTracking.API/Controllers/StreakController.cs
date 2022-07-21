@@ -1,4 +1,5 @@
 using System.Net;
+using AutoMapper;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using StreakTracking.Events.Events;
@@ -14,14 +15,16 @@ public class StreakController : ControllerBase
     private readonly ILogger<StreakController> _logger;
     private readonly IStreakReadRepository _repository;
     private readonly IPublishEndpoint _publishEndpoint;
-    
-    public StreakController(ILogger<StreakController> logger, IStreakReadRepository repository, IPublishEndpoint publishEndpoint)
+    private readonly IMapper _mapper;
+
+    public StreakController(ILogger<StreakController> logger, IStreakReadRepository repository, IPublishEndpoint publishEndpoint, IMapper mapper)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-    
+
     #region BasicStreakCrud
 
     [HttpGet]
@@ -41,7 +44,7 @@ public class StreakController : ControllerBase
         var streak = await _repository.GetStreakById(id);
         return Ok(streak);
     }
-    
+
     [HttpPost]
     [Route("")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -51,11 +54,13 @@ public class StreakController : ControllerBase
         await _publishEndpoint.Publish<AddStreakEvent>(streakEvent);
         return Ok();
     }
-    
-    [HttpPut]
+
+    [HttpPut("{id}")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<ActionResult> UpdateStreak([FromBody] UpdateStreakEvent streakEvent)
+    public async Task<ActionResult> UpdateStreak(string id, [FromBody] UpdateStreak updateInfo)
     {
+        updateInfo.StreakId = Guid.Parse(id);
+        var streakEvent = _mapper.Map<UpdateStreakEvent>(updateInfo);
         _logger.LogInformation("Recieved request for UpdateStreak, publishing {event} to RabbitMQ", streakEvent);
         await _publishEndpoint.Publish<UpdateStreakEvent>(streakEvent);
         return Ok();
@@ -70,28 +75,55 @@ public class StreakController : ControllerBase
         await _publishEndpoint.Publish<DeleteStreakEvent>(streakEvent);
         return Ok();
     }
-    
-    
+
+
     #endregion
+
 
     [HttpGet("{id}/[action]", Name = "GetCurrentStreak")]
     [ActionName("Current")]
-    [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<int>> GetCurrentStreak(string id)
+    [ProducesResponseType(typeof(CurrentStreak), (int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public async Task<ActionResult<CurrentStreak>> GetCurrentStreak(string id)
     {
         _logger.LogInformation("Recieved request for GetCurrent");
         var current = await _repository.GetCurrent(id);
+        if (current is null)
+            return BadRequest();
         return Ok(current);
     }
 
-    
-    [HttpPost("[action]")]
+
+    [HttpPost("{id}/[action]")]
     [ActionName("Complete")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<ActionResult> CompleteStreak([FromBody] StreakCompleteEvent streakEvent)
+    public async Task<ActionResult> CompleteStreak(string id, [FromBody] StreakComplete streakCompleteInfo)
     {
+        streakCompleteInfo.StreakId = Guid.Parse(id);
+        var streakEvent = _mapper.Map<StreakCompleteEvent>(streakCompleteInfo);
         _logger.LogInformation("Recieved request for CompleteStreak, publishing {event} to RabbitMQ", streakEvent);
         await _publishEndpoint.Publish<StreakCompleteEvent>(streakEvent);
         return Ok();
     }
+
+    // TODO this stuff here
+    // Create a class library for infrasture e.g repos and services
+
+    [HttpGet("[action]")]
+    [ActionName("Full")]
+    [ProducesResponseType(typeof(IEnumerable<StreakInfo>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<IEnumerable<StreakInfo>>> GetAllStreakStreakInfo(string id)
+    {
+        return Ok();
+    }
+
+    [HttpGet("{id}/[action]")]
+    [ActionName("Full")]
+    [ProducesResponseType(typeof(StreakInfo), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<StreakInfo>> GetFullStreakInfo(string id)
+    {
+        return Ok();
+    }
+
+
 }

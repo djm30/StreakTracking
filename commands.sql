@@ -31,3 +31,37 @@ INSERT INTO streak_day(id, complete, streakid) VALUES ('2022-07-22', TRUE ,'6de4
 UPDATE streak_day
 SET complete = FALSE
 WHERE Id = '2022-06-20' AND streakid::text = '6de46eb7-3812-47a3-bbb6-7c7c54ef922b';
+
+-- QUERY TO GET CURRENT STREAK
+SELECT 
+  * 
+FROM 
+  (
+    SELECT 
+      Count(*) AS Streak, 
+      DATE(streak) -1 AS CurrDay 
+    FROM 
+      (
+        SELECT 
+          Id, 
+          Id + ROW_NUMBER() OVER(
+            ORDER BY 
+              Id DESC
+          ) * interval '1 day' AS Streak 
+        FROM 
+          streak_day 
+        WHERE 
+          streakid = '6de46eb7-3812-47a3-bbb6-7c7c54ef922b'
+      ) AS getconsecutedates 
+    GROUP BY 
+      streak
+  ) as groupbydates 
+WHERE 
+  (
+    CurrDay = CURRENT_DATE 
+    OR CurrDay = CURRENT_DATE - 1
+  ) 
+ORDER BY 
+  CurrDay DESC 
+LIMIT 
+  1;
