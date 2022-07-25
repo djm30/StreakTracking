@@ -107,7 +107,7 @@ public class StreakController : ControllerBase
     }
 
     // TODO this stuff here
-    // Create a class library for infrasture e.g repos and services
+    // Create a class library for infrastructure e.g repos and services
 
     [HttpGet("[action]")]
     [ActionName("Full")]

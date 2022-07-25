@@ -1,8 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using StreakTracking.EventHandler.Models;
-using StreakTracking.EventHandler.Repositories;
+using StreakTracking.Infrastructure.Repositories;
 
 namespace StreakTracking.Services;
 

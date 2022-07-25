@@ -6,6 +6,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Messages", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.EventHandler", "StreakTracking.EventHandler\StreakTracking.EventHandler.csproj", "{EA4911C7-2876-499C-9F9C-D17ED31D449C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Infrastructure", "StreakTracking.Infrastructure\StreakTracking.Infrastructure.csproj", "{EB6D8C69-7E60-43BD-9658-7B7DF83F2BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Domain", "StreakTracking.Domain\StreakTracking.Domain.csproj", "{B2030EE5-5E50-43CC-8F63-5DE4111D2D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Tests", "StreakTracking.Tests\StreakTracking.Tests.csproj", "{DB5D709E-60A0-456E-B9AE-18B432731D57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +30,17 @@ Global
 		{EA4911C7-2876-499C-9F9C-D17ED31D449C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA4911C7-2876-499C-9F9C-D17ED31D449C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA4911C7-2876-499C-9F9C-D17ED31D449C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB6D8C69-7E60-43BD-9658-7B7DF83F2BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB6D8C69-7E60-43BD-9658-7B7DF83F2BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB6D8C69-7E60-43BD-9658-7B7DF83F2BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB6D8C69-7E60-43BD-9658-7B7DF83F2BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2030EE5-5E50-43CC-8F63-5DE4111D2D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2030EE5-5E50-43CC-8F63-5DE4111D2D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2030EE5-5E50-43CC-8F63-5DE4111D2D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2030EE5-5E50-43CC-8F63-5DE4111D2D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB5D709E-60A0-456E-B9AE-18B432731D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5D709E-60A0-456E-B9AE-18B432731D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5D709E-60A0-456E-B9AE-18B432731D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5D709E-60A0-456E-B9AE-18B432731D57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

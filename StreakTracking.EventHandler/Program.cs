@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using StreakTracking.EventHandler.Consumers;
-using StreakTracking.EventHandler.Repositories;
+using StreakTracking.EventHandler.Extensions;
 using StreakTracking.Services;
 
 namespace StreakTracking.EventHandler
@@ -39,10 +39,8 @@ namespace StreakTracking.EventHandler
                             
                         });
                     });
-                    services.AddTransient<ISqlConnectionService,SqlConnectionService>();
-                    services.AddTransient<IStreakWriteRepository, StreakWriteRepository>();
-                    services.AddTransient<IStreakDayWriteRepository, StreakDayWriteRepository>();
                     services.AddScoped<IStreakRemovalService, StreakRemovalService>();
+                    services.AddInfrastructureServices();
                     // services.AddHostedService<EventHandlingService>();
                 });
     }

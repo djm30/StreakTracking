@@ -1,6 +1,6 @@
-namespace StreakTracking.Models;
+namespace StreakTracking.API.Models;
 
-public class CurrentStreak
+public class CurrentStreak 
 {
     public int Streak { get; set; }
     public DateTime CurrDate { get; set; }

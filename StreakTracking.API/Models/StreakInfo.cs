@@ -1,5 +1,4 @@
-namespace StreakTracking.Models;
-
+namespace StreakTracking.API.Models;
 public class StreakInfo
 {
     

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace StreakTracking.Models;
+namespace StreakTracking.API.Models;
 
 public class UpdateStreak
 {

@@ -625,6 +625,34 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "StreakTracking.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/StreakTracking.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StreakTracking.Domain.dll": {}
+        }
+      },
+      "StreakTracking.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Npgsql": "6.0.5",
+          "StreakTracking.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/StreakTracking.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StreakTracking.Infrastructure.dll": {}
+        }
+      },
       "StreakTracking.Messages/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1681,6 +1709,16 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "StreakTracking.Domain/1.0.0": {
+      "type": "project",
+      "path": "../StreakTracking.Domain/StreakTracking.Domain.csproj",
+      "msbuildProject": "../StreakTracking.Domain/StreakTracking.Domain.csproj"
+    },
+    "StreakTracking.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
+      "msbuildProject": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+    },
     "StreakTracking.Messages/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Messages/StreakTracking.Messages.csproj",
@@ -1694,6 +1732,7 @@
       "MassTransit.RabbitMQ >= 8.0.5",
       "Microsoft.Extensions.Hosting >= 6.0.0",
       "Npgsql >= 7.0.0-preview.6",
+      "StreakTracking.Infrastructure >= 1.0.0",
       "StreakTracking.Messages >= 1.0.0"
     ]
   },
@@ -1722,6 +1761,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+              "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+            },
             "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
               "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
             }
