@@ -1,7 +1,7 @@
 using AutoMapper;
 using StreakTracking.API.Models;
 using StreakTracking.Infrastructure.Repositories;
-using CurrentStreak = StreakTracking.Domain.Calculated.CurrentStreak;
+using System.Net;
 
 namespace StreakTracking.API.Services;
 
@@ -17,19 +17,58 @@ public class StreakReadingService : IStreakReadingService
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-
-    public ResponseMessageContent<Streak> GetStreakById(string Id)
+    public async Task<ResponseMessageContent<Streak>> GetStreakById(string Id)
     {
-        throw new NotImplementedException();
+        var streak = await _repository.GetStreakById(Id);
+        if (streak == null)
+        {
+            return new ResponseMessageContent<Streak>
+            {
+                Content = null,
+                Message = "No Streak found for this ID",
+                StatusCode = HttpStatusCode.NotFound
+            };
+        }
+
+        return new ResponseMessageContent<Streak>
+        {
+            Content = _mapper.Map<Streak>(streak),
+            Message = "Content Found",
+            StatusCode = HttpStatusCode.OK
+        };
     }
 
-    public ResponseMessageContent<IEnumerable<Streak>> GetStreaks()
+    public async Task<ResponseMessageContent<IEnumerable<Streak>>> GetStreaks()
     {
-        throw new NotImplementedException();
+        var streaks = await _repository.GetStreaks();
+        var mappedStreaks = streaks.Select(s => _mapper.Map<Streak>(s));
+        return new ResponseMessageContent<IEnumerable<Streak>>
+        {
+            Content = mappedStreaks,
+            Message = "List of streaks",
+            StatusCode = HttpStatusCode.OK
+        };
     }
 
-    public ResponseMessageContent<CurrentStreak> GetCurrentStreak()
+    public async Task<ResponseMessageContent<CurrentStreak>> GetCurrentStreak(string Id)
     {
-        throw new NotImplementedException();
+        var currentStreak = await _repository.GetCurrent(Id);
+        if (currentStreak == null)
+        {
+            return new ResponseMessageContent<CurrentStreak>
+            {
+                Content = null,
+                Message = "No Streak found for this ID",
+                StatusCode = HttpStatusCode.NotFound
+            };
+        }
+
+        return new ResponseMessageContent<CurrentStreak>
+        {
+            Content = _mapper.Map<CurrentStreak>(currentStreak),
+            Message = "Streak information",
+            StatusCode = HttpStatusCode.OK
+        };
+
     }
 }

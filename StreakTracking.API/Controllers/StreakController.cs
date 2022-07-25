@@ -2,9 +2,9 @@ using System.Net;
 using AutoMapper;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
+using StreakTracking.API.Services;
+using StreakTracking.API.Models;
 using StreakTracking.Events.Events;
-using StreakTracking.Models;
-using StreakTracking.Repositories;
 
 namespace StreakTracking.Controllers;
 
@@ -13,14 +13,14 @@ namespace StreakTracking.Controllers;
 public class StreakController : ControllerBase
 {
     private readonly ILogger<StreakController> _logger;
-    private readonly IStreakReadRepository _repository;
+    private readonly IStreakReadingService _streakReadService;
     private readonly IPublishEndpoint _publishEndpoint;
     private readonly IMapper _mapper;
 
-    public StreakController(ILogger<StreakController> logger, IStreakReadRepository repository, IPublishEndpoint publishEndpoint, IMapper mapper)
+    public StreakController(ILogger<StreakController> logger, IStreakReadingService streakReadService, IPublishEndpoint publishEndpoint, IMapper mapper)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        _streakReadService = streakReadService ?? throw new ArgumentNullException(nameof(streakReadService));
         _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }

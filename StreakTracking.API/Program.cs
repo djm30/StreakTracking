@@ -1,5 +1,6 @@
 using MassTransit;
 using StreakTracking.API.EventHandler.Extensions;
+using StreakTracking.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ builder.Services.AddMassTransit(x => { x.UsingRabbitMq(); });
 builder.Services.AddMassTransitHostedService();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.AddInfrastructureServices();
+builder.Services.AddScoped<IStreakReadingService, StreakReadingService>();
+
 
 var app = builder.Build();
 

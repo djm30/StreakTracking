@@ -5,8 +5,8 @@ namespace StreakTracking.API.Services;
 
 public interface IEventPublishingService
 {
-    public ResponseMessage PublishCreateStreak(AddStreakEvent addStreakEvent);
-    public ResponseMessage PublishUpdateStreak(UpdateStreakEvent updateStreakEvent);
-    public ResponseMessage PublishDeleteStreak(DeleteStreakEvent deleteStreakEvent);
-    public ResponseMessage PublishStreakComplete(StreakComplete streakCompleteEvent);
+    public Task<ResponseMessage> PublishCreateStreak(AddStreakEvent addStreakEvent);
+    public Task<ResponseMessage> PublishUpdateStreak(UpdateStreakEvent updateStreakEvent);
+    public Task<ResponseMessage> PublishDeleteStreak(DeleteStreakEvent deleteStreakEvent);
+    public Task<ResponseMessage> PublishStreakComplete(StreakComplete streakCompleteEvent);
 }

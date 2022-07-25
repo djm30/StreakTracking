@@ -5,22 +5,22 @@ namespace StreakTracking.API.Services;
 
 public class EventPublishingService : IEventPublishingService
 {
-    public ResponseMessage PublishCreateStreak(AddStreakEvent addStreakEvent)
+    public async Task<ResponseMessage> PublishCreateStreak(AddStreakEvent addStreakEvent)
     {
         throw new NotImplementedException();
     }
 
-    public ResponseMessage PublishUpdateStreak(UpdateStreakEvent updateStreakEvent)
+    public async Task<ResponseMessage> PublishUpdateStreak(UpdateStreakEvent updateStreakEvent)
     {
         throw new NotImplementedException();
     }
 
-    public ResponseMessage PublishDeleteStreak(DeleteStreakEvent deleteStreakEvent)
+    public async Task<ResponseMessage> PublishDeleteStreak(DeleteStreakEvent deleteStreakEvent)
     {
         throw new NotImplementedException();
     }
 
-    public ResponseMessage PublishStreakComplete(StreakComplete streakCompleteEvent)
+    public async Task<ResponseMessage> PublishStreakComplete(StreakComplete streakCompleteEvent)
     {
         throw new NotImplementedException();
     }
