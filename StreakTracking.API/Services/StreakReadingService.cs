@@ -17,9 +17,9 @@ public class StreakReadingService : IStreakReadingService
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public async Task<ResponseMessageContent<Streak>> GetStreakById(string Id)
+    public async Task<ResponseMessageContent<Streak>> GetStreakById(string id)
     {
-        var streak = await _repository.GetStreakById(Id);
+        var streak = await _repository.GetStreakById(id);
         if (streak == null)
         {
             return new ResponseMessageContent<Streak>
@@ -50,9 +50,9 @@ public class StreakReadingService : IStreakReadingService
         };
     }
 
-    public async Task<ResponseMessageContent<CurrentStreak>> GetCurrentStreak(string Id)
+    public async Task<ResponseMessageContent<CurrentStreak>> GetCurrentStreak(string id)
     {
-        var currentStreak = await _repository.GetCurrent(Id);
+        var currentStreak = await _repository.GetCurrent(id);
         if (currentStreak == null)
         {
             return new ResponseMessageContent<CurrentStreak>

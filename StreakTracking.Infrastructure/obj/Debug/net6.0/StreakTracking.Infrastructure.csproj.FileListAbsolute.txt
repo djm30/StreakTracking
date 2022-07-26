@@ -1,0 +1,15 @@
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/bin/Debug/net6.0/StreakTracking.Infrastructure.deps.json
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/bin/Debug/net6.0/StreakTracking.Infrastructure.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/bin/Debug/net6.0/StreakTracking.Infrastructure.pdb
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/bin/Debug/net6.0/StreakTracking.Domain.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/bin/Debug/net6.0/StreakTracking.Domain.pdb
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.csproj.AssemblyReference.cache
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.AssemblyInfoInputs.cache
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.AssemblyInfo.cs
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.csproj.CoreCompileInputs.cache
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.csproj.CopyComplete
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/refint/StreakTracking.Infrastructure.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/StreakTracking.Infrastructure.pdb
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/Debug/net6.0/ref/StreakTracking.Infrastructure.dll

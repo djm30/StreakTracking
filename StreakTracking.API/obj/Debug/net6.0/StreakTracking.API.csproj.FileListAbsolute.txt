@@ -43,3 +43,7 @@
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/Dapper.dll
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/AutoMapper.dll
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/StreakTracking.Domain.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/StreakTracking.Infrastructure.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/StreakTracking.Infrastructure.pdb
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/bin/Debug/net6.0/StreakTracking.Domain.pdb

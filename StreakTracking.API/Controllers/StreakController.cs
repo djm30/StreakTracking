@@ -32,17 +32,22 @@ public class StreakController : ControllerBase
     public async Task<ActionResult<Streak>> GetStreaks()
     {
         _logger.LogInformation("Recieved request for GetStreaks");
-        var streaks = await _repository.GetStreaks();
-        return Ok(streaks);
+        var responseMessage = await _streakReadService.GetStreaks();
+        if (responseMessage.StatusCode == HttpStatusCode.OK)
+            return Ok(responseMessage.Content);
+        return NoContent();
     }
 
     [HttpGet("{id}", Name = "GetStreak")]
     [ProducesResponseType(typeof(Streak), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
     public async Task<ActionResult<Streak>> GetStreakById(string id)
     {
         _logger.LogInformation("Recieved request for GetStreaksById");
-        var streak = await _repository.GetStreakById(id);
-        return Ok(streak);
+        var responseMessage = await _streakReadService.GetStreakById(id);
+        if (responseMessage.StatusCode == HttpStatusCode.OK)
+            return Ok(responseMessage.Content);
+        return NotFound(responseMessage.Content);
     }
 
     [HttpPost]
@@ -87,10 +92,10 @@ public class StreakController : ControllerBase
     public async Task<ActionResult<CurrentStreak>> GetCurrentStreak(string id)
     {
         _logger.LogInformation("Recieved request for GetCurrent");
-        var current = await _repository.GetCurrent(id);
-        if (current is null)
-            return BadRequest();
-        return Ok(current);
+        var responseMessage = await  _streakReadService.GetCurrentStreak(id);
+        if (responseMessage.StatusCode == HttpStatusCode.OK)
+            return Ok(responseMessage.Content);
+        return NotFound(responseMessage.Content);
     }
 
 
