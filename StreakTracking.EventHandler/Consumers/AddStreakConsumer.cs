@@ -1,39 +1,23 @@
 using System;
 using System.Threading.Tasks;
 using MassTransit;
-using Microsoft.Extensions.Logging;
-using StreakTracking.EventHandler.Models;
-using StreakTracking.EventHandler.Repositories;
+using StreakTracking.EventHandler.Services;
 using StreakTracking.Events.Events;
 
 namespace StreakTracking.EventHandler.Consumers
 {
     public class AddStreakConsumer : IConsumer<AddStreakEvent>
     {
+        private readonly IStreakWriteService _service;
 
-        private readonly IStreakWriteRepository _repository;
-        private readonly ILogger<AddStreakConsumer> _logger;
-
-        public AddStreakConsumer(IStreakWriteRepository repository, ILogger<AddStreakConsumer> logger)
+        public AddStreakConsumer(IStreakWriteService service)
         {
-            _repository = repository;
-            _logger = logger;
+            _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
         public async Task Consume(ConsumeContext<AddStreakEvent> context)
         {
-
-            var message = context.Message;
-            
-            var streak = new Streak
-            {
-                StreakId = Guid.NewGuid(),
-                StreakName = context.Message.Name,
-                StreakDescription = context.Message.Description,
-                LongestStreak  = 0
-            };
-            _logger.LogInformation("Recieved message: {message}, consuming it now", context.Message);
-            await _repository.Create(streak: streak);
+            await _service.CreateStreak(context.Message);
         }
     }
 }

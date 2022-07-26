@@ -1,113 +1,64 @@
 using System.Net;
-using AutoMapper;
-using MassTransit;
 using Microsoft.AspNetCore.Mvc;
-using StreakTracking.Events.Events;
-using StreakTracking.Models;
-using StreakTracking.Repositories;
+using StreakTracking.API.Services;
+using StreakTracking.API.Models;
+using StreakTracking.Domain.Calculated;
+using StreakTracking.Domain.Entities;
 
-namespace StreakTracking.Controllers;
+namespace StreakTracking.API.Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]
 public class StreakController : ControllerBase
 {
     private readonly ILogger<StreakController> _logger;
-    private readonly IStreakReadRepository _repository;
-    private readonly IPublishEndpoint _publishEndpoint;
-    private readonly IMapper _mapper;
+    private readonly IStreakReadingService _streakReadService;
+    private readonly IEventPublishingService _publishingService;
 
-    public StreakController(ILogger<StreakController> logger, IStreakReadRepository repository, IPublishEndpoint publishEndpoint, IMapper mapper)
+    public StreakController(ILogger<StreakController> logger, IStreakReadingService streakReadService, IEventPublishingService publishingService)
     {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-        _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        _logger = logger;
+        _streakReadService = streakReadService;
+        _publishingService = publishingService;
     }
-
-    #region BasicStreakCrud
-
+    
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<Streak>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult<Streak>> GetStreaks()
     {
         _logger.LogInformation("Recieved request for GetStreaks");
-        var streaks = await _repository.GetStreaks();
-        return Ok(streaks);
+        var responseMessage = await _streakReadService.GetStreaks();
+        if (responseMessage.StatusCode == HttpStatusCode.OK)
+            return Ok(responseMessage.Content);
+        return NoContent();
     }
 
     [HttpGet("{id}", Name = "GetStreak")]
     [ProducesResponseType(typeof(Streak), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
     public async Task<ActionResult<Streak>> GetStreakById(string id)
     {
         _logger.LogInformation("Recieved request for GetStreaksById");
-        var streak = await _repository.GetStreakById(id);
-        return Ok(streak);
+        var responseMessage = await _streakReadService.GetStreakById(id);
+        return responseMessage.StatusCode == HttpStatusCode.OK
+            ? Ok(responseMessage.Content)
+            : NotFound(responseMessage);
     }
-
-    [HttpPost]
-    [Route("")]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<ActionResult> CreateStreak([FromBody] AddStreakEvent streakEvent)
-    {
-        _logger.LogInformation("Recieved request for CreateStreak, publishing {event} to RabbitMQ", streakEvent);
-        await _publishEndpoint.Publish<AddStreakEvent>(streakEvent);
-        return Ok();
-    }
-
-    [HttpPut("{id}")]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<ActionResult> UpdateStreak(string id, [FromBody] UpdateStreak updateInfo)
-    {
-        updateInfo.StreakId = Guid.Parse(id);
-        var streakEvent = _mapper.Map<UpdateStreakEvent>(updateInfo);
-        _logger.LogInformation("Recieved request for UpdateStreak, publishing {event} to RabbitMQ", streakEvent);
-        await _publishEndpoint.Publish<UpdateStreakEvent>(streakEvent);
-        return Ok();
-    }
-
-    [HttpDelete("{id}", Name = "DeleteStreak")]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<ActionResult> DeleteStreak(string id)
-    {
-        var streakEvent = new DeleteStreakEvent { StreakId = Guid.Parse(id) };
-        _logger.LogInformation("Recieved request for DeleteStreak, publishing {event} to RabbitMQ", streakEvent);
-        await _publishEndpoint.Publish<DeleteStreakEvent>(streakEvent);
-        return Ok();
-    }
-
-
-    #endregion
-
-
+    
     [HttpGet("{id}/[action]", Name = "GetCurrentStreak")]
     [ActionName("Current")]
     [ProducesResponseType(typeof(CurrentStreak), (int)HttpStatusCode.OK)]
-    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.NotFound)]
     public async Task<ActionResult<CurrentStreak>> GetCurrentStreak(string id)
     {
         _logger.LogInformation("Recieved request for GetCurrent");
-        var current = await _repository.GetCurrent(id);
-        if (current is null)
-            return BadRequest();
-        return Ok(current);
+        var responseMessage = await  _streakReadService.GetCurrentStreak(id);
+        return responseMessage.StatusCode == HttpStatusCode.OK
+            ? Ok(responseMessage.Content)
+            : NotFound(responseMessage);
     }
-
-
-    [HttpPost("{id}/[action]")]
-    [ActionName("Complete")]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<ActionResult> CompleteStreak(string id, [FromBody] StreakComplete streakCompleteInfo)
-    {
-        streakCompleteInfo.StreakId = Guid.Parse(id);
-        var streakEvent = _mapper.Map<StreakCompleteEvent>(streakCompleteInfo);
-        _logger.LogInformation("Recieved request for CompleteStreak, publishing {event} to RabbitMQ", streakEvent);
-        await _publishEndpoint.Publish<StreakCompleteEvent>(streakEvent);
-        return Ok();
-    }
-
+    
     // TODO this stuff here
-    // Create a class library for infrasture e.g repos and services
 
     [HttpGet("[action]")]
     [ActionName("Full")]
@@ -125,5 +76,38 @@ public class StreakController : ControllerBase
         return Ok();
     }
 
+    [HttpPost]
+    [Route("")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> CreateStreak([FromBody] AddStreakDTO addStreakDTO)
+    {
+        var responseMessage = await _publishingService.PublishCreateStreak(addStreakDTO);
+        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+    }
+    
+    [HttpPost("{id}/[action]")]
+    [ActionName("Complete")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> CompleteStreak(string id, [FromBody] StreakCompleteDTO streakCompleteDTO)
+    {
+        var responseMessage = await _publishingService.PublishStreakComplete(id, streakCompleteDTO);
+        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+    }
 
+    [HttpPut("{id}")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> UpdateStreak(string id, [FromBody] UpdateStreakDTO updateStreakDTO)
+    {
+        var responseMessage = await _publishingService.PublishUpdateStreak(id, updateStreakDTO);
+        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+    }
+
+    [HttpDelete("{id}", Name = "DeleteStreak")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> DeleteStreak(string id)
+    {
+        var responseMessage = await _publishingService.PublishDeleteStreak(id);
+        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+    }
+    
 }

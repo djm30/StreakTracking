@@ -1,10 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
-using MassTransit;
-using Microsoft.Extensions.DependencyInjection;
-using StreakTracking.EventHandler.Consumers;
-using StreakTracking.EventHandler.Repositories;
-using StreakTracking.Services;
+using StreakTracking.EventHandler.Extensions;
 
 namespace StreakTracking.EventHandler
 {
@@ -19,31 +15,10 @@ namespace StreakTracking.EventHandler
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddMassTransit(x =>
-                    {
-                        x.AddConsumer<AddStreakConsumer>();
-                        x.AddConsumer<UpdateStreakConsumer>();
-                        x.AddConsumer<DeleteStreakConsumer>();
-                        x.AddConsumer<StreakCompleteConsumer>();
-                        x.UsingRabbitMq((ctx, cfg) =>
-                        {
-                            
-                            cfg.ReceiveEndpoint("streaks-queue", c =>
-                            {
-                                c.ConfigureConsumer<AddStreakConsumer>(ctx);
-                                c.ConfigureConsumer<UpdateStreakConsumer>(ctx);
-                                c.ConfigureConsumer<DeleteStreakConsumer>(ctx);
-                                c.ConfigureConsumer<StreakCompleteConsumer>(ctx);
-                            });
-    
-                            
-                        });
-                    });
-                    services.AddTransient<ISqlConnectionService,SqlConnectionService>();
-                    services.AddTransient<IStreakWriteRepository, StreakWriteRepository>();
-                    services.AddTransient<IStreakDayWriteRepository, StreakDayWriteRepository>();
-                    services.AddScoped<IStreakRemovalService, StreakRemovalService>();
-                    // services.AddHostedService<EventHandlingService>();
+                    // Extension methods to register all required services
+                    services.ConfigureMassTransit();
+                    services.AddServices();
+                    services.AddInfrastructureServices();
                 });
     }
 }

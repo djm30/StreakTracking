@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "StreakTracking.Streaks": {
+    "StreakTracking.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
