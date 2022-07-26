@@ -11,12 +11,10 @@ public class StreakReadingService : IStreakReadingService
 {
 
     private readonly IStreakReadRepository _repository;
-    private readonly IMapper _mapper;
 
-    public StreakReadingService(IStreakReadRepository repository, IMapper mapper)
+    public StreakReadingService(IStreakReadRepository repository)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
     public async Task<ResponseMessageContent<Streak>> GetStreakById(string id)
