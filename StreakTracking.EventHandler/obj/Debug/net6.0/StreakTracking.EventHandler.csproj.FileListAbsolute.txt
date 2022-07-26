@@ -55,3 +55,7 @@
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/bin/Debug/net6.0/System.Text.Json.dll
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/bin/Debug/net6.0/Dapper.dll
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/bin/Debug/net6.0/Npgsql.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/bin/Debug/net6.0/StreakTracking.Domain.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/bin/Debug/net6.0/StreakTracking.Infrastructure.dll
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/bin/Debug/net6.0/StreakTracking.Infrastructure.pdb
+/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/bin/Debug/net6.0/StreakTracking.Domain.pdb

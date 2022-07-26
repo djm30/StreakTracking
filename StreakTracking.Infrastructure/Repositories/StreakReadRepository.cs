@@ -48,7 +48,7 @@ public class StreakReadRepository : IStreakReadRepository
         catch (PostgresException e)
         {
             _logger.LogError("Error retrieving streak with id: {streakId} from database with Error: {error}", Id, e);
-            return new Streak();
+            return null;
         }
     }
 
@@ -98,7 +98,7 @@ public class StreakReadRepository : IStreakReadRepository
         }
         catch (PostgresException e)
         {
-            _logger.LogError("Error retrieving current streak for streak with id: {streakId}", Id);
+            _logger.LogError("Error retrieving current streak for streak with id: {streakId}. Error: {e}", Id, e);
             return null;
         }
     }

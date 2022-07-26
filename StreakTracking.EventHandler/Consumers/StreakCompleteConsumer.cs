@@ -1,44 +1,22 @@
 using System;
 using System.Threading.Tasks;
 using MassTransit;
-using Microsoft.Extensions.Logging;
-using StreakTracking.EventHandler.Models;
-using StreakTracking.EventHandler.Repositories;
+using StreakTracking.EventHandler.Services;
 using StreakTracking.Events.Events;
-using StreakTracking.Services;
 
 namespace StreakTracking.EventHandler.Consumers;
 
 public class StreakCompleteConsumer : IConsumer<StreakCompleteEvent>
 {
-    private readonly ILogger<StreakCompleteConsumer> _logger;
-    private readonly IStreakDayWriteRepository _repository;
+    private readonly IStreakWriteService _service;
 
-    public StreakCompleteConsumer(ILogger<StreakCompleteConsumer> logger, IStreakDayWriteRepository repository)
+    public StreakCompleteConsumer(IStreakWriteService service)
     {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        _service = service ?? throw new ArgumentNullException(nameof(service));
     }
 
     public async Task Consume(ConsumeContext<StreakCompleteEvent> context)
     {
-        // TODO REFACTOR USING AUTOMAPER
-        var message = context.Message;
-        var streakDay = new StreakDay
-        {
-            Id = message.Date,
-            StreakId = message.StreakId,
-            Complete = message.Complete,
-        };
-        // 
-        if (streakDay.Complete)
-        {
-            await _repository.Create(streakDay);
-        }
-        else
-        {
-            // DELETING INSTEAD OF MODIFYING, SAVES MORE SPACE
-            await _repository.Delete(streakDay);
-        }
+        await _service.MarkComplete(context.Message);
     }
 }

@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Npgsql;
 
 namespace StreakTracking.Infrastructure.Services;
@@ -10,14 +9,12 @@ namespace StreakTracking.Infrastructure.Services;
 /// </summary>
 public class SqlConnectionService : ISqlConnectionService
 {
-  private IConfiguration _configuration;
-  public string ConnectionString { get; set; }
+  private string ConnectionString { get; }
   
   public SqlConnectionService(IConfiguration configuration)
   {
-    _configuration = configuration;
-    ConnectionString = _configuration.GetValue<string>("ConnectionString");
+    ConnectionString = configuration.GetValue<string>("ConnectionString");
   }
 
-  public NpgsqlConnection GetConnection() => new NpgsqlConnection(ConnectionString);
+  public NpgsqlConnection GetConnection() => new(ConnectionString);
 }
