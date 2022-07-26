@@ -1,3 +1,6 @@
+using System.Net;
+using AutoMapper;
+using MassTransit;
 using StreakTracking.API.Models;
 using StreakTracking.Events.Events;
 
@@ -5,23 +8,61 @@ namespace StreakTracking.API.Services;
 
 public class EventPublishingService : IEventPublishingService
 {
-    public async Task<ResponseMessage> PublishCreateStreak(AddStreakEvent addStreakEvent)
+    private readonly IPublishEndpoint _publishEndpoint;
+    private readonly IMapper _mapper;
+
+    public EventPublishingService(IPublishEndpoint publishEndpoint, IMapper mapper)
     {
-        throw new NotImplementedException();
+        _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public async Task<ResponseMessage> PublishUpdateStreak(UpdateStreakEvent updateStreakEvent)
+
+    public async Task<ResponseMessage> PublishCreateStreak(AddStreakDTO addStreakDTO)
     {
-        throw new NotImplementedException();
+        addStreakDTO.StreakId = new Guid();
+        var addStreakEvent = _mapper.Map<AddStreakEvent>(addStreakDTO);
+        await _publishEndpoint.Publish<AddStreakEvent>(addStreakEvent);
+        return new ResponseMessage()
+        {
+            Message = $"Creating new Streak with ID: {addStreakEvent.StreakId}", 
+            StatusCode = HttpStatusCode.Accepted
+        };
     }
 
-    public async Task<ResponseMessage> PublishDeleteStreak(DeleteStreakEvent deleteStreakEvent)
+    public async Task<ResponseMessage> PublishUpdateStreak(string StreakId, UpdateStreakDTO updateStreakDTO)
     {
-        throw new NotImplementedException();
+        updateStreakDTO.StreakId = Guid.Parse(StreakId);
+        var updateStreakEvent = _mapper.Map<UpdateStreakEvent>(updateStreakDTO);
+        await _publishEndpoint.Publish<UpdateStreakEvent>(updateStreakEvent);
+        return new ResponseMessage()
+        {
+            Message = $"Currently updating Streak with ID: {updateStreakEvent.StreakId}", 
+            StatusCode = HttpStatusCode.Accepted
+        };
     }
 
-    public async Task<ResponseMessage> PublishStreakComplete(StreakComplete streakCompleteEvent)
+    public async Task<ResponseMessage> PublishDeleteStreak(string StreakId)
     {
-        throw new NotImplementedException();
+        var deleteStreakEvent = new DeleteStreakEvent { StreakId = Guid.Parse(StreakId) };
+        await _publishEndpoint.Publish<DeleteStreakEvent>(deleteStreakEvent);
+        return new ResponseMessage()
+        {
+            Message = $"Currently deleting Streak with ID: {deleteStreakEvent.StreakId}",
+            StatusCode = HttpStatusCode.Accepted
+        };
+    }
+
+    public async Task<ResponseMessage> PublishStreakComplete(string StreakId, StreakCompleteDTO streakCompleteDTO)
+    {
+        streakCompleteDTO.StreakId = Guid.Parse(StreakId);
+        var streakCompleteEvent = _mapper.Map<StreakCompleteEvent>(streakCompleteDTO);
+        await _publishEndpoint.Publish<StreakCompleteEvent>(streakCompleteEvent);
+        return new ResponseMessage()
+        {
+            Message =
+                $"Currently marking Streak with ID: {streakCompleteEvent.StreakId} complete for day: {streakCompleteEvent.Date.Date}",
+            StatusCode = HttpStatusCode.Accepted
+        };
     }
 }

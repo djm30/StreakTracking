@@ -8,9 +8,8 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<UpdateStreak, UpdateStreakEvent>();
-        CreateMap<StreakComplete, StreakCompleteEvent>();
-        CreateMap<StreakTracking.Domain.Entities.Streak, Streak>().ReverseMap();
-        CreateMap<StreakTracking.Domain.Calculated.CurrentStreak, CurrentStreak>().ReverseMap();
+        CreateMap<AddStreakDTO, AddStreakEvent>();
+        CreateMap<UpdateStreakDTO, UpdateStreakEvent>();
+        CreateMap<StreakCompleteDTO, StreakCompleteEvent>();
     }
 }

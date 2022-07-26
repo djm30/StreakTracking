@@ -1,7 +1,10 @@
-namespace StreakTracking.Events.Events;
+using System.Text.Json.Serialization;
 
-public class AddStreakEvent
+namespace StreakTracking.API.Models;
+
+public class AddStreakDTO
 {
+    [JsonIgnore]
     public Guid StreakId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }

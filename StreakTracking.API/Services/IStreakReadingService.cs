@@ -1,4 +1,6 @@
 using StreakTracking.API.Models;
+using StreakTracking.Domain.Calculated;
+using StreakTracking.Domain.Entities;
 
 
 namespace StreakTracking.API.Services;

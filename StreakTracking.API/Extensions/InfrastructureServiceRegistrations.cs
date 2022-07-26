@@ -1,7 +1,7 @@
 using StreakTracking.Infrastructure.Repositories;
 using StreakTracking.Infrastructure.Services;
 
-namespace StreakTracking.API.EventHandler.Extensions;
+namespace StreakTracking.API.Extensions;
 
 public static class InfrastructureServiceRegistrations
 {

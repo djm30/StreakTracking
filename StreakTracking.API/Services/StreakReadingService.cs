@@ -2,6 +2,8 @@ using AutoMapper;
 using StreakTracking.API.Models;
 using StreakTracking.Infrastructure.Repositories;
 using System.Net;
+using StreakTracking.Domain.Calculated;
+using StreakTracking.Domain.Entities;
 
 namespace StreakTracking.API.Services;
 
@@ -32,7 +34,7 @@ public class StreakReadingService : IStreakReadingService
 
         return new ResponseMessageContent<Streak>
         {
-            Content = _mapper.Map<Streak>(streak),
+            Content = streak,
             Message = "Content Found",
             StatusCode = HttpStatusCode.OK
         };
@@ -41,10 +43,9 @@ public class StreakReadingService : IStreakReadingService
     public async Task<ResponseMessageContent<IEnumerable<Streak>>> GetStreaks()
     {
         var streaks = await _repository.GetStreaks();
-        var mappedStreaks = streaks.Select(s => _mapper.Map<Streak>(s));
         return new ResponseMessageContent<IEnumerable<Streak>>
         {
-            Content = mappedStreaks,
+            Content = streaks,
             Message = "List of streaks",
             StatusCode = HttpStatusCode.OK
         };
@@ -65,7 +66,7 @@ public class StreakReadingService : IStreakReadingService
 
         return new ResponseMessageContent<CurrentStreak>
         {
-            Content = _mapper.Map<CurrentStreak>(currentStreak),
+            Content = currentStreak,
             Message = "Streak information",
             StatusCode = HttpStatusCode.OK
         };

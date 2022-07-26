@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace StreakTracking.API.Models;
 
-public class StreakComplete
+public class StreakCompleteDTO
 {
     [JsonIgnore]
     public Guid StreakId { get; set; }
