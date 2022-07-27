@@ -65,9 +65,8 @@ public class StreakReadingService : IStreakReadingService
         return new ResponseMessageContent<CurrentStreak>
         {
             Content = currentStreak,
-            Message = "Streak information",
+            Message = "Current streak calculated",
             StatusCode = HttpStatusCode.OK
         };
-
     }
 }
