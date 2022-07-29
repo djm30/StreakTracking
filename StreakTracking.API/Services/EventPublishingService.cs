@@ -11,6 +11,7 @@ public class EventPublishingService : IEventPublishingService
     private readonly IPublishEndpoint _publishEndpoint;
     private readonly IMapper _mapper;
 
+    //TODO Refactor Guid.Parse() with Guid.TryParse()
     public EventPublishingService(IPublishEndpoint publishEndpoint, IMapper mapper)
     {
         _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
@@ -20,7 +21,7 @@ public class EventPublishingService : IEventPublishingService
 
     public async Task<ResponseMessage> PublishCreateStreak(AddStreakDTO addStreakDTO)
     {
-        if (addStreakDTO.Description == "" || addStreakDTO.Name == "")
+        if (addStreakDTO.StreakDescription == "" || addStreakDTO.StreakName == "")
         {
             return new ResponseMessage()
             {

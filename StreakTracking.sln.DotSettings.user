@@ -1,9 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=093858f5_002D6fae_002D4652_002Dafcc_002D54bca83a94c1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Valid_Add_Streak_Request_Should_Be_Published #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::DB5D709E-60A0-456E-B9AE-18B432731D57::net6.0::StreakTracking.Tests.EventPublisherTests.Valid_Add_Streak_Request_Should_Be_Published&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DB5D709E-60A0-456E-B9AE-18B432731D57::net6.0::StreakTracking.Tests.EventPublisherTests.Valid_Add_Streak_Request_Should_Be_Published_With_Moq&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1766a51c_002Dce52_002D49f1_002Db2c6_002D734bef9880c8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetStreakById_Returns_Valid_Streak" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;

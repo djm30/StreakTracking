@@ -6,6 +6,6 @@ public class AddStreakDTO
 {
     [JsonIgnore]
     public Guid StreakId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string StreakName { get; set; }
+    public string StreakDescription { get; set; }
 }
