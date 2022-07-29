@@ -78,36 +78,75 @@ public class StreakController : ControllerBase
 
     [HttpPost]
     [Route("")]
-    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult> CreateStreak([FromBody] AddStreakDTO addStreakDTO)
     {
         var responseMessage = await _publishingService.PublishCreateStreak(addStreakDTO);
-        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+        switch (responseMessage.StatusCode)
+        {
+            case HttpStatusCode.Accepted:
+                return Accepted(responseMessage);
+            case HttpStatusCode.BadRequest:
+                return BadRequest(responseMessage);
+            default:
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
     
     [HttpPost("{id}/[action]")]
     [ActionName("Complete")]
-    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult> CompleteStreak(string id, [FromBody] StreakCompleteDTO streakCompleteDTO)
     {
         var responseMessage = await _publishingService.PublishStreakComplete(id, streakCompleteDTO);
-        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+        switch (responseMessage.StatusCode)
+        {
+            case HttpStatusCode.Accepted:
+                return Accepted(responseMessage);
+            case HttpStatusCode.BadRequest:
+                return BadRequest(responseMessage);
+            default:
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 
     [HttpPut("{id}")]
-    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult> UpdateStreak(string id, [FromBody] UpdateStreakDTO updateStreakDTO)
     {
         var responseMessage = await _publishingService.PublishUpdateStreak(id, updateStreakDTO);
-        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+        switch (responseMessage.StatusCode)
+        {
+            case HttpStatusCode.Accepted:
+                return Accepted(responseMessage);
+            case HttpStatusCode.BadRequest:
+                return BadRequest(responseMessage);
+            default:
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 
     [HttpDelete("{id}", Name = "DeleteStreak")]
-    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
+    [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult> DeleteStreak(string id)
     {
         var responseMessage = await _publishingService.PublishDeleteStreak(id);
-        return responseMessage.StatusCode == HttpStatusCode.Accepted ? Accepted(responseMessage.Message) : Problem();
+        switch (responseMessage.StatusCode)
+        {
+            case HttpStatusCode.Accepted:
+                return Accepted(responseMessage);
+            case HttpStatusCode.BadRequest:
+                return BadRequest(responseMessage);
+            default:
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
-    
 }

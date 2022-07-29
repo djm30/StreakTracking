@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Automatonymous/5.1.3": {
+        "type": "package",
+        "dependencies": {
+          "GreenPipes": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Automatonymous.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Automatonymous.dll": {}
+        }
+      },
       "Dapper/2.0.123": {
         "type": "package",
         "compile": {
@@ -11,48 +23,75 @@
           "lib/net5.0/Dapper.dll": {}
         }
       },
-      "MassTransit/8.0.5": {
+      "GreenPipes/4.0.1": {
         "type": "package",
         "dependencies": {
-          "MassTransit.Abstractions": "8.0.5",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.18",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "3.1.18",
-          "Microsoft.Extensions.Hosting.Abstractions": "3.1.18",
-          "Microsoft.Extensions.Logging.Abstractions": "3.1.18",
-          "Microsoft.Extensions.Options": "3.1.18",
-          "System.Diagnostics.DiagnosticSource": "6.0.0",
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
+          "System.Reflection.Emit": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/GreenPipes.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/GreenPipes.dll": {}
+        }
+      },
+      "MassTransit/7.3.1": {
+        "type": "package",
+        "dependencies": {
+          "Automatonymous": "5.1.3",
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.1",
+          "NewId": "3.0.3",
+          "Newtonsoft.Json": "12.0.1",
+          "Newtonsoft.Json.Bson": "1.0.2",
+          "System.Diagnostics.DiagnosticSource": "4.7.1",
           "System.Reflection.Emit": "4.7.0",
           "System.Reflection.Emit.Lightweight": "4.7.0",
-          "System.Text.Json": "6.0.2",
-          "System.Threading.Channels": "6.0.0"
+          "System.Text.Json": "5.0.2",
+          "System.Threading.Channels": "4.7.1",
+          "System.ValueTuple": "4.5.0"
         },
         "compile": {
-          "lib/net6.0/MassTransit.dll": {}
+          "lib/netstandard2.0/MassTransit.dll": {}
         },
         "runtime": {
-          "lib/net6.0/MassTransit.dll": {}
+          "lib/netstandard2.0/MassTransit.dll": {}
         }
       },
-      "MassTransit.Abstractions/8.0.5": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/MassTransit.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net6.0/MassTransit.Abstractions.dll": {}
-        }
-      },
-      "MassTransit.RabbitMQ/8.0.5": {
+      "MassTransit.Extensions.DependencyInjection/7.3.1": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "8.0.5",
-          "RabbitMQ.Client": "6.4.0"
+          "MassTransit": "7.3.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1"
         },
         "compile": {
-          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {}
+          "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.dll": {}
         },
         "runtime": {
-          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {}
+          "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.dll": {}
+        }
+      },
+      "MassTransit.RabbitMQ/7.3.1": {
+        "type": "package",
+        "dependencies": {
+          "MassTransit": "7.3.1",
+          "RabbitMQ.Client": "6.2.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll": {}
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/6.0.0": {
@@ -194,29 +233,6 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
-        }
-      },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/3.1.18": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "3.1.18",
-          "Microsoft.Extensions.Hosting.Abstractions": "3.1.18",
-          "Microsoft.Extensions.Options": "3.1.18"
-        },
-        "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/3.1.18": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.FileProviders.Abstractions/6.0.0": {
@@ -474,6 +490,36 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "NewId/3.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NewId.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NewId.dll": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Newtonsoft.Json.Bson/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
+        }
+      },
       "Npgsql/7.0.0-preview.6": {
         "type": "package",
         "dependencies": {
@@ -487,7 +533,7 @@
           "lib/net6.0/Npgsql.dll": {}
         }
       },
-      "RabbitMQ.Client/6.4.0": {
+      "RabbitMQ.Client/6.2.2": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.4",
@@ -597,7 +643,7 @@
           }
         }
       },
-      "System.Text.Json/6.0.2": {
+      "System.Text.Json/6.0.0": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
@@ -613,16 +659,22 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "System.Threading.Channels/6.0.0": {
+      "System.Threading.Channels/4.7.1": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Threading.Channels.dll": {}
+          "lib/netcoreapp3.0/System.Threading.Channels.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Threading.Channels.dll": {}
+          "lib/netcoreapp3.0/System.Threading.Channels.dll": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
         },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "StreakTracking.Domain/1.0.0": {
@@ -670,6 +722,19 @@
     }
   },
   "libraries": {
+    "Automatonymous/5.1.3": {
+      "sha512": "7B0upgJUTJ7fIwFjGEIxOMVJTxqBPyjtnua5i+VyClvHJd31t64SPIm4nhYxI7PF4afmvv5a3dtFCz1W1tQc0A==",
+      "type": "package",
+      "path": "automatonymous/5.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automatonymous.5.1.3.nupkg.sha512",
+        "automatonymous.nuspec",
+        "lib/netstandard2.0/Automatonymous.dll",
+        "lib/netstandard2.0/Automatonymous.xml"
+      ]
+    },
     "Dapper/2.0.123": {
       "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
       "type": "package",
@@ -688,64 +753,81 @@
         "lib/netstandard2.0/Dapper.xml"
       ]
     },
-    "MassTransit/8.0.5": {
-      "sha512": "vO+p4NjwgcrpvZuLJlf200noD4VLWpWBiBP/iAoEkZXuxFy/UMsWNuP3nxDdqYFXH6TvGO5vKCWxY07IiL8WaA==",
+    "GreenPipes/4.0.1": {
+      "sha512": "nc90y7DAhj8isRbqioVQF3/ExztBZSXRrRoplZvEjckNFC5wP1r+ssfsgl8BptWdQrnMdgkOYhQ6EnHetyFW1Q==",
       "type": "package",
-      "path": "masstransit/8.0.5",
+      "path": "greenpipes/4.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/MassTransit.dll",
-        "lib/net461/MassTransit.xml",
-        "lib/net6.0/MassTransit.dll",
-        "lib/net6.0/MassTransit.xml",
+        "greenpipes.4.0.1.nupkg.sha512",
+        "greenpipes.nuspec",
+        "lib/netstandard2.0/GreenPipes.dll",
+        "lib/netstandard2.0/GreenPipes.xml"
+      ]
+    },
+    "MassTransit/7.3.1": {
+      "sha512": "dMOmC1ucSpgpW1M7ewQIw2Jf/d0lC4sx5LdUU5CSuFhlw4L7hssAB/glrbwvYZB9B90ZYvLJB8JLV1K/xhHBMA==",
+      "type": "package",
+      "path": "masstransit/7.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/netstandard2.0/MassTransit.dll",
         "lib/netstandard2.0/MassTransit.xml",
-        "lib/netstandard2.1/MassTransit.dll",
-        "lib/netstandard2.1/MassTransit.xml",
-        "masstransit.8.0.5.nupkg.sha512",
+        "masstransit.7.3.1.nupkg.sha512",
         "masstransit.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.Abstractions/8.0.5": {
-      "sha512": "jXmhULE16bDRidZa7rlL/HffAiHTY+ly+cwO5iqLfaNe4rkj/1DlG0aWPRbMeXuQevWCj9quwXOgp6NWjDNdfw==",
+    "MassTransit.Extensions.DependencyInjection/7.3.1": {
+      "sha512": "s1gnkYUngHNP9m2+Jx1vuUAvoVm4KB3oVbtFJUlXNtBBzhRFq1N3Y0w5iiew60ZBLm0j0RQcSRbI0ahMOkL+og==",
       "type": "package",
-      "path": "masstransit.abstractions/8.0.5",
+      "path": "masstransit.extensions.dependencyinjection/7.3.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/MassTransit.Abstractions.dll",
-        "lib/net461/MassTransit.Abstractions.xml",
-        "lib/net6.0/MassTransit.Abstractions.dll",
-        "lib/net6.0/MassTransit.Abstractions.xml",
-        "lib/netstandard2.0/MassTransit.Abstractions.dll",
-        "lib/netstandard2.0/MassTransit.Abstractions.xml",
-        "lib/netstandard2.1/MassTransit.Abstractions.dll",
-        "lib/netstandard2.1/MassTransit.Abstractions.xml",
-        "masstransit.abstractions.8.0.5.nupkg.sha512",
-        "masstransit.abstractions.nuspec",
+        "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.dll",
+        "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.xml",
+        "masstransit.extensions.dependencyinjection.7.3.1.nupkg.sha512",
+        "masstransit.extensions.dependencyinjection.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.RabbitMQ/8.0.5": {
-      "sha512": "RE8+Dyj15jE0qYbh5G5B2n7tWup0gC+TxLCnCQvtKNSG/ZGl+0V0J455tP0MPmBn8R5LCkAtwpDzI/0P+af3dQ==",
+    "MassTransit.RabbitMQ/7.3.1": {
+      "sha512": "hjoAyWR+PQe7bkTiGWGB8G3N3cmE7ekwrPCrNAoxjTqy/01hB2Cp0z6wWhlChibWEkn04i30tLsOJmSWMcQz7g==",
       "type": "package",
-      "path": "masstransit.rabbitmq/8.0.5",
+      "path": "masstransit.rabbitmq/7.3.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/MassTransit.RabbitMqTransport.dll",
-        "lib/net461/MassTransit.RabbitMqTransport.xml",
-        "lib/net6.0/MassTransit.RabbitMqTransport.dll",
-        "lib/net6.0/MassTransit.RabbitMqTransport.xml",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.xml",
-        "lib/netstandard2.1/MassTransit.RabbitMqTransport.dll",
-        "lib/netstandard2.1/MassTransit.RabbitMqTransport.xml",
-        "masstransit.rabbitmq.8.0.5.nupkg.sha512",
+        "masstransit.rabbitmq.7.3.1.nupkg.sha512",
         "masstransit.rabbitmq.nuspec",
         "mt-logo-small.png"
+      ]
+    },
+    "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+      "sha512": "W8DPQjkMScOMTtJbPwmPyj9c3zYSFGawDW3jwlBOOsnY+EzZFLgNQ/UMkK35JmkNOVPdCyPr2Tw7Vv9N+KA3ZQ==",
+      "type": "package",
+      "path": "microsoft.bcl.asyncinterfaces/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/net461/Microsoft.Bcl.AsyncInterfaces.xml",
+        "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
+        "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
+        "microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "Microsoft.Extensions.Configuration/6.0.0": {
@@ -952,38 +1034,6 @@
         "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
-      ]
-    },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/3.1.18": {
-      "sha512": "Xan7z1MBhcLu4StnAskguGDMmdqouuuQe0YRz0MEiVPSYK5fw008QalP2Vuq0CMZQD+lOk0DcMGx7A+qI8/aTw==",
-      "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks/3.1.18",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "microsoft.extensions.diagnostics.healthchecks.3.1.18.nupkg.sha512",
-        "microsoft.extensions.diagnostics.healthchecks.nuspec"
-      ]
-    },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/3.1.18": {
-      "sha512": "PRj7waNZJ2e5G5VmoZxF0nNa2jexr+VDR5gq9ZV8GbCGaSmKkS1bs5fAiIx/NARs4XvSIE3prHf3/w6SLFeW9Q==",
-      "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/3.1.18",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
-        "lib/netcoreapp3.1/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
-        "microsoft.extensions.diagnostics.healthchecks.abstractions.3.1.18.nupkg.sha512",
-        "microsoft.extensions.diagnostics.healthchecks.abstractions.nuspec"
       ]
     },
     "Microsoft.Extensions.FileProviders.Abstractions/6.0.0": {
@@ -1346,6 +1396,81 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "NewId/3.0.3": {
+      "sha512": "72cBqYQ+pZpsfuTerhi5Q/ZkfK81s/Dkz2u0WNytirWVLktUm6sy4mRNepM+DL1AB0V61QlYesZHDf0wlmMU5A==",
+      "type": "package",
+      "path": "newid/3.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/NewId.dll",
+        "lib/net452/NewId.xml",
+        "lib/netstandard2.0/NewId.dll",
+        "lib/netstandard2.0/NewId.xml",
+        "newid.3.0.3.nupkg.sha512",
+        "newid.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/12.0.1": {
+      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.pdb",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.pdb",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.pdb",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.pdb",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.pdb",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.pdb",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.pdb",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.pdb",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec"
+      ]
+    },
+    "Newtonsoft.Json.Bson/1.0.2": {
+      "sha512": "QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
+      "type": "package",
+      "path": "newtonsoft.json.bson/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net45/Newtonsoft.Json.Bson.dll",
+        "lib/net45/Newtonsoft.Json.Bson.pdb",
+        "lib/net45/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.pdb",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.pdb",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.xml",
+        "newtonsoft.json.bson.1.0.2.nupkg.sha512",
+        "newtonsoft.json.bson.nuspec"
+      ]
+    },
     "Npgsql/7.0.0-preview.6": {
       "sha512": "WBfseiPaTB0S9CaWKNYF/QrOoP1MSfQrNc03xQClarYvA13pfAzOA1CBhX5iygpYTBdDOSa0TtZaVjrZLON3yQ==",
       "type": "package",
@@ -1369,19 +1494,22 @@
         "postgresql.png"
       ]
     },
-    "RabbitMQ.Client/6.4.0": {
-      "sha512": "1znR1gGU+xYVSpO5z8nQolcUKA/yydnxQn7Ug9+RUXxTSLMm/eE58VKGwahPBjELXvDnX0k/kBrAitFLRjx9LA==",
+    "RabbitMQ.Client/6.2.2": {
+      "sha512": "+tJSgE+rQXgLvOxWvOxdZ0+No1EMa86+puZuNlCb4cNryHw2PY2Xiw/y2dz/WWdeJQp74Y2UnNXPkuLiYpvn+A==",
       "type": "package",
-      "path": "rabbitmq.client/6.4.0",
+      "path": "rabbitmq.client/6.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE",
         "icon.png",
         "lib/net461/RabbitMQ.Client.dll",
+        "lib/net461/RabbitMQ.Client.pdb",
         "lib/net461/RabbitMQ.Client.xml",
         "lib/netstandard2.0/RabbitMQ.Client.dll",
+        "lib/netstandard2.0/RabbitMQ.Client.pdb",
         "lib/netstandard2.0/RabbitMQ.Client.xml",
-        "rabbitmq.client.6.4.0.nupkg.sha512",
+        "rabbitmq.client.6.2.2.nupkg.sha512",
         "rabbitmq.client.nuspec"
       ]
     },
@@ -1628,10 +1756,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Json/6.0.2": {
-      "sha512": "0nE2gwXLn3PTBOPwORLqwuYvWB+Beomt9ZBX+6LmogMNKUvfD1SoDb/ycB1vBntT94rGaB/SvxEyeLu14H6aEg==",
+    "System.Text.Json/6.0.0": {
+      "sha512": "zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
       "type": "package",
-      "path": "system.text.json/6.0.2",
+      "path": "system.text.json/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1677,59 +1805,101 @@
         "lib/netcoreapp3.1/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.6.0.2.nupkg.sha512",
+        "system.text.json.6.0.0.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Threading.Channels/6.0.0": {
-      "sha512": "TY8/9+tI0mNaUMgntOxxaq2ndTkdXqLSxvPmas7XEqOlv9lQtB7wLjYGd756lOaO7Dvb5r/WXhluM+0Xe87v5Q==",
+    "System.Threading.Channels/4.7.1": {
+      "sha512": "6akRtHK/wab3246t4p5v3HQrtQk8LboOt5T4dtpNgsp3zvDeM4/Gx8V12t0h+c/W9/enUrilk8n6EQqdQorZAA==",
       "type": "package",
-      "path": "system.threading.channels/6.0.0",
+      "path": "system.threading.channels/4.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Threading.Channels.targets",
-        "buildTransitive/netcoreapp3.1/_._",
         "lib/net461/System.Threading.Channels.dll",
         "lib/net461/System.Threading.Channels.xml",
-        "lib/net6.0/System.Threading.Channels.dll",
-        "lib/net6.0/System.Threading.Channels.xml",
-        "lib/netcoreapp3.1/System.Threading.Channels.dll",
-        "lib/netcoreapp3.1/System.Threading.Channels.xml",
+        "lib/netcoreapp3.0/System.Threading.Channels.dll",
+        "lib/netcoreapp3.0/System.Threading.Channels.xml",
+        "lib/netstandard1.3/System.Threading.Channels.dll",
+        "lib/netstandard1.3/System.Threading.Channels.xml",
         "lib/netstandard2.0/System.Threading.Channels.dll",
         "lib/netstandard2.0/System.Threading.Channels.xml",
-        "lib/netstandard2.1/System.Threading.Channels.dll",
-        "lib/netstandard2.1/System.Threading.Channels.xml",
-        "system.threading.channels.6.0.0.nupkg.sha512",
+        "system.threading.channels.4.7.1.nupkg.sha512",
         "system.threading.channels.nuspec",
-        "useSharedDesignerContext.txt"
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.ValueTuple/4.5.0": {
+      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "type": "package",
+      "path": "system.valuetuple/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.ValueTuple.dll",
+        "lib/net461/System.ValueTuple.xml",
+        "lib/net47/System.ValueTuple.dll",
+        "lib/net47/System.ValueTuple.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/netstandard1.0/System.ValueTuple.xml",
+        "lib/netstandard2.0/_._",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.ValueTuple.dll",
+        "ref/net47/System.ValueTuple.dll",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard2.0/_._",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.5.0.nupkg.sha512",
+        "system.valuetuple.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "StreakTracking.Domain/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Domain/StreakTracking.Domain.csproj",
-      "msbuildProject": "../StreakTracking.Domain/StreakTracking.Domain.csproj"
+      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
     },
     "StreakTracking.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
-      "msbuildProject": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
     },
     "StreakTracking.Messages/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Messages/StreakTracking.Messages.csproj",
-      "msbuildProject": "../StreakTracking.Messages/StreakTracking.Messages.csproj"
+      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Dapper >= 2.0.123",
-      "MassTransit >= 8.0.5",
-      "MassTransit.RabbitMQ >= 8.0.5",
+      "MassTransit >= 7.3.1",
+      "MassTransit.Extensions.DependencyInjection >= 7.3.1",
+      "MassTransit.RabbitMQ >= 7.3.1",
       "Microsoft.Extensions.Hosting >= 6.0.0",
       "Npgsql >= 7.0.0-preview.6",
       "StreakTracking.Infrastructure >= 1.0.0",
@@ -1737,19 +1907,19 @@
     ]
   },
   "packageFolders": {
-    "/home/dylan/.nuget/packages/": {}
+    "/Users/dylan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
+      "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
       "projectName": "StreakTracking.EventHandler",
-      "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
-      "packagesPath": "/home/dylan/.nuget/packages/",
-      "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/obj/",
+      "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
+      "packagesPath": "/Users/dylan/.nuget/packages/",
+      "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/dylan/.nuget/NuGet/NuGet.Config"
+        "/Users/dylan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -1761,11 +1931,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-              "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
             },
-            "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-              "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
             }
           }
         }
@@ -1786,11 +1956,15 @@
           },
           "MassTransit": {
             "target": "Package",
-            "version": "[8.0.5, )"
+            "version": "[7.3.1, )"
+          },
+          "MassTransit.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[7.3.1, )"
           },
           "MassTransit.RabbitMQ": {
             "target": "Package",
-            "version": "[8.0.5, )"
+            "version": "[7.3.1, )"
           },
           "Microsoft.Extensions.Hosting": {
             "target": "Package",
@@ -1816,7 +1990,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
       }
     }
   }

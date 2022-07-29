@@ -10,7 +10,7 @@ namespace StreakTracking.Tests;
 public class StreakReadingServiceTests
 {
     private readonly Mock<IStreakReadRepository> _mockStreakReadRepository;
-    
+
     public StreakReadingServiceTests()
     {
         _mockStreakReadRepository = new Mock<IStreakReadRepository>();
@@ -28,7 +28,7 @@ public class StreakReadingServiceTests
             StreakDescription = "Test Streak",
             StreakName = "Test Streak"
         };
-        
+
         _mockStreakReadRepository.Setup(s =>
                 s.GetStreakById(It.Is<string>(streakId => streakId == id.ToString())))
             .ReturnsAsync(streak);
@@ -36,7 +36,7 @@ public class StreakReadingServiceTests
         StreakReadingService streakReadingService = new(_mockStreakReadRepository.Object);
         // Act
         var responseMessage = await streakReadingService.GetStreakById(id.ToString());
-        
+
         // Assert
         Assert.Equal(streak, responseMessage.Content);
         Assert.Equal(HttpStatusCode.OK, responseMessage.StatusCode);
@@ -51,13 +51,13 @@ public class StreakReadingServiceTests
 
         _mockStreakReadRepository.Setup(s =>
                 s.GetStreakById(It.Is<string>(streakId => streakId == id.ToString())))
-            .ReturnsAsync(()=>null);
+            .ReturnsAsync(() => null);
 
         StreakReadingService streakReadingService = new(_mockStreakReadRepository.Object);
-        
+
         // Act
         var responseMessage = await streakReadingService.GetStreakById(id.ToString());
-        
+
         // Assert
         var retrievedStreak = responseMessage.Content;
         Assert.Equal(HttpStatusCode.NotFound, responseMessage.StatusCode);
@@ -101,7 +101,7 @@ public class StreakReadingServiceTests
 
         // Assert
         var streaksFromService = responseMessage.Content.ToList();
-        
+
         Assert.Equal(HttpStatusCode.OK, responseMessage.StatusCode);
         Assert.Equal("List of streaks", responseMessage.Message);
         Assert.Equal(streaks, streaksFromService);
@@ -114,13 +114,13 @@ public class StreakReadingServiceTests
         var streaks = new List<Streak>();
         _mockStreakReadRepository.Setup(s => s.GetStreaks()).ReturnsAsync(streaks);
         StreakReadingService streakReadingService = new(_mockStreakReadRepository.Object);
-        
+
         // Act
         var responseMessage = await streakReadingService.GetStreaks();
-        
+
         // Assert
         var streaksFromService = responseMessage.Content.ToList();
-        
+
         Assert.Equal(HttpStatusCode.OK, responseMessage.StatusCode);
         Assert.Equal("List of streaks", responseMessage.Message);
         Assert.Equal(streaks, streaksFromService);
@@ -140,13 +140,13 @@ public class StreakReadingServiceTests
             .Setup(s => s.GetCurrent(It.Is<string>((s => s == id.ToString()))))
             .ReturnsAsync(currentStreak);
         StreakReadingService streakReadingService = new(_mockStreakReadRepository.Object);
-        
+
         // Act
         var responseMessage = await streakReadingService.GetCurrentStreak(id.ToString());
-        
+
         // Assert
         var currentStreakFromService = responseMessage.Content;
-        
+
         Assert.Equal(HttpStatusCode.OK, responseMessage.StatusCode);
         Assert.Equal("Current streak calculated", responseMessage.Message);
         Assert.Equal(currentStreak, currentStreakFromService);
@@ -165,18 +165,18 @@ public class StreakReadingServiceTests
             .Setup(s => s.GetCurrent(It.Is<string>((s => s == id.ToString()))))
             .ReturnsAsync(currentStreak);
         StreakReadingService streakReadingService = new(_mockStreakReadRepository.Object);
-        
+
         // Act
         var responseMessage = await streakReadingService.GetCurrentStreak(id.ToString());
-        
+
         // Assert
         var currentStreakFromService = responseMessage.Content;
-        
+
         Assert.Equal(HttpStatusCode.OK, responseMessage.StatusCode);
         Assert.Equal("Current streak calculated", responseMessage.Message);
         Assert.Equal(currentStreak, currentStreakFromService);
     }
-    
+
     [Fact]
     public async Task GetCurrentStreaks_Returns_Correct_Response_Message_When_There_Is_No_Streak()
     {
@@ -186,13 +186,13 @@ public class StreakReadingServiceTests
             .Setup(s => s.GetCurrent(It.Is<string>((s => s == id.ToString()))))
             .ReturnsAsync(() => null);
         StreakReadingService streakReadingService = new(_mockStreakReadRepository.Object);
-        
+
         // Act
         var responseMessage = await streakReadingService.GetCurrentStreak(id.ToString());
-        
+
         // Assert
         var currentStreakFromService = responseMessage.Content;
-        
+
         Assert.Equal(HttpStatusCode.NotFound, responseMessage.StatusCode);
         Assert.Equal("No Streak found for this ID", responseMessage.Message);
         Assert.Null(currentStreakFromService);

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj": {}
+    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj": {}
   },
   "projects": {
-    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
+    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/StreakTracking.API.csproj",
+        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj",
         "projectName": "StreakTracking.API",
-        "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/StreakTracking.API.csproj",
-        "packagesPath": "/home/dylan/.nuget/packages/",
-        "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/obj/",
+        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj",
+        "packagesPath": "/Users/dylan/.nuget/packages/",
+        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/dylan/.nuget/NuGet/NuGet.Config"
+          "/Users/dylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -26,11 +26,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
               },
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
               }
             }
           }
@@ -100,21 +100,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
+    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
+        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
         "projectName": "StreakTracking.Domain",
-        "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
-        "packagesPath": "/home/dylan/.nuget/packages/",
-        "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/obj/",
+        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
+        "packagesPath": "/Users/dylan/.nuget/packages/",
+        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/dylan/.nuget/NuGet/NuGet.Config"
+          "/Users/dylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -152,21 +152,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
+    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
+        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
         "projectName": "StreakTracking.EventHandler",
-        "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
-        "packagesPath": "/home/dylan/.nuget/packages/",
-        "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/obj/",
+        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
+        "packagesPath": "/Users/dylan/.nuget/packages/",
+        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/dylan/.nuget/NuGet/NuGet.Config"
+          "/Users/dylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -178,11 +178,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
               },
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
               }
             }
           }
@@ -203,11 +203,15 @@
             },
             "MassTransit": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[7.3.1, )"
+            },
+            "MassTransit.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.3.1, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[7.3.1, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
@@ -233,21 +237,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
+        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
         "projectName": "StreakTracking.Infrastructure",
-        "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
-        "packagesPath": "/home/dylan/.nuget/packages/",
-        "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/obj/",
+        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
+        "packagesPath": "/Users/dylan/.nuget/packages/",
+        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/dylan/.nuget/NuGet/NuGet.Config"
+          "/Users/dylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -259,8 +263,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
               }
             }
           }
@@ -311,21 +315,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
         "projectName": "StreakTracking.Messages",
-        "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
-        "packagesPath": "/home/dylan/.nuget/packages/",
-        "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/obj/",
+        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+        "packagesPath": "/Users/dylan/.nuget/packages/",
+        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/dylan/.nuget/NuGet/NuGet.Config"
+          "/Users/dylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -373,21 +377,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj": {
+    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
+        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
         "projectName": "StreakTracking.Tests",
-        "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
-        "packagesPath": "/home/dylan/.nuget/packages/",
-        "outputPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Tests/obj/",
+        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
+        "packagesPath": "/Users/dylan/.nuget/packages/",
+        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/dylan/.nuget/NuGet/NuGet.Config"
+          "/Users/dylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -399,20 +403,20 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
               },
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
               },
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
               },
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
               },
-              "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-                "projectPath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
               }
             }
           }
@@ -427,6 +431,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.2-mauipre.1.22102.15, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.1.0, )"
@@ -467,7 +475,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }

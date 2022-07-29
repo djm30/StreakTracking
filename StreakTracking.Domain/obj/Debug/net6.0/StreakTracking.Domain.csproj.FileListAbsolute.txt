@@ -10,3 +10,15 @@
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/refint/StreakTracking.Domain.dll
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.pdb
 /home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/ref/StreakTracking.Domain.dll
+/Users/dylan/Code/c#/StreakTracking/StreakTracking.Domain/bin/Debug/net6.0/StreakTracking.Domain.deps.json
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/bin/Debug/net6.0/StreakTracking.Domain.dll
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/bin/Debug/net6.0/StreakTracking.Domain.pdb
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.csproj.AssemblyReference.cache
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.AssemblyInfoInputs.cache
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.AssemblyInfo.cs
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.csproj.CoreCompileInputs.cache
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.dll
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/refint/StreakTracking.Domain.dll
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/StreakTracking.Domain.pdb
+/Users/dylan/Code/c#/StreakTracking/StreakTracking.Domain/obj/Debug/net6.0/ref/StreakTracking.Domain.dll

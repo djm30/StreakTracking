@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e/WkMRqPtlNeGKm5xV/k1w+9i8Q7uTU+tdw+o/YBzl3z6KzkiJSRJTq1Bkkrv/9aNfQhO7KCoIWNXY5cG0Vqwg==",
+  "dgSpecHash": "kNntaUZ7k+mbN9SwfPtsPqpbfmBF1Oz8qqL2iS5rZfr344UMe9l8T6HIdm1N8800ApgZDaXelV7/2G0ynj26Zg==",
   "success": true,
-  "projectFilePath": "/home/dylan/RiderProjects/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
+  "projectFilePath": "/Users/dylan/Code/c#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
