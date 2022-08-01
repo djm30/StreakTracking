@@ -39,7 +39,7 @@ public class EventPublishingService : IEventPublishingService
         };
     }
 
-    public async Task<ResponseMessage> PublishUpdateStreak(string StreakId, UpdateStreakDTO updateStreakDTO)
+    public async Task<ResponseMessage> PublishUpdateStreak(string streakId, UpdateStreakDTO updateStreakDTO)
     {
         if (updateStreakDTO.LongestStreak < 0 || updateStreakDTO.StreakDescription == "" ||
             updateStreakDTO.StreakName == "")
@@ -50,7 +50,19 @@ public class EventPublishingService : IEventPublishingService
                 StatusCode = HttpStatusCode.BadRequest
             };
         }
-        updateStreakDTO.StreakId = Guid.Parse(StreakId);
+
+        var validGuid = Guid.TryParse(streakId, out Guid parsedResult);
+
+        if (!validGuid)
+        {
+            return new ResponseMessage()
+            {
+                Message = "Invalid GUID provided",
+                StatusCode = HttpStatusCode.BadRequest
+            };
+        }
+        
+        updateStreakDTO.StreakId = parsedResult;
         var updateStreakEvent = _mapper.Map<UpdateStreakEvent>(updateStreakDTO);
         await _publishEndpoint.Publish<UpdateStreakEvent>(updateStreakEvent);
         return new ResponseMessage()
@@ -60,9 +72,19 @@ public class EventPublishingService : IEventPublishingService
         };
     }
 
-    public async Task<ResponseMessage> PublishDeleteStreak(string StreakId)
+    public async Task<ResponseMessage> PublishDeleteStreak(string streakId)
     {
-        var deleteStreakEvent = new DeleteStreakEvent { StreakId = Guid.Parse(StreakId) };
+        var validGuid = Guid.TryParse(streakId, out Guid parsedResult);
+
+        if (!validGuid)
+        {
+            return new ResponseMessage()
+            {
+                Message = "Invalid GUID provided",
+                StatusCode = HttpStatusCode.BadRequest
+            };
+        }
+        var deleteStreakEvent = new DeleteStreakEvent { StreakId = parsedResult };
         await _publishEndpoint.Publish<DeleteStreakEvent>(deleteStreakEvent);
         return new ResponseMessage()
         {
@@ -71,7 +93,7 @@ public class EventPublishingService : IEventPublishingService
         };
     }
 
-    public async Task<ResponseMessage> PublishStreakComplete(string StreakId, StreakCompleteDTO streakCompleteDTO)
+    public async Task<ResponseMessage> PublishStreakComplete(string streakId, StreakCompleteDTO streakCompleteDTO)
     {
         if (streakCompleteDTO.Date > DateTime.Today)
         {
@@ -81,7 +103,19 @@ public class EventPublishingService : IEventPublishingService
                 StatusCode = HttpStatusCode.BadRequest
             };
         }
-        streakCompleteDTO.StreakId = Guid.Parse(StreakId);
+        
+        var validGuid = Guid.TryParse(streakId, out Guid parsedResult);
+
+        if (!validGuid)
+        {
+            return new ResponseMessage()
+            {
+                Message = "Invalid GUID provided",
+                StatusCode = HttpStatusCode.BadRequest
+            };
+        }
+        
+        streakCompleteDTO.StreakId = parsedResult;
         var streakCompleteEvent = _mapper.Map<StreakCompleteEvent>(streakCompleteDTO);
         await _publishEndpoint.Publish<StreakCompleteEvent>(streakCompleteEvent);
         return new ResponseMessage()

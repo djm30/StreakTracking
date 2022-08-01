@@ -1,3 +1,4 @@
+using System.Data;
 using System.Net;
 using AutoMapper;
 using MassTransit;
@@ -13,7 +14,6 @@ namespace StreakTracking.Tests;
 public class EventPublisherTests
 {
     // Ok this works, I don't really know why but it seems to publish the endpoint or something idk
-    [Fact(Skip = "Not an actual test, just a guide to setup test harness")]
     public async Task Test_Setup_Harness()
     {
         // Arrange
@@ -70,7 +70,6 @@ public class EventPublisherTests
     }
     
     // Try to get IPublishEndpoint working with Moq
-    [Fact(Skip = "Not an actual test, just a guide to setup moq")]
     public async Task Test_Setup_Mock()
     {
         // Arrange
@@ -281,6 +280,29 @@ public class EventPublisherTests
     }
 
     [Fact]
+    public async Task Update_Event_With_Invalid_Id_Is_Not_Published()
+    {
+        // Arrange
+        var publishMock = new Mock<IPublishEndpoint>();
+        publishMock.Setup(p => p.Publish<UpdateStreakEvent>(It.IsAny<UpdateStreakEvent>(), It.IsAny<CancellationToken>()));
+        
+        var badId = "thisidisntvalidavalidguid";
+
+        var mockMapper = new Mock<IMapper>();
+
+        var sut = new EventPublishingService(publishMock.Object, mockMapper.Object);
+        
+        // Act
+        var response = await sut.PublishUpdateStreak(badId, new UpdateStreakDTO());
+        
+        // Assert
+        var responseMessageExpected = "Invalid GUID provided";
+        Assert.Equal(responseMessageExpected, response.Message);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        publishMock.Verify(p => p.Publish<UpdateStreakEvent>(It.IsAny<UpdateStreakEvent>(), It.IsAny<CancellationToken>() ), Times.Never);
+    }
+    
+    [Fact]
     public async Task Valid_Delete_Streak_Event_Is_Published()
     {
         // Arrange
@@ -302,10 +324,32 @@ public class EventPublisherTests
         Assert.Equal(response.StatusCode, HttpStatusCode.Accepted);
         publishMock.Verify(p => p.Publish<DeleteStreakEvent>(It.IsAny<DeleteStreakEvent>(), It.IsAny<CancellationToken>() ), Times.Once);
     }
+    
+    [Fact]
+    public async Task Delete_Event_With_Invalid_Id_Is_Not_Published()
+    {
+        // Arrange
+        var publishMock = new Mock<IPublishEndpoint>();
+        publishMock.Setup(p => p.Publish<DeleteStreakEvent>(It.IsAny<DeleteStreakEvent>(), It.IsAny<CancellationToken>()));
 
-    // TODO InvalidStreakID tests
+        var badId = "thisidisntavalidguid";
 
+        var mockMapper = new Mock<IMapper>();
+        
+        var sut = new EventPublishingService(publishMock.Object, mockMapper.Object);
+        
+        // Act
+        var response = await sut.PublishDeleteStreak(badId);
+        
+        // Assert
+        var responseMessageExpected = "Invalid GUID provided";
+        Assert.Equal(responseMessageExpected, response.Message);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        publishMock.Verify(p => p.Publish<DeleteStreakEvent>(It.IsAny<DeleteStreakEvent>(), It.IsAny<CancellationToken>() ), Times.Never);
 
+        
+    }
+     
     [Fact]
     public async Task Valid_Streak_Complete_Event_Is_Published()
     {
@@ -344,5 +388,57 @@ public class EventPublisherTests
         publishMock.Verify(p => p.Publish<StreakCompleteEvent>(It.IsAny<StreakCompleteEvent>(), It.IsAny<CancellationToken>() ), Times.Once);
     }
     
-    // TODO Invalid StreakComplete event tests
+    [Fact]
+    public async Task Streak_Complete_Event_With_Future_Date_Is_Not_Published()
+    {
+        // Arrange
+        var publishMock = new Mock<IPublishEndpoint>();
+        publishMock.Setup(p => p.Publish<StreakCompleteEvent>(It.IsAny<StreakCompleteEvent>(), It.IsAny<CancellationToken>()));
+
+        var id = new Guid();
+
+        var streakCompleteDto = new StreakCompleteDTO()
+        {
+            Complete = true,
+            Date = DateTime.Today.AddDays(1)
+        };
+        
+        var mockMapper = new Mock<IMapper>();
+        
+        var sut = new EventPublishingService(publishMock.Object, mockMapper.Object);
+        
+        // Act
+        var response = await sut.PublishStreakComplete(id.ToString(), streakCompleteDto);
+        
+        // Assert
+        var responseMessageExpected = "Provided date cannot be in the future";
+        Assert.Equal(responseMessageExpected, response.Message);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        publishMock.Verify(p => p.Publish<StreakCompleteEvent>(It.IsAny<StreakCompleteEvent>(), It.IsAny<CancellationToken>() ), Times.Never);
+
+    }
+
+    [Fact]
+    public async Task Streak_Complete_Event_With_Invalid_Id_Is_Not_Published()
+    {
+        // Arrange
+        var publishMock = new Mock<IPublishEndpoint>();
+        publishMock.Setup(p => p.Publish<StreakCompleteEvent>(It.IsAny<StreakCompleteEvent>(), It.IsAny<CancellationToken>()));
+        
+        var badId = "thisisntavalidguid";
+        
+        var mockMapper = new Mock<IMapper>();
+
+        
+        var sut = new EventPublishingService(publishMock.Object, mockMapper.Object);
+        
+        // Act
+        var response = await sut.PublishStreakComplete(badId, new StreakCompleteDTO());
+        
+        // Assert
+        var responseMessageExpected = "Invalid GUID provided";
+        Assert.Equal(responseMessageExpected, response.Message);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        publishMock.Verify(p => p.Publish<StreakCompleteEvent>(It.IsAny<StreakCompleteEvent>(), It.IsAny<CancellationToken>() ), Times.Never);
+    }
 }
