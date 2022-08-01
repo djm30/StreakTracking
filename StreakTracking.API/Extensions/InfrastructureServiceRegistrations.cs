@@ -5,10 +5,10 @@ namespace StreakTracking.API.Extensions;
 
 public static class InfrastructureServiceRegistrations
 {
-    public static WebApplicationBuilder AddInfrastructureServices(this WebApplicationBuilder builder)
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
-        builder.Services.AddScoped<IStreakReadRepository, StreakReadRepository>();
-        builder.Services.AddSingleton<ISqlConnectionService,SqlConnectionService>();
-        return builder;
+        services.AddScoped<IStreakReadRepository, StreakReadRepository>();
+        services.AddSingleton<ISqlConnectionService,SqlConnectionService>();
+        return services;
     }
 }

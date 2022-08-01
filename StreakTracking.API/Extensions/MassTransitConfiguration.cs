@@ -4,10 +4,10 @@ namespace StreakTracking.API.Extensions;
 
 public static class MassTransitConfiguration
 {
-    public static WebApplicationBuilder ConfigureMassTransit(this WebApplicationBuilder builder)
+    public static IServiceCollection ConfigureMassTransit(this IServiceCollection services)
     {
-        builder.Services.AddMassTransit(x => { x.UsingRabbitMq(); });
-        builder.Services.AddMassTransitHostedService();
-        return builder;
+        services.AddMassTransit(x => { x.UsingRabbitMq(); });
+        services.AddMassTransitHostedService();
+        return services;
     }
 }

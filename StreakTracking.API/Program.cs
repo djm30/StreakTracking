@@ -12,9 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Extension methods
-builder.ConfigureMassTransit();
-builder.AddInfrastructureServices();
-builder.AddServices();
+builder.Services.ConfigureMassTransit();
+builder.Services.AddInfrastructureServices();
+builder.Services.AddServices();
 
 
 var app = builder.Build();
