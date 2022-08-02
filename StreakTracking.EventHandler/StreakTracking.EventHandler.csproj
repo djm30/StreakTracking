@@ -18,8 +18,4 @@
     <ProjectReference Include="..\StreakTracking.Infrastructure\StreakTracking.Infrastructure.csproj" />
     <ProjectReference Include="..\StreakTracking.Messages\StreakTracking.Messages.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models" />
-  </ItemGroup>
 </Project>

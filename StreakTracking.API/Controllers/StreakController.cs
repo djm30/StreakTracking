@@ -14,7 +14,7 @@ public class StreakController : ControllerBase
     private readonly ILogger<StreakController> _logger;
     private readonly IStreakReadingService _streakReadService;
     private readonly IEventPublishingService _publishingService;
-
+    
     public StreakController(ILogger<StreakController> logger, IStreakReadingService streakReadService, IEventPublishingService publishingService)
     {
         _logger = logger;
@@ -24,9 +24,9 @@ public class StreakController : ControllerBase
     
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<Streak>), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<Streak>> GetStreaks()
+    public async Task<ActionResult<IEnumerable<Streak>>> GetStreaks()
     {
-        _logger.LogInformation("Recieved request for GetStreaks");
+        _logger.LogInformation("Received request for GetStreaks");
         var responseMessage = await _streakReadService.GetStreaks();
         if (responseMessage.StatusCode == HttpStatusCode.OK)
             return Ok(responseMessage.Content);
@@ -38,7 +38,7 @@ public class StreakController : ControllerBase
     [ProducesResponseType(typeof(string), (int)HttpStatusCode.NotFound)]
     public async Task<ActionResult<Streak>> GetStreakById(string id)
     {
-        _logger.LogInformation("Recieved request for GetStreaksById");
+        _logger.LogInformation("Received request for GetStreaksById");
         var responseMessage = await _streakReadService.GetStreakById(id);
         return responseMessage.StatusCode == HttpStatusCode.OK
             ? Ok(responseMessage.Content)
@@ -51,7 +51,7 @@ public class StreakController : ControllerBase
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.NotFound)]
     public async Task<ActionResult<CurrentStreak>> GetCurrentStreak(string id)
     {
-        _logger.LogInformation("Recieved request for GetCurrent");
+        _logger.LogInformation("Received request for GetCurrent");
         var responseMessage = await  _streakReadService.GetCurrentStreak(id);
         return responseMessage.StatusCode == HttpStatusCode.OK
             ? Ok(responseMessage.Content)
@@ -81,18 +81,15 @@ public class StreakController : ControllerBase
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-    public async Task<ActionResult> CreateStreak([FromBody] AddStreakDTO addStreakDTO)
+    public async Task<ActionResult<ResponseMessage>> CreateStreak([FromBody] AddStreakDTO addStreakDTO)
     {
         var responseMessage = await _publishingService.PublishCreateStreak(addStreakDTO);
-        switch (responseMessage.StatusCode)
+        return responseMessage.StatusCode switch
         {
-            case HttpStatusCode.Accepted:
-                return Accepted(responseMessage);
-            case HttpStatusCode.BadRequest:
-                return BadRequest(responseMessage);
-            default:
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-        }
+            HttpStatusCode.Accepted => Accepted(responseMessage),
+            HttpStatusCode.BadRequest => BadRequest(responseMessage),
+            _ => StatusCode((int)HttpStatusCode.InternalServerError)
+        };
     }
     
     [HttpPost("{id}/[action]")]
@@ -100,53 +97,44 @@ public class StreakController : ControllerBase
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-    public async Task<ActionResult> CompleteStreak(string id, [FromBody] StreakCompleteDTO streakCompleteDTO)
+    public async Task<ActionResult<ResponseMessage>> CompleteStreak(string id, [FromBody] StreakCompleteDTO streakCompleteDTO)
     {
         var responseMessage = await _publishingService.PublishStreakComplete(id, streakCompleteDTO);
-        switch (responseMessage.StatusCode)
+        return responseMessage.StatusCode switch
         {
-            case HttpStatusCode.Accepted:
-                return Accepted(responseMessage);
-            case HttpStatusCode.BadRequest:
-                return BadRequest(responseMessage);
-            default:
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-        }
+            HttpStatusCode.Accepted => Accepted(responseMessage),
+            HttpStatusCode.BadRequest => BadRequest(responseMessage),
+            _ => StatusCode((int)HttpStatusCode.InternalServerError)
+        };
     }
 
     [HttpPut("{id}")]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-    public async Task<ActionResult> UpdateStreak(string id, [FromBody] UpdateStreakDTO updateStreakDTO)
+    public async Task<ActionResult<ResponseMessage>> UpdateStreak(string id, [FromBody] UpdateStreakDTO updateStreakDTO)
     {
         var responseMessage = await _publishingService.PublishUpdateStreak(id, updateStreakDTO);
-        switch (responseMessage.StatusCode)
+        return responseMessage.StatusCode switch
         {
-            case HttpStatusCode.Accepted:
-                return Accepted(responseMessage);
-            case HttpStatusCode.BadRequest:
-                return BadRequest(responseMessage);
-            default:
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-        }
+            HttpStatusCode.Accepted => Accepted(responseMessage),
+            HttpStatusCode.BadRequest => BadRequest(responseMessage),
+            _ => StatusCode((int)HttpStatusCode.InternalServerError)
+        };
     }
 
     [HttpDelete("{id}", Name = "DeleteStreak")]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-    public async Task<ActionResult> DeleteStreak(string id)
+    public async Task<ActionResult<ResponseMessage>> DeleteStreak(string id)
     {
         var responseMessage = await _publishingService.PublishDeleteStreak(id);
-        switch (responseMessage.StatusCode)
+        return responseMessage.StatusCode switch
         {
-            case HttpStatusCode.Accepted:
-                return Accepted(responseMessage);
-            case HttpStatusCode.BadRequest:
-                return BadRequest(responseMessage);
-            default:
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-        }
+            HttpStatusCode.Accepted => Accepted(responseMessage),
+            HttpStatusCode.BadRequest => BadRequest(responseMessage),
+            _ => StatusCode((int)HttpStatusCode.InternalServerError)
+        };
     }
 }

@@ -1,9 +1,13 @@
+using AutoMapper;
+using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using StreakTracking.Infrastructure.Services;
 using StreakTracking.Infrastructure.Repositories;
 using StreakTracking.API.Extensions;
+using StreakTracking.API.Services;
+using MassTransitConfiguration = StreakTracking.EventHandler.Extensions.MassTransitConfiguration;
 
 namespace StreakTracking.Tests;
 
@@ -21,7 +25,6 @@ public class ApiExtensionMethodsTests
         
         _serviceCollection.AddSingleton<IConfiguration>(configuration);
         _serviceCollection.AddLogging();
-        
     }
     
     [Fact]
@@ -42,12 +45,35 @@ public class ApiExtensionMethodsTests
     [Fact]
     public void MassTransit_Services_Are_Registered()
     {
+        // Arrange
         
+        // Act
+        _serviceCollection.ConfigureMassTransit();
+        
+        // Assert
+        var provider = _serviceCollection.BuildServiceProvider();
+        
+        //  Checking if a mass transit service which is required for this project is in the service container
+        Assert.IsAssignableFrom<IPublishEndpoint>(provider.GetRequiredService<IPublishEndpoint>());
     }
 
     [Fact]
     public void API_Specific_Services_Are_Registered()
     {
+        // Arrange
+        //        Adding services these two services depend upon
+        var mockStreakRepository = new Mock<IStreakReadRepository>();
+        var mockIPublishEndpoint = new Mock<IPublishEndpoint>();
+        _serviceCollection.AddScoped<IStreakReadRepository>((service)=> mockStreakRepository.Object);
+        _serviceCollection.AddScoped<IPublishEndpoint>((service) => mockIPublishEndpoint.Object);
+
+        // Act
+        _serviceCollection.AddServices();
         
+        // Assert
+        var provider = _serviceCollection.BuildServiceProvider();
+        Assert.IsAssignableFrom<IMapper>(provider.GetRequiredService<IMapper>());
+        Assert.IsAssignableFrom<IStreakReadingService>(provider.GetRequiredService<IStreakReadingService>());
+        Assert.IsAssignableFrom<IEventPublishingService>(provider.GetRequiredService<IEventPublishingService>());
     }
 }

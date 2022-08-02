@@ -10,8 +10,7 @@ public class EventPublishingService : IEventPublishingService
 {
     private readonly IPublishEndpoint _publishEndpoint;
     private readonly IMapper _mapper;
-
-    //TODO Refactor Guid.Parse() with Guid.TryParse()
+    
     public EventPublishingService(IPublishEndpoint publishEndpoint, IMapper mapper)
     {
         _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
@@ -21,6 +20,7 @@ public class EventPublishingService : IEventPublishingService
 
     public async Task<ResponseMessage> PublishCreateStreak(AddStreakDTO addStreakDTO)
     {
+        // TODO RETURN GUID TO CONTROLLER TO RETURN
         if (addStreakDTO.StreakDescription == "" || addStreakDTO.StreakName == "")
         {
             return new ResponseMessage()
@@ -29,7 +29,8 @@ public class EventPublishingService : IEventPublishingService
                 StatusCode = HttpStatusCode.BadRequest
             };
         }
-        addStreakDTO.StreakId = new Guid();
+
+        addStreakDTO.StreakId = addStreakDTO.StreakId;
         var addStreakEvent = _mapper.Map<AddStreakEvent>(addStreakDTO);
         await _publishEndpoint.Publish<AddStreakEvent>(addStreakEvent);
         return new ResponseMessage()

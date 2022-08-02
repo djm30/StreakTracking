@@ -1,5 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=093858f5_002D6fae_002D4652_002Dafcc_002D54bca83a94c1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Valid_Add_Streak_Request_Should_Be_Published #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=093858f5_002D6fae_002D4652_002Dafcc_002D54bca83a94c1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Valid_Add_Streak_Request_Should_Be_Published #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
 	
@@ -10,6 +10,9 @@
   &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a053dfd_002D2560_002D412c_002D8efc_002Db89724351c26/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Solution /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd3f3e1b_002D0315_002D492f_002D81a3_002D116535536bea/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Testing_If_Method_Is_Consumer" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=db4e30bb_002Da257_002D4b06_002Db73c_002D0eaa712d1b4a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Valid_Add_Streak_Request_Should_Be_Published" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;

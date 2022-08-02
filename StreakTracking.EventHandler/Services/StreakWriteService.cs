@@ -13,10 +13,10 @@ public class StreakWriteService : IStreakWriteService
     
     private readonly IStreakWriteRepository _streakRepository;
     private readonly IStreakDayWriteRepository _streakDayRepository;
-    private readonly ILogger<AddStreakConsumer> _logger;
+    private readonly ILogger<StreakWriteService> _logger;
 
     public StreakWriteService(IStreakWriteRepository streakRepository, IStreakDayWriteRepository streakDayRepository,
-        ILogger<AddStreakConsumer> logger)
+        ILogger<StreakWriteService> logger)
     {
         _streakRepository = streakRepository ?? throw new ArgumentNullException(nameof(streakRepository));
         _streakDayRepository = streakDayRepository ?? throw new ArgumentNullException(nameof(streakDayRepository));
@@ -27,18 +27,19 @@ public class StreakWriteService : IStreakWriteService
     {
         var streak = new Streak
         {
-            StreakId = Guid.NewGuid(),
-            StreakName = addStreakEvent.Name,
-            StreakDescription = addStreakEvent.Description,
+            StreakId = addStreakEvent.StreakId,
+            StreakName = addStreakEvent.StreakName,
+            StreakDescription = addStreakEvent.StreakDescription,
             LongestStreak  = 0
         };
-        _logger.LogInformation("Recieved message: {message}, consuming it now", addStreakEvent);
+
+        _logger.LogInformation("Received message: {addStreakEvent}, consuming it now", addStreakEvent);
         await _streakRepository.Create(streak: streak);
     }
 
     public async Task UpdateStreak(UpdateStreakEvent updateStreakEvent)
     {
-        _logger.LogInformation("Recieved message {updateStreakEvent}", updateStreakEvent);
+        _logger.LogInformation("Received message {updateStreakEvent}", updateStreakEvent);
         var streak = new Streak
         {
             StreakId = updateStreakEvent.StreakId,

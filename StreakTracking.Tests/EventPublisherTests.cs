@@ -38,8 +38,8 @@ public class EventPublisherTests
 
         var addStreakEvent = new AddStreakEvent()
         {
-            Description = "Test Description",
-            Name = "Test Name",
+            StreakDescription = "Test Description",
+            StreakName = "Test Name",
             StreakId = id,
         };
         
@@ -94,8 +94,8 @@ public class EventPublisherTests
 
         var addStreakEvent = new AddStreakEvent()
         {
-            Description = "Test Description",
-            Name = "Test Name",
+            StreakDescription = "Test Description",
+            StreakName = "Test Name",
             StreakId = id,
         };
         
@@ -133,8 +133,8 @@ public class EventPublisherTests
 
         var addStreakEvent = new AddStreakEvent()
         {
-            Description = "Test Description",
-            Name = "Test Name",
+            StreakDescription = "Test Description",
+            StreakName = "Test Name",
             StreakId = id,
         };
         
@@ -173,8 +173,8 @@ public class EventPublisherTests
 
         var addStreakEvent = new AddStreakEvent()
         {
-            Description = description,
-            Name = name,
+            StreakDescription = description,
+            StreakName = name,
             StreakId = id,
         };
         
