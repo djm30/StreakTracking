@@ -1,5 +1,6 @@
 
 using StreakTracking.API.Extensions;
+using StreakTracking.Application.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureMassTransit();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddServices();
+
+// ONLY FOR SEEDING DATABASE
+builder.Services.AddTransient<SeedDatabase>();
 
 
 var app = builder.Build();

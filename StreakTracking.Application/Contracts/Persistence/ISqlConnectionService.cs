@@ -1,6 +1,6 @@
 using Npgsql;
 
-namespace StreakTracking.Infrastructure.Services;
+namespace StreakTracking.Application.Contracts.Persistance;
 
 public interface ISqlConnectionService
 {

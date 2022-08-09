@@ -274,7 +274,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
         "type": "package",
         "compile": {
           "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
@@ -344,9 +344,10 @@
           "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "Npgsql/6.0.5": {
+      "Npgsql/7.0.0-preview.6": {
         "type": "package",
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
@@ -911,10 +912,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
-      "sha512": "/HggWBbTwy8TgebGSX5DBZ24ndhzi93sHUBDvP1IxbZD7FDokYzdAr6+vbWGjw2XAfR2EJ1sfKUotpjHnFWPxA==",
+    "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
+      "sha512": "dzB2Cgg+JmrouhjkcQGzSFjjvpwlq353i8oBQO2GWNjCXSzhbtBRUf28HSauWe7eib3wYOdb3tItdjRwAdwCSg==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/6.0.0",
+      "path": "microsoft.extensions.logging.abstractions/6.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -958,7 +959,7 @@
         "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1084,10 +1085,10 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "Npgsql/6.0.5": {
-      "sha512": "a11H5/b5yNTuFN0Ycjvb920oI6vQHadt6KhEMmcC7DfvsSHH8Z3wBam+CHmyWcfDxJJaxamcdBb8XA3BvqS4Kw==",
+    "Npgsql/7.0.0-preview.6": {
+      "sha512": "WBfseiPaTB0S9CaWKNYF/QrOoP1MSfQrNc03xQClarYvA13pfAzOA1CBhX5iygpYTBdDOSa0TtZaVjrZLON3yQ==",
       "type": "package",
-      "path": "npgsql/6.0.5",
+      "path": "npgsql/7.0.0-preview.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1102,7 +1103,7 @@
         "lib/netstandard2.0/Npgsql.xml",
         "lib/netstandard2.1/Npgsql.dll",
         "lib/netstandard2.1/Npgsql.xml",
-        "npgsql.6.0.5.nupkg.sha512",
+        "npgsql.7.0.0-preview.6.nupkg.sha512",
         "npgsql.nuspec",
         "postgresql.png"
       ]
@@ -1423,7 +1424,7 @@
       "Microsoft.Extensions.Configuration >= 6.0.0",
       "Microsoft.Extensions.Configuration.Binder >= 6.0.0",
       "Microsoft.Extensions.Logging >= 6.0.0",
-      "Npgsql >= 6.0.5",
+      "Npgsql >= 7.0.0-preview.6",
       "StreakTracking.Application >= 1.0.0",
       "StreakTracking.Domain >= 1.0.0"
     ]
@@ -1496,7 +1497,7 @@
           },
           "Npgsql": {
             "target": "Package",
-            "version": "[6.0.5, )"
+            "version": "[7.0.0-preview.6, )"
           }
         },
         "imports": [
@@ -1517,16 +1518,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Npgsql from 7.0.0-preview.6 to 6.0.5. Reference the package directly from the project to select a different version. \r\n StreakTracking.Infrastructure -> StreakTracking.Application -> Npgsql (>= 7.0.0-preview.6) \r\n StreakTracking.Infrastructure -> Npgsql (>= 6.0.5)",
-      "libraryId": "Npgsql",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

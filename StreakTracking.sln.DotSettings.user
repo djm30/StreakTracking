@@ -16,8 +16,5 @@
   &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=db4e30bb_002Da257_002D4b06_002Db73c_002D0eaa712d1b4a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Valid_Add_Streak_Request_Should_Be_Published" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::DB5D709E-60A0-456E-B9AE-18B432731D57::net6.0::StreakTracking.Tests.EventPublisherTests.Valid_Add_Streak_Request_Should_Be_Published&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::DB5D709E-60A0-456E-B9AE-18B432731D57::net6.0::StreakTracking.Tests.EventPublisherTests.Valid_Add_Streak_Request_Should_Be_Published_With_Moq&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "Oh5LPouHm+CcU0iFKqKrvBsV2ixfg8E1+DJ3pwNIL4TgQEZFdYMeWT6plUFeN8z9GI5PSieqRxQ0eXujit5xWw==",
-  "success": false,
+  "dgSpecHash": "E2s4x9B377kuVhOjSwZr4JrlynohG3q6jPWsZdMXJSvvP6FYNzxelnxsx2BjG5un7rHSHlJGqFXz4V3wPHEssg==",
+  "success": true,
   "projectFilePath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Infrastructure\\StreakTracking.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dmorrison011\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
@@ -25,13 +25,13 @@
     "C:\\Users\\dmorrison011\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.18\\microsoft.extensions.fileproviders.abstractions.3.1.18.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\3.1.18\\microsoft.extensions.hosting.abstractions.3.1.18.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
-    "C:\\Users\\dmorrison011\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\dmorrison011\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\newid\\3.0.3\\newid.3.0.3.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
-    "C:\\Users\\dmorrison011\\.nuget\\packages\\npgsql\\6.0.5\\npgsql.6.0.5.nupkg.sha512",
+    "C:\\Users\\dmorrison011\\.nuget\\packages\\npgsql\\7.0.0-preview.6\\npgsql.7.0.0-preview.6.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\dmorrison011\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
@@ -42,15 +42,5 @@
     "C:\\Users\\dmorrison011\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Npgsql from 7.0.0-preview.6 to 6.0.5. Reference the package directly from the project to select a different version. \r\n StreakTracking.Infrastructure -> StreakTracking.Application -> Npgsql (>= 7.0.0-preview.6) \r\n StreakTracking.Infrastructure -> Npgsql (>= 6.0.5)",
-      "libraryId": "Npgsql",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

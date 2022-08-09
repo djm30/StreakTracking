@@ -329,6 +329,23 @@
       "System.Text.Json/5.0.2": {},
       "System.Threading.Channels/4.7.1": {},
       "System.ValueTuple/4.5.0": {},
+      "StreakTracking.Application/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "11.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Dapper": "2.0.123",
+          "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.Extensions.DependencyInjection": "7.3.1",
+          "MassTransit.RabbitMQ": "7.3.1",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Domain": "1.0.0",
+          "StreakTracking.Messages": "1.0.0"
+        },
+        "runtime": {
+          "StreakTracking.Application.dll": {}
+        }
+      },
       "StreakTracking.Domain/1.0.0": {
         "runtime": {
           "StreakTracking.Domain.dll": {}
@@ -341,6 +358,7 @@
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Application": "1.0.0",
           "StreakTracking.Domain": "1.0.0"
         },
         "runtime": {
@@ -664,6 +682,11 @@
       "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
+    "StreakTracking.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "StreakTracking.Domain/1.0.0": {
       "type": "project",

@@ -223,7 +223,7 @@
             },
             "Npgsql": {
               "target": "Package",
-              "version": "[6.0.5, )"
+              "version": "[7.0.0-preview.6, )"
             }
           },
           "imports": [
