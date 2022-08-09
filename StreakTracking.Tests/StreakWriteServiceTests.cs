@@ -1,11 +1,10 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
-using StreakTracking.EventHandler.Services;
+using StreakTracking.Application.Contracts.Persistance;
+using StreakTracking.Application.Services;
 using StreakTracking.Domain.Entities;
-using StreakTracking.Domain.Calculated;
 using StreakTracking.Events.Events;
-using StreakTracking.Infrastructure.Repositories;
 
 
 namespace StreakTracking.Tests;

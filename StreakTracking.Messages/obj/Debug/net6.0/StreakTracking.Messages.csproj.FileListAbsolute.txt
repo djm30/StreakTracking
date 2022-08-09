@@ -22,3 +22,15 @@
 /Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/refint/StreakTracking.Messages.dll
 /Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/StreakTracking.Messages.pdb
 /Users/dylan/Code/c#/StreakTracking/StreakTracking.Messages/obj/Debug/net6.0/ref/StreakTracking.Messages.dll
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\bin\Debug\net6.0\StreakTracking.Messages.deps.json
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\bin\Debug\net6.0\StreakTracking.Messages.dll
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\bin\Debug\net6.0\StreakTracking.Messages.pdb
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\StreakTracking.Messages.csproj.AssemblyReference.cache
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\StreakTracking.Messages.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\StreakTracking.Messages.AssemblyInfoInputs.cache
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\StreakTracking.Messages.AssemblyInfo.cs
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\StreakTracking.Messages.csproj.CoreCompileInputs.cache
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\StreakTracking.Messages.dll
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\refint\StreakTracking.Messages.dll
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\StreakTracking.Messages.pdb
+C:\Users\dmorrison011\Documents\GitHub\StreakTracking\StreakTracking.Messages\obj\Debug\net6.0\ref\StreakTracking.Messages.dll

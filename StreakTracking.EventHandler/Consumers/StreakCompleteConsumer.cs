@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using MassTransit;
-using StreakTracking.EventHandler.Services;
+using StreakTracking.Application.Contracts.Business;
 using StreakTracking.Events.Events;
 
 namespace StreakTracking.EventHandler.Consumers;

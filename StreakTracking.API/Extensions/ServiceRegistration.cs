@@ -1,4 +1,5 @@
-using StreakTracking.API.Services;
+using StreakTracking.Application.Contracts.Business;
+using StreakTracking.Application.Services;
 
 namespace StreakTracking.API.Extensions;
 

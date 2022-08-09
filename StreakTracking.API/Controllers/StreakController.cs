@@ -1,7 +1,8 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using StreakTracking.API.Services;
 using StreakTracking.API.Models;
+using StreakTracking.Application.Contracts.Business;
+using StreakTracking.Application.Models;
 using StreakTracking.Domain.Calculated;
 using StreakTracking.Domain.Entities;
 

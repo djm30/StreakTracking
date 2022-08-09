@@ -2387,6 +2387,28 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "StreakTracking.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "11.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Dapper": "2.0.123",
+          "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.Extensions.DependencyInjection": "7.3.1",
+          "MassTransit.RabbitMQ": "7.3.1",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Domain": "1.0.0",
+          "StreakTracking.Messages": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/StreakTracking.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StreakTracking.Application.dll": {}
+        }
+      },
       "StreakTracking.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2426,6 +2448,7 @@
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "Npgsql": "6.0.5",
+          "StreakTracking.Application": "1.0.0",
           "StreakTracking.Domain": "1.0.0"
         },
         "compile": {
@@ -7853,27 +7876,32 @@
     "StreakTracking.API/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.API/StreakTracking.API.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
+      "msbuildProject": "../StreakTracking.API/StreakTracking.API.csproj"
+    },
+    "StreakTracking.Application/1.0.0": {
+      "type": "project",
+      "path": "../StreakTracking.Application/StreakTracking.Application.csproj",
+      "msbuildProject": "../StreakTracking.Application/StreakTracking.Application.csproj"
     },
     "StreakTracking.Domain/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Domain/StreakTracking.Domain.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+      "msbuildProject": "../StreakTracking.Domain/StreakTracking.Domain.csproj"
     },
     "StreakTracking.EventHandler/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
+      "msbuildProject": "../StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
     },
     "StreakTracking.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+      "msbuildProject": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
     },
     "StreakTracking.Messages/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Messages/StreakTracking.Messages.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+      "msbuildProject": "../StreakTracking.Messages/StreakTracking.Messages.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7892,44 +7920,50 @@
     ]
   },
   "packageFolders": {
-    "/Users/dylan/.nuget/packages/": {}
+    "C:\\Users\\dmorrison011\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Tests\\StreakTracking.Tests.csproj",
       "projectName": "StreakTracking.Tests",
-      "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
-      "packagesPath": "/Users/dylan/.nuget/packages/",
-      "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/obj/",
+      "projectPath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Tests\\StreakTracking.Tests.csproj",
+      "packagesPath": "C:\\Users\\dmorrison011\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/Users/dylan/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\dmorrison011\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
+            "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.API\\StreakTracking.API.csproj": {
+              "projectPath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.API\\StreakTracking.API.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+            "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Domain\\StreakTracking.Domain.csproj": {
+              "projectPath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Domain\\StreakTracking.Domain.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
+            "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.EventHandler\\StreakTracking.EventHandler.csproj": {
+              "projectPath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.EventHandler\\StreakTracking.EventHandler.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+            "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Infrastructure\\StreakTracking.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Infrastructure\\StreakTracking.Infrastructure.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+            "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Messages\\StreakTracking.Messages.csproj": {
+              "projectPath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Messages\\StreakTracking.Messages.csproj"
             }
           }
         }
@@ -7988,7 +8022,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

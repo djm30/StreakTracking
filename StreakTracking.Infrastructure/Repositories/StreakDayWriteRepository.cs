@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using StreakTracking.Domain.Entities;
 using StreakTracking.Infrastructure.Services;
+using StreakTracking.Application.Contracts.Persistance;
 using Dapper;
 using Npgsql;
 

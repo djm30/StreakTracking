@@ -1,6 +1,5 @@
 
 using StreakTracking.API.Extensions;
-using StreakTracking.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

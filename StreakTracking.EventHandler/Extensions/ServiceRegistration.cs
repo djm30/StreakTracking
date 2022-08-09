@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
-using StreakTracking.EventHandler.Services;
+using StreakTracking.Application.Contracts.Business;
+using StreakTracking.Application.Services;
 
 
 namespace StreakTracking.EventHandler.Extensions;

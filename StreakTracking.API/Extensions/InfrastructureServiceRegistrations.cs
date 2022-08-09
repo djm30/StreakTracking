@@ -1,5 +1,4 @@
-using StreakTracking.Infrastructure.Repositories;
-using StreakTracking.Infrastructure.Services;
+using StreakTracking.Infrastructure.ServiceRegistration;
 
 namespace StreakTracking.API.Extensions;
 
@@ -7,8 +6,7 @@ public static class InfrastructureServiceRegistrations
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
-        services.AddScoped<IStreakReadRepository, StreakReadRepository>();
-        services.AddSingleton<ISqlConnectionService,SqlConnectionService>();
+        services.AddApiServices();
         return services;
     }
 }

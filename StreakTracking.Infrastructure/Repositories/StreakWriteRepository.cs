@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Npgsql;
 using StreakTracking.Domain.Entities;
 using StreakTracking.Infrastructure.Services;
+using StreakTracking.Application.Contracts.Persistance;
 
 
 namespace StreakTracking.Infrastructure.Repositories;

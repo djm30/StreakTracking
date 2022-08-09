@@ -2,10 +2,10 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using StreakTracking.Application.Contracts.Business;
+using StreakTracking.Application.Contracts.Persistance;
 using StreakTracking.EventHandler.Consumers;
 using StreakTracking.EventHandler.Extensions;
-using StreakTracking.EventHandler.Services;
-using StreakTracking.Infrastructure.Repositories;
 using StreakTracking.Infrastructure.Services;
 
 namespace StreakTracking.Tests;

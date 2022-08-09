@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using StreakTracking.Application.Contracts.Persistance;
 using Npgsql;
 
 namespace StreakTracking.Infrastructure.Services;
