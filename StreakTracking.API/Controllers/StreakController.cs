@@ -1,6 +1,5 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using StreakTracking.API.Models;
 using StreakTracking.Application.Contracts.Business;
 using StreakTracking.Application.Models;
 using StreakTracking.Domain.Calculated;
@@ -63,18 +62,30 @@ public class StreakController : ControllerBase
 
     [HttpGet("[action]")]
     [ActionName("Full")]
-    [ProducesResponseType(typeof(IEnumerable<StreakInfo>), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<IEnumerable<StreakInfo>>> GetAllStreakStreakInfo(string id)
+    [ProducesResponseType(typeof(IEnumerable<FullStreakInfo>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<IEnumerable<FullStreakInfo>>> GetAllStreakStreakInfo()
     {
-        return Ok();
+        var responseMessage = await _streakReadService.GetFullStreakInfo();
+        return responseMessage.StatusCode switch
+        {
+            HttpStatusCode.OK => Ok(responseMessage.Content),
+            _ => StatusCode((int)HttpStatusCode.InternalServerError)
+        };
     }
 
     [HttpGet("{id}/[action]")]
     [ActionName("Full")]
-    [ProducesResponseType(typeof(StreakInfo), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<StreakInfo>> GetFullStreakInfo(string id)
+    [ProducesResponseType(typeof(FullStreakInfo), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(ResponseMessage), (int)HttpStatusCode.NotFound)]
+    public async Task<ActionResult<FullStreakInfo>> GetFullStreakInfo(string id)
     {
-        return Ok();
+        var responseMessage = await _streakReadService.GetFullStreakInfoById(id);
+        return responseMessage.StatusCode switch
+        {
+            HttpStatusCode.OK => Ok(responseMessage.Content),
+            HttpStatusCode.NotFound => NotFound(responseMessage),
+            _ => StatusCode((int)HttpStatusCode.InternalServerError)
+        };
     }
 
     [HttpPost]

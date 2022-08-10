@@ -1,3 +1,4 @@
 .vscode
 .idea
 appsettings.json
+docker-compose.yaml

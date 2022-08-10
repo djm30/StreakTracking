@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YBmWAUWXJfLtUyrBZeDGKZPE3GK434BrvpVkKWYXYyCH+zJ1LuX5/AmrOy3c81jqGTXtxaUtLnVY/+Qh+GwrPQ==",
+  "dgSpecHash": "kNntaUZ7k+mbN9SwfPtsPqpbfmBF1Oz8qqL2iS5rZfr344UMe9l8T6HIdm1N8800ApgZDaXelV7/2G0ynj26Zg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dmorrison011\\Documents\\GitHub\\StreakTracking\\StreakTracking.Domain\\StreakTracking.Domain.csproj",
+  "projectFilePath": "/Users/dylan/Code/c#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

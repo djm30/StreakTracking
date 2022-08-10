@@ -1,8 +1,10 @@
+using System.Data.Common;
 using AutoMapper;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Npgsql;
 using StreakTracking.Infrastructure.Services;
 using StreakTracking.API.Extensions;
 using StreakTracking.Application.Contracts.Business;
@@ -38,7 +40,7 @@ public class ApiExtensionMethodsTests
         var provider = _serviceCollection.BuildServiceProvider();
         
         Assert.IsAssignableFrom<IStreakReadRepository>(provider.GetRequiredService<IStreakReadRepository>());
-        Assert.IsAssignableFrom<ISqlConnectionService>(provider.GetRequiredService<ISqlConnectionService>());
+        Assert.IsAssignableFrom<ISqlConnectionService<NpgsqlConnection>>(provider.GetRequiredService<ISqlConnectionService<NpgsqlConnection>>());
     }
 
     [Fact]

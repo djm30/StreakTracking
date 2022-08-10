@@ -12,12 +12,12 @@ namespace StreakTracking.Infrastructure.Repositories;
 public class StreakWriteRepository : IStreakWriteRepository
 {
     private readonly ILogger<StreakWriteRepository> _logger;
-    private readonly ISqlConnectionService _connection;
+    private readonly ISqlConnectionService<NpgsqlConnection> _connection;
 
-    public StreakWriteRepository(ILogger<StreakWriteRepository> logger, ISqlConnectionService connection)
+    public StreakWriteRepository(ILogger<StreakWriteRepository> logger, ISqlConnectionService<NpgsqlConnection> connection)
     {
-        _logger = logger;
-        _connection = connection;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _connection = connection ?? throw new ArgumentNullException(nameof(connection));
     }
 
     public async Task Create(Streak streak)

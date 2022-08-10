@@ -1,8 +1,9 @@
+using System.Data.Common;
 using Npgsql;
 
 namespace StreakTracking.Application.Contracts.Persistance;
 
-public interface ISqlConnectionService
+public interface ISqlConnectionService<T> where T : DbConnection
 {
-    public NpgsqlConnection GetConnection();
+    public T GetConnection();
 }

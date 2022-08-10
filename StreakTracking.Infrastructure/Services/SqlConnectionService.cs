@@ -8,7 +8,7 @@ namespace StreakTracking.Infrastructure.Services;
 /// to an sql database instead of having the connection logic everywhere
 /// I don't know if this is good practice or not but it feels like it could be so idk
 /// </summary>
-public class SqlConnectionService : ISqlConnectionService
+public class SqlConnectionService : ISqlConnectionService<NpgsqlConnection>
 {
   private string ConnectionString { get; }
   
