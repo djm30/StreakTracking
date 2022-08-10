@@ -1,1 +1,3 @@
 docker run -d  --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.10-management
+docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=admin1234 -e POSTGRES_DB=StreaksDb -e POSTGRES_USER=root postgres
+docker run -d --name pgadmin -p 5050:5050 -e PGADMIN_DEFAULT_EMAIL={email} PGADMIN_DEFAULT_PASSWORD=admin1234

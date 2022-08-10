@@ -1,0 +1,40 @@
+version: "3.4"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER={user}
+      - POSTGRES_PASSWORD={password}
+      - POSTGRES_DB=StreaksDb
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.10-management
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "5050:5050"
+    volumes:
+      - pgadmin_data:/root/.pgadmin 
+    environment:
+      - PGADMIN_DEFAULT_EMAIL={email}
+      - PGADMIN_DEFAULT_PASSWORD={password}
+      - PGADMIN_LISTEN_PORT=5050
+
+volumes:
+  postgres_data:
+  pgadmin_data:

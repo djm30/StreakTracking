@@ -1479,6 +1479,23 @@
           "StreakTracking.API.dll": {}
         }
       },
+      "StreakTracking.Application/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "11.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Dapper": "2.0.123",
+          "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.Extensions.DependencyInjection": "7.3.1",
+          "MassTransit.RabbitMQ": "7.3.1",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Domain": "1.0.0",
+          "StreakTracking.Messages": "1.0.0"
+        },
+        "runtime": {
+          "StreakTracking.Application.dll": {}
+        }
+      },
       "StreakTracking.Domain/1.0.0": {
         "runtime": {
           "StreakTracking.Domain.dll": {}
@@ -1506,6 +1523,7 @@
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Application": "1.0.0",
           "StreakTracking.Domain": "1.0.0"
         },
         "runtime": {
@@ -2552,6 +2570,11 @@
       "hashPath": "xunit.runner.visualstudio.2.4.3.nupkg.sha512"
     },
     "StreakTracking.API/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StreakTracking.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

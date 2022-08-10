@@ -3,31 +3,32 @@ using Microsoft.Extensions.Logging;
 using Npgsql;
 using StreakTracking.Domain.Calculated;
 using StreakTracking.Domain.Entities;
-using StreakTracking.Infrastructure.Services;
+using StreakTracking.Application.Contracts.Persistance;
 
 namespace StreakTracking.Infrastructure.Repositories;
 
 public class StreakReadRepository : IStreakReadRepository
 {
     private readonly ILogger<StreakReadRepository> _logger;
-    private readonly ISqlConnectionService _connection;
+    private readonly ISqlConnectionService<NpgsqlConnection> _connection;
 
-    public StreakReadRepository(ISqlConnectionService connection, ILogger<StreakReadRepository> logger)
+    public StreakReadRepository(ILogger<StreakReadRepository> logger, ISqlConnectionService<NpgsqlConnection> connection)
     {
-        _connection = connection;
-        _logger = logger;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _connection = connection ?? throw new ArgumentNullException(nameof(connection));
     }
 
     public async Task<IEnumerable<Streak>> GetStreaks()
     {
+        var query = "SELECT * FROM streak";
+        
         await using var connection = _connection.GetConnection();
         try
         {
-            var query = "SELECT * FROM streak";
             var streaks = await connection.QueryAsync<Streak>(query);  
             return streaks;
         }
-        catch (PostgresException e)
+        catch (NpgsqlException e)
         {
             _logger.LogError("Error retrieving streaks from database with Error: {error}", e);
             return new List<Streak>();
@@ -36,16 +37,17 @@ public class StreakReadRepository : IStreakReadRepository
 
     public async Task<Streak> GetStreakById(string Id)
     {
+        var parameters = new { StreakId = Id};
+        var query = "SELECT * FROM streak WHERE streakid::text = @StreakId";
+        
         await using var connection = _connection.GetConnection();
         try
         {
-            var parameters = new { StreakId = Id};
-            var query = "SELECT * FROM streak WHERE streakid::text = @StreakId";
             var result  = await connection.QueryAsync<Streak>(query, parameters);
             var streak = result.FirstOrDefault();
             return streak;
         }
-        catch (PostgresException e)
+        catch (NpgsqlException e)
         {
             _logger.LogError("Error retrieving streak with id: {streakId} from database with Error: {error}", Id, e);
             return null;
@@ -54,11 +56,7 @@ public class StreakReadRepository : IStreakReadRepository
 
     public async Task<CurrentStreak> GetCurrent(string Id)
     {
-        await using var connection = _connection.GetConnection();
-        try
-        {
-            var queryParams = new { StreakId = Id };
-            var query = @"
+        var query = @"
                             SELECT 
                               * 
                             FROM 
@@ -92,13 +90,40 @@ public class StreakReadRepository : IStreakReadRepository
                             LIMIT 
                               1;
                             ";
+        
+        var queryParams = new { StreakId = Id };
+        
+        await using var connection = _connection.GetConnection();
+        try
+        {
             _logger.LogInformation("Attempting to get current streak of streak with id: {streakId} from the database", Id);
             var result = await connection.QueryAsync<CurrentStreak>(query, queryParams);
             return result.Any() ? result.First() : new CurrentStreak { Streak = 0, CurrDate = DateTime.Today };
         }
-        catch (PostgresException e)
+        catch (NpgsqlException e)
         {
             _logger.LogError("Error retrieving current streak for streak with id: {streakId}. Error: {e}", Id, e);
+            return null;
+        }
+    }
+
+    public async Task<IEnumerable<StreakDay>> GetCompletions(string id)
+    {
+
+        var query =
+            "SELECT * FROM streak_day WHERE streakid::text = @StreakId AND complete = true ORDER BY id DESC;";
+
+        var queryParams = new { StreakId = id };
+        await using var connection = _connection.GetConnection();
+        try
+        {
+            _logger.LogInformation("Attempting to retrieve completion information for streak with id: {0} ", id);
+            var result = await connection.QueryAsync<StreakDay>(query, queryParams);
+            return result;
+        }
+        catch (NpgsqlException e)
+        {
+            _logger.LogError("Error retrieving streak completions for streak with id: {streakId}. Error: {e}", id, e);
             return null;
         }
     }

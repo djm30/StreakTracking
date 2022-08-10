@@ -2387,6 +2387,28 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "StreakTracking.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "11.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Dapper": "2.0.123",
+          "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.Extensions.DependencyInjection": "7.3.1",
+          "MassTransit.RabbitMQ": "7.3.1",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Domain": "1.0.0",
+          "StreakTracking.Messages": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/StreakTracking.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StreakTracking.Application.dll": {}
+        }
+      },
       "StreakTracking.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2425,7 +2447,8 @@
           "Microsoft.Extensions.Configuration": "6.0.0",
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
-          "Npgsql": "6.0.5",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Application": "1.0.0",
           "StreakTracking.Domain": "1.0.0"
         },
         "compile": {
@@ -7854,6 +7877,11 @@
       "type": "project",
       "path": "../StreakTracking.API/StreakTracking.API.csproj",
       "msbuildProject": "../../../C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
+    },
+    "StreakTracking.Application/1.0.0": {
+      "type": "project",
+      "path": "../StreakTracking.Application/StreakTracking.Application.csproj",
+      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj"
     },
     "StreakTracking.Domain/1.0.0": {
       "type": "project",

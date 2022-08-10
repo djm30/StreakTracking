@@ -1,12 +1,11 @@
 using System.Net;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using StreakTracking.API.Controllers;
-using StreakTracking.API.Models;
-using StreakTracking.API.Services;
+using StreakTracking.Application.Contracts.Business;
+using StreakTracking.Application.Models;
 using StreakTracking.Domain.Calculated;
 using StreakTracking.Domain.Entities;
 

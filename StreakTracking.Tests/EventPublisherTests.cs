@@ -1,12 +1,11 @@
-using System.Data;
 using System.Net;
 using AutoMapper;
 using MassTransit;
-using StreakTracking.API.Services;
-using StreakTracking.API.Models;
 using Moq;
 using MassTransit.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using StreakTracking.Application.Models;
+using StreakTracking.Application.Services;
 using StreakTracking.Events.Events;
 
 namespace StreakTracking.Tests;

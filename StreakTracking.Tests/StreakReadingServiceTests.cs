@@ -1,8 +1,8 @@
 using System.Net;
 using Moq;
 using StreakTracking.Domain.Entities;
-using StreakTracking.Infrastructure.Repositories;
-using StreakTracking.API.Services;
+using StreakTracking.Application.Contracts.Persistance;
+using StreakTracking.Application.Services;
 using StreakTracking.Domain.Calculated;
 
 namespace StreakTracking.Tests;

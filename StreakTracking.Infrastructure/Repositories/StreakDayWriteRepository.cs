@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using StreakTracking.Domain.Entities;
 using StreakTracking.Infrastructure.Services;
+using StreakTracking.Application.Contracts.Persistance;
 using Dapper;
 using Npgsql;
 
@@ -12,9 +13,9 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
 {
     
     private readonly ILogger<StreakWriteRepository> _logger;
-    private readonly ISqlConnectionService _connection;
+    private readonly ISqlConnectionService<NpgsqlConnection> _connection;
 
-    public StreakDayWriteRepository(ILogger<StreakWriteRepository> logger, ISqlConnectionService connection)
+    public StreakDayWriteRepository(ILogger<StreakWriteRepository> logger, ISqlConnectionService<NpgsqlConnection> connection)
     {
         _logger = logger;
         _connection = connection ?? throw new ArgumentNullException(nameof(connection));

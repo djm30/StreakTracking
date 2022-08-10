@@ -1,12 +1,13 @@
+using System.Data.Common;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Npgsql;
+using StreakTracking.Application.Contracts.Business;
+using StreakTracking.Application.Contracts.Persistance;
 using StreakTracking.EventHandler.Consumers;
 using StreakTracking.EventHandler.Extensions;
-using StreakTracking.EventHandler.Services;
-using StreakTracking.Infrastructure.Repositories;
-using StreakTracking.Infrastructure.Services;
 
 namespace StreakTracking.Tests;
 
@@ -38,7 +39,7 @@ public class EventHandlerExtensionMethodTests
         // Assert
         var provider = _serviceCollection.BuildServiceProvider();
         
-        Assert.IsAssignableFrom<ISqlConnectionService>(provider.GetRequiredService<ISqlConnectionService>());
+        Assert.IsAssignableFrom<ISqlConnectionService<NpgsqlConnection>>(provider.GetRequiredService<ISqlConnectionService<NpgsqlConnection>>());
         Assert.IsAssignableFrom<IStreakWriteRepository>(provider.GetRequiredService<IStreakWriteRepository>());
         Assert.IsAssignableFrom<IStreakDayWriteRepository>(provider.GetRequiredService<IStreakDayWriteRepository>());
     }
@@ -68,11 +69,11 @@ public class EventHandlerExtensionMethodTests
     {
         // Arrange
         
-        var mockSqlConnection = Mock.Of<ISqlConnectionService>();
+        var mockSqlConnection = Mock.Of<ISqlConnectionService<DbConnection>>();
         var mockStreakWriteRepo = Mock.Of<IStreakWriteRepository>();
         var mockStreakDayWriteRepo = Mock.Of<IStreakDayWriteRepository>();
 
-        _serviceCollection.AddScoped<ISqlConnectionService>((service) => mockSqlConnection);
+        _serviceCollection.AddScoped<ISqlConnectionService<DbConnection>>((service) => mockSqlConnection);
         _serviceCollection.AddScoped<IStreakWriteRepository>((service) => mockStreakWriteRepo);
         _serviceCollection.AddScoped<IStreakDayWriteRepository>((service) => mockStreakDayWriteRepo);
 
@@ -82,6 +83,6 @@ public class EventHandlerExtensionMethodTests
         // Assert
         var provider = _serviceCollection.BuildServiceProvider();
         
-        Assert.IsAssignableFrom<ISqlConnectionService>(provider.GetRequiredService<ISqlConnectionService>());
+        Assert.IsAssignableFrom<ISqlConnectionService<DbConnection>>(provider.GetRequiredService<ISqlConnectionService<DbConnection>>());
     }
 }
