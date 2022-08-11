@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VqxADnM1PUn1IZWk0mgqgJ3OY4JutRTY6zueU0FO2dBBxHX+nrqxOLMmNJoRUabNwS3gYO8CrN2iAGVhp5VeFQ==",
+  "dgSpecHash": "h3AqyovWPFbbLnFrU5hTfWCueE8E4cNa6DOncdL33RFupEe4mPAdL1T2DmeansU0AUwrjvjJEtdIF79kK2qxbQ==",
   "success": true,
   "projectFilePath": "/Users/dylan/Code/c#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,9 @@
     "/Users/dylan/.nuget/packages/masstransit.aspnetcore/7.3.1/masstransit.aspnetcore.7.3.1.nupkg.sha512",
     "/Users/dylan/.nuget/packages/masstransit.extensions.dependencyinjection/7.3.1/masstransit.extensions.dependencyinjection.7.3.1.nupkg.sha512",
     "/Users/dylan/.nuget/packages/masstransit.rabbitmq/7.3.1/masstransit.rabbitmq.7.3.1.nupkg.sha512",
+    "/Users/dylan/.nuget/packages/mediatr/10.0.1/mediatr.10.0.1.nupkg.sha512",
+    "/Users/dylan/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
+    "/Users/dylan/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/10.0.1/mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.bcl.asyncinterfaces/5.0.0/microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.extensions.configuration.abstractions/3.1.18/microsoft.extensions.configuration.abstractions.3.1.18.nupkg.sha512",

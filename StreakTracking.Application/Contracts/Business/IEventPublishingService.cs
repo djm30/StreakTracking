@@ -1,11 +1,14 @@
-using StreakTracking.Application.Models;
+using StreakTracking.Application.Streaks.Commands.AddStreak;
+using StreakTracking.Application.Streaks.Commands.DeleteStreak;
+using StreakTracking.Application.Streaks.Commands.StreakComplete;
+using StreakTracking.Application.Streaks.Commands.UpdateStreak;
 
 namespace StreakTracking.Application.Contracts.Business;
 
 public interface IEventPublishingService
 {
-    public Task<ResponseMessage> PublishCreateStreak(AddStreakDTO addStreakDTO);
-    public Task<ResponseMessage> PublishUpdateStreak(string StreakId, UpdateStreakDTO updateStreakDTO);
-    public Task<ResponseMessage> PublishDeleteStreak(string StreakId);
-    public Task<ResponseMessage> PublishStreakComplete(string StreakId, StreakCompleteDTO streakCompleteDTO);
+    public Task PublishCreateStreak(AddStreakCommand addStreakCommand);
+    public Task PublishUpdateStreak(UpdateStreakCommand updateStreakCommand);
+    public Task PublishDeleteStreak(DeleteStreakCommand deleteStreakCommand);
+    public Task PublishStreakComplete(StreakCompleteCommand streakCompleteCommand);
 }
