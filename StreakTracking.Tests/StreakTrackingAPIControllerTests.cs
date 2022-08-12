@@ -1,11 +1,21 @@
 using System.Net;
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
+using NuGet.Frameworks;
 using StreakTracking.API.Controllers;
 using StreakTracking.Application.Contracts.Business;
 using StreakTracking.Application.Models;
+using StreakTracking.Application.Streaks.Commands.AddStreak;
+using StreakTracking.Application.Streaks.Commands.DeleteStreak;
+using StreakTracking.Application.Streaks.Commands.StreakComplete;
+using StreakTracking.Application.Streaks.Commands.UpdateStreak;
+using StreakTracking.Application.Streaks.Queries.GetCurrentStreak;
+using StreakTracking.Application.Streaks.Queries.GetStreakByID;
+using StreakTracking.Application.Streaks.Queries.GetStreaks;
 using StreakTracking.Domain.Calculated;
 using StreakTracking.Domain.Entities;
 
@@ -14,10 +24,11 @@ namespace StreakTracking.Tests;
 public class StreakTrackingAPIControllerTests
 {
     private readonly StreakController _sut;
-    private readonly ILogger<StreakController> _mockLogger;
-    private readonly Mock<IStreakReadingService> _mockStreakReadService;
-    private readonly Mock<IEventPublishingService> _mockPublishingService;
     
+    private readonly ILogger<StreakController> _mockLogger;
+    private readonly Mock<IMapper> _mapper;
+    private readonly Mock<IMediator> _mediator;
+
     private readonly Guid _knownGuid;
 
     private readonly IEnumerable<Streak> _streaks = new List<Streak>()
@@ -56,9 +67,9 @@ public class StreakTrackingAPIControllerTests
     {
         _knownGuid = new Guid("1059d8d7-c5f4-4ea8-b5af-b08f7f8008b5");
         _mockLogger = new NullLogger<StreakController>();
-        _mockPublishingService = new();
-        _mockStreakReadService = new();
-        _sut = new(_mockLogger, _mockStreakReadService.Object, _mockPublishingService.Object);
+        _mediator = new();
+        _mapper = new();
+        _sut = new(_mockLogger,_mediator.Object, _mapper.Object);
     }
 
     [Fact]
@@ -72,15 +83,18 @@ public class StreakTrackingAPIControllerTests
             Content = _streaks
         };
         
-        _mockStreakReadService.Setup(m => m.GetStreaks()).ReturnsAsync(responseMessage);
+        _mediator
+            .Setup(m => m.Send(It.IsAny<GetStreaksQuery>(), new ()))
+            .ReturnsAsync(responseMessage);
         
         // Act
         var response = await _sut.GetStreaks();
        
         // Assert
         var actionResult = Assert.IsType<ActionResult<IEnumerable<Streak>>>(response);
-        var okObjectResult = Assert.IsType<OkObjectResult>(actionResult.Result);
-        Assert.Equal(_streaks,okObjectResult.Value);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.OK, objectResult.StatusCode);
+        Assert.Equal(responseMessage,objectResult.Value);
     }
 
     [Fact]
@@ -96,8 +110,7 @@ public class StreakTrackingAPIControllerTests
             StatusCode = HttpStatusCode.OK
         };
         
-        _mockStreakReadService
-            .Setup(m => m.GetStreakById(It.Is<string>(x => x == _knownGuid.ToString())))
+        _mediator.Setup(m => m.Send(It.IsAny<GetStreakByIdQuery>(), new()))
             .ReturnsAsync(responseMessage);
         
         // Act
@@ -105,8 +118,9 @@ public class StreakTrackingAPIControllerTests
         
         // Assert
         var actionResult = Assert.IsType<ActionResult<Streak>>(response);
-        var okObjectResult = Assert.IsType<OkObjectResult>(actionResult.Result);
-        Assert.Equal(streakWithId, okObjectResult.Value);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.OK, objectResult.StatusCode);
+        Assert.Equal(responseMessage, objectResult.Value);
     }
 
     [Fact]
@@ -119,18 +133,19 @@ public class StreakTrackingAPIControllerTests
             Message = "No Streak found for this ID",
             StatusCode = HttpStatusCode.NotFound
         };
-
-        _mockStreakReadService
-            .Setup(m => m.GetStreakById(It.IsAny<string>())).ReturnsAsync(responseMessage);
+        
+        _mediator
+            .Setup(m => m.Send(It.IsAny<GetStreakByIdQuery>(), new()))
+            .ReturnsAsync(responseMessage);
         
         // Act
         var response = await _sut.GetStreakById("notarealstreakid");
         
         // Assert
         var actionResult = Assert.IsType<ActionResult<Streak>>(response);
-        var notFoundObjectResult = Assert.IsType<NotFoundObjectResult>(actionResult.Result);
-        Assert.IsType<ResponseMessageContent<Streak>>(notFoundObjectResult.Value);
-        Assert.Equal(responseMessage, notFoundObjectResult.Value);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.NotFound, objectResult.StatusCode);
+        Assert.Equal(responseMessage, objectResult.Value);
     }
 
     [Fact]
@@ -149,9 +164,10 @@ public class StreakTrackingAPIControllerTests
             Message = "Current streak calculated",
             StatusCode = HttpStatusCode.OK,
         };
+        
 
-        _mockStreakReadService
-            .Setup(m => m.GetCurrentStreak(It.Is<string>(x => x==_knownGuid.ToString())))
+        _mediator
+            .Setup(m => m.Send(It.IsAny<GetCurrentStreakQuery>(), new()))
             .ReturnsAsync(responseMessage);
         
         // Act
@@ -159,8 +175,9 @@ public class StreakTrackingAPIControllerTests
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<CurrentStreak>>(response);
-        var okObjectResult = Assert.IsType<OkObjectResult>(actionResult.Result);
-        Assert.Equal(currentStreak, okObjectResult.Value);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.OK, objectResult.StatusCode);
+        Assert.Equal(responseMessage, objectResult.Value);
     }
 
     [Fact]
@@ -174,8 +191,8 @@ public class StreakTrackingAPIControllerTests
             StatusCode = HttpStatusCode.NotFound
         };
         
-        _mockStreakReadService
-            .Setup(m => m.GetCurrentStreak(It.IsAny<string>()))
+        _mediator
+            .Setup(m => m.Send(It.IsAny<GetCurrentStreakQuery>(), new()))
             .ReturnsAsync(responseMessage);
         
         // Act
@@ -183,8 +200,9 @@ public class StreakTrackingAPIControllerTests
         
         // Assert
         var actionResult = Assert.IsType<ActionResult<CurrentStreak>>(response);
-        var notFoundObjectResult = Assert.IsType<NotFoundObjectResult>(actionResult.Result);
-        Assert.Equal(responseMessage, notFoundObjectResult.Value);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.NotFound, objectResult.StatusCode);
+        Assert.Equal(responseMessage, objectResult.Value);
     }
 
     [Fact(Skip = "Target code isn't implemented yet")]
@@ -220,8 +238,9 @@ public class StreakTrackingAPIControllerTests
             StreakName = "Test Streak",
             StreakDescription = "Test Description"
         };
-
-        _mockPublishingService.Setup(m => m.PublishCreateStreak(It.IsAny<AddStreakDTO>()))
+        
+        _mediator
+            .Setup(m => m.Send(It.IsAny<AddStreakCommand>(), new()))
             .ReturnsAsync(responseMessage);
 
         // Act
@@ -229,7 +248,8 @@ public class StreakTrackingAPIControllerTests
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<AcceptedResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.Accepted, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
 
@@ -243,7 +263,8 @@ public class StreakTrackingAPIControllerTests
             Message = "Validation failed: Please provide both a name and a description",
         };
         
-        _mockPublishingService.Setup(m => m.PublishCreateStreak(It.IsAny<AddStreakDTO>()))
+        _mediator
+            .Setup(m => m.Send(It.IsAny<AddStreakCommand>(), new()))
             .ReturnsAsync(responseMessage);
 
         // Act
@@ -251,7 +272,8 @@ public class StreakTrackingAPIControllerTests
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<BadRequestObjectResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.BadRequest, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
 
@@ -264,18 +286,22 @@ public class StreakTrackingAPIControllerTests
             Message = $"Currently updating Streak with ID: {_knownGuid.ToString()}",
             StatusCode = HttpStatusCode.Accepted,
         };
-
-        _mockPublishingService
-            .Setup(m =>
-                m.PublishUpdateStreak(It.Is<string>(x => x == _knownGuid.ToString()), It.IsAny<UpdateStreakDTO>()))
+        
+        _mediator
+            .Setup(m => m.Send(It.IsAny<UpdateStreakCommand>(), new()))
             .ReturnsAsync(responseMessage);
+
+        _mapper
+            .Setup(m => m.Map<UpdateStreakCommand>(It.IsAny<UpdateStreakDTO>()))
+            .Returns(new UpdateStreakCommand());
         
         // Act
         var response = await _sut.UpdateStreak( _knownGuid.ToString() , new UpdateStreakDTO());
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<AcceptedResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.Accepted, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
     
@@ -288,18 +314,22 @@ public class StreakTrackingAPIControllerTests
             Message = "Validation failed: Please provide a name, description and a valid value for the longest streak",
             StatusCode = HttpStatusCode.BadRequest
         };
-
-        _mockPublishingService
-            .Setup(m =>
-                m.PublishUpdateStreak(It.Is<string>(x => x == _knownGuid.ToString()), It.IsAny<UpdateStreakDTO>()))
+        
+        _mediator
+            .Setup(m => m.Send(It.IsAny<UpdateStreakCommand>(), new()))
             .ReturnsAsync(responseMessage);
+        
+        _mapper
+            .Setup(m => m.Map<UpdateStreakCommand>(It.IsAny<UpdateStreakDTO>()))
+            .Returns(new UpdateStreakCommand());
         
         // Act
         var response = await _sut.UpdateStreak( _knownGuid.ToString() , new UpdateStreakDTO());
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<BadRequestObjectResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.BadRequest, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
     
@@ -312,18 +342,17 @@ public class StreakTrackingAPIControllerTests
             Message = $"Currently deleting Streak with ID: {_knownGuid.ToString()}",
             StatusCode = HttpStatusCode.Accepted
         };
-
-        _mockPublishingService
-            .Setup(m =>
-                m.PublishDeleteStreak(It.Is<string>(x => x == _knownGuid.ToString())))
-            .ReturnsAsync(responseMessage);
         
+        _mediator
+            .Setup(m => m.Send(It.IsAny<DeleteStreakCommand>(), new()))
+            .ReturnsAsync(responseMessage);
         // Act
         var response = await _sut.DeleteStreak( _knownGuid.ToString());
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<AcceptedResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.Accepted, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
     
@@ -336,10 +365,9 @@ public class StreakTrackingAPIControllerTests
             Message = "Invalid GUID provided",
             StatusCode = HttpStatusCode.BadRequest
         };
-
-        _mockPublishingService
-            .Setup(m =>
-                m.PublishDeleteStreak(It.Is<string>(x => x == _knownGuid.ToString())))
+        
+        _mediator
+            .Setup(m => m.Send(It.IsAny<DeleteStreakCommand>(), new()))
             .ReturnsAsync(responseMessage);
         
         // Act
@@ -347,7 +375,8 @@ public class StreakTrackingAPIControllerTests
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<BadRequestObjectResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.BadRequest, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
     
@@ -361,18 +390,21 @@ public class StreakTrackingAPIControllerTests
                 $"Currently marking Streak with ID: {_knownGuid.ToString()} complete for day: {DateTime.Now}",
             StatusCode = HttpStatusCode.Accepted
         };
-
-        _mockPublishingService
-            .Setup(m =>
-                m.PublishStreakComplete(It.Is<string>(x => x == _knownGuid.ToString()), It.IsAny<StreakCompleteDTO>()))
+        
+        _mediator.Setup(m => m.Send(It.IsAny<StreakCompleteCommand>(), new()))
             .ReturnsAsync(responseMessage);
+        
+        _mapper
+            .Setup(m => m.Map<StreakCompleteCommand>(It.IsAny<StreakCompleteDTO>()))
+            .Returns(new StreakCompleteCommand());
         
         // Act
         var response = await _sut.CompleteStreak( _knownGuid.ToString(), new StreakCompleteDTO());
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<AcceptedResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.Accepted, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
     
@@ -386,17 +418,21 @@ public class StreakTrackingAPIControllerTests
             StatusCode = HttpStatusCode.BadRequest
         };
 
-        _mockPublishingService
-            .Setup(m =>
-                m.PublishStreakComplete(It.Is<string>(x => x == _knownGuid.ToString()), It.IsAny<StreakCompleteDTO>()))
+        _mediator
+            .Setup(m => m.Send(It.IsAny<StreakCompleteCommand>(), new()))
             .ReturnsAsync(responseMessage);
+        
+        _mapper
+            .Setup(m => m.Map<StreakCompleteCommand>(It.IsAny<StreakCompleteDTO>()))
+            .Returns(new StreakCompleteCommand());
         
         // Act
         var response = await _sut.CompleteStreak( _knownGuid.ToString(), new StreakCompleteDTO());
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<ResponseMessage>>(response);
-        var objectResult = Assert.IsType<BadRequestObjectResult>(actionResult.Result);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal((int)HttpStatusCode.BadRequest, objectResult.StatusCode);
         Assert.Equal(responseMessage, objectResult.Value);
     }
     

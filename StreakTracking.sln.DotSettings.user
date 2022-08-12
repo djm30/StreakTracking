@@ -1,23 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=093858f5_002D6fae_002D4652_002Dafcc_002D54bca83a94c1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Valid_Add_Streak_Request_Should_Be_Published #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=59fa1746_002D94c9_002D4840_002Db78c_002D7b4e5f2b11ba/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="StreakTrackingAPIControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::DB5D709E-60A0-456E-B9AE-18B432731D57::net6.0::StreakTracking.Tests.StreakTrackingAPIControllerTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1766a51c_002Dce52_002D49f1_002Db2c6_002D734bef9880c8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetStreakById_Returns_Valid_Streak" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1b912324_002Db0b6_002D4a10_002Dbc29_002D0bea0aa352f0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1cde67be_002Dd0e0_002D446d_002D9ba4_002Dbb599d8ec811/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a053dfd_002D2560_002D412c_002D8efc_002Db89724351c26/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd3f3e1b_002D0315_002D492f_002D81a3_002D116535536bea/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Testing_If_Method_Is_Consumer" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=db4e30bb_002Da257_002D4b06_002Db73c_002D0eaa712d1b4a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Valid_Add_Streak_Request_Should_Be_Published" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Solution /&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c0d1509f_002D2d2d_002D4b19_002Daff9_002D64b72f5daf13/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UpdateStreak_Returns_Accepted_For_Valid_Request" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/dylan/Code/c#/StreakTracking/StreakTracking.Tests" Presentation="&amp;lt;StreakTracking.Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

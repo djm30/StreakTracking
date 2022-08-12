@@ -39,7 +39,7 @@ public class EventPublishingService : IEventPublishingService
 
     public async Task PublishDeleteStreak(DeleteStreakCommand deleteStreakCommand)
     {
-        var deleteStreakEvent = _mapper.Map<StreakCompleteEvent>(deleteStreakCommand);
+        var deleteStreakEvent = _mapper.Map<DeleteStreakEvent>(deleteStreakCommand);
         await _publishEndpoint.Publish<DeleteStreakEvent>(deleteStreakEvent);
 
     }

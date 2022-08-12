@@ -16,7 +16,7 @@ public class MappingProfiles : Profile
         CreateMap<AddStreakDTO, AddStreakCommand>();
         CreateMap<UpdateStreakDTO, UpdateStreakCommand>();
         CreateMap<StreakCompleteDTO, StreakCompleteCommand>();
-        
+
         // Mapping between Commands and Events
         CreateMap<StreakCompleteCommand, StreakCompleteEvent>();
         CreateMap<UpdateStreakCommand, UpdateStreakCommand>();
