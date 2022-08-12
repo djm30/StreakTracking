@@ -1,6 +1,9 @@
 
+using MediatR;
 using StreakTracking.API.Extensions;
+using StreakTracking.Application;
 using StreakTracking.Application.Helpers;
+using StreakTracking.Infrastructure.ServiceRegistration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,11 +16,15 @@ builder.Services.AddSwaggerGen();
 
 // Extension methods
 builder.Services.ConfigureMassTransit();
-builder.Services.AddInfrastructureServices();
 builder.Services.AddServices();
 
+builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
+
+
 // ONLY FOR SEEDING DATABASE
-builder.Services.AddTransient<SeedDatabase>();
+builder.Services.AddDatabaseSeedingService();
+
 
 
 var app = builder.Build();

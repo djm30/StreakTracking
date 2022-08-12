@@ -149,3 +149,6 @@ C:/Users/dmorrison011/Documents/GitHub/StreakTracking/StreakTracking.API/bin/Deb
 /Users/dylan/Code/C#/StreakTracking/StreakTracking.API/bin/Debug/net6.0/appsettings.json
 /Users/dylan/Code/C#/StreakTracking/StreakTracking.API/bin/Debug/net6.0/StreakTracking.Application.dll
 /Users/dylan/Code/C#/StreakTracking/StreakTracking.API/bin/Debug/net6.0/StreakTracking.Application.pdb
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/bin/Debug/net6.0/MediatR.dll
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/bin/Debug/net6.0/MediatR.Contracts.dll
+/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/bin/Debug/net6.0/MediatR.Extensions.Microsoft.DependencyInjection.dll

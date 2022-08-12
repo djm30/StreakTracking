@@ -1,7 +1,17 @@
 using System.Net;
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using StreakTracking.Application.Contracts.Business;
 using StreakTracking.Application.Models;
+using StreakTracking.Application.Streaks.Commands.AddStreak;
+using StreakTracking.Application.Streaks.Commands.DeleteStreak;
+using StreakTracking.Application.Streaks.Commands.StreakComplete;
+using StreakTracking.Application.Streaks.Commands.UpdateStreak;
+using StreakTracking.Application.Streaks.Queries.GetCurrentStreak;
+using StreakTracking.Application.Streaks.Queries.GetFullStreakInfoById;
+using StreakTracking.Application.Streaks.Queries.GetFullStreaksInfo;
+using StreakTracking.Application.Streaks.Queries.GetStreakByID;
+using StreakTracking.Application.Streaks.Queries.GetStreaks;
 using StreakTracking.Domain.Calculated;
 using StreakTracking.Domain.Entities;
 
@@ -12,25 +22,23 @@ namespace StreakTracking.API.Controllers;
 public class StreakController : ControllerBase
 {
     private readonly ILogger<StreakController> _logger;
-    private readonly IStreakReadingService _streakReadService;
-    private readonly IEventPublishingService _publishingService;
-    
-    public StreakController(ILogger<StreakController> logger, IStreakReadingService streakReadService, IEventPublishingService publishingService)
+    private readonly IMediator _mediator;
+    private readonly IMapper _mapper;
+
+    public StreakController(ILogger<StreakController> logger, IMediator mediator, IMapper mapper)
     {
-        _logger = logger;
-        _streakReadService = streakReadService;
-        _publishingService = publishingService;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-    
+
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<Streak>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult<IEnumerable<Streak>>> GetStreaks()
     {
         _logger.LogInformation("Received request for GetStreaks");
-        var responseMessage = await _streakReadService.GetStreaks();
-        if (responseMessage.StatusCode == HttpStatusCode.OK)
-            return Ok(responseMessage.Content);
-        return NoContent();
+        var response = await _mediator.Send(new GetStreaksQuery());
+        return StatusCode((int)response.StatusCode, response);
     }
 
     [HttpGet("{id}", Name = "GetStreak")]
@@ -39,10 +47,8 @@ public class StreakController : ControllerBase
     public async Task<ActionResult<Streak>> GetStreakById(string id)
     {
         _logger.LogInformation("Received request for GetStreaksById");
-        var responseMessage = await _streakReadService.GetStreakById(id);
-        return responseMessage.StatusCode == HttpStatusCode.OK
-            ? Ok(responseMessage.Content)
-            : NotFound(responseMessage);
+        var response = await _mediator.Send(new GetStreakByIdQuery() { StreakId = id });
+        return StatusCode((int)response.StatusCode, response);
     }
     
     [HttpGet("{id}/[action]", Name = "GetCurrentStreak")]
@@ -52,10 +58,8 @@ public class StreakController : ControllerBase
     public async Task<ActionResult<CurrentStreak>> GetCurrentStreak(string id)
     {
         _logger.LogInformation("Received request for GetCurrent");
-        var responseMessage = await  _streakReadService.GetCurrentStreak(id);
-        return responseMessage.StatusCode == HttpStatusCode.OK
-            ? Ok(responseMessage.Content)
-            : NotFound(responseMessage);
+        var response = await _mediator.Send(new GetCurrentStreakQuery() { StreakId = id });
+        return StatusCode((int)response.StatusCode, response);
     }
     
     // TODO this stuff here
@@ -63,29 +67,22 @@ public class StreakController : ControllerBase
     [HttpGet("[action]")]
     [ActionName("Full")]
     [ProducesResponseType(typeof(IEnumerable<FullStreakInfo>), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<IEnumerable<FullStreakInfo>>> GetAllStreakStreakInfo()
+    public async Task<ActionResult<IEnumerable<FullStreakInfo>>> GetAllFullStreakInfo()
     {
-        var responseMessage = await _streakReadService.GetFullStreakInfo();
-        return responseMessage.StatusCode switch
-        {
-            HttpStatusCode.OK => Ok(responseMessage.Content),
-            _ => StatusCode((int)HttpStatusCode.InternalServerError)
-        };
+        _logger.LogInformation("Received request for Full Streak");
+        var response = await _mediator.Send(new GetFullStreaksInfoQuery());
+        return StatusCode((int)response.StatusCode, response);
     }
 
     [HttpGet("{id}/[action]")]
     [ActionName("Full")]
     [ProducesResponseType(typeof(FullStreakInfo), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(ResponseMessage), (int)HttpStatusCode.NotFound)]
-    public async Task<ActionResult<FullStreakInfo>> GetFullStreakInfo(string id)
+    public async Task<ActionResult<FullStreakInfo>> GetFullStreakInfoByID(string id)
     {
-        var responseMessage = await _streakReadService.GetFullStreakInfoById(id);
-        return responseMessage.StatusCode switch
-        {
-            HttpStatusCode.OK => Ok(responseMessage.Content),
-            HttpStatusCode.NotFound => NotFound(responseMessage),
-            _ => StatusCode((int)HttpStatusCode.InternalServerError)
-        };
+        _logger.LogInformation("Received request for Full Streak Info for id: {id}", id);
+        var response = await _mediator.Send(new GetFullStreakInfoByIdQuery(){StreakId = id});
+        return StatusCode((int)response.StatusCode, response);
     }
 
     [HttpPost]
@@ -95,13 +92,10 @@ public class StreakController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult<ResponseMessage>> CreateStreak([FromBody] AddStreakDTO addStreakDTO)
     {
-        var responseMessage = await _publishingService.PublishCreateStreak(addStreakDTO);
-        return responseMessage.StatusCode switch
-        {
-            HttpStatusCode.Accepted => Accepted(responseMessage),
-            HttpStatusCode.BadRequest => BadRequest(responseMessage),
-            _ => StatusCode((int)HttpStatusCode.InternalServerError)
-        };
+        _logger.LogInformation("Received request for CreateStreak");
+        var addStreakCommand = _mapper.Map<AddStreakCommand>(addStreakDTO);
+        var response = await _mediator.Send(addStreakCommand);
+        return StatusCode((int)response.StatusCode, response);
     }
     
     [HttpPost("{id}/[action]")]
@@ -111,13 +105,11 @@ public class StreakController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult<ResponseMessage>> CompleteStreak(string id, [FromBody] StreakCompleteDTO streakCompleteDTO)
     {
-        var responseMessage = await _publishingService.PublishStreakComplete(id, streakCompleteDTO);
-        return responseMessage.StatusCode switch
-        {
-            HttpStatusCode.Accepted => Accepted(responseMessage),
-            HttpStatusCode.BadRequest => BadRequest(responseMessage),
-            _ => StatusCode((int)HttpStatusCode.InternalServerError)
-        };
+        _logger.LogInformation("Received request for CompleteStreak for Id: {id}", id);
+        var addStreakCommand = _mapper.Map<StreakCompleteCommand>(streakCompleteDTO);
+        addStreakCommand.stringStreakId = id;
+        var response = await _mediator.Send(addStreakCommand);
+        return StatusCode((int)response.StatusCode, response);
     }
 
     [HttpPut("{id}")]
@@ -126,13 +118,11 @@ public class StreakController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult<ResponseMessage>> UpdateStreak(string id, [FromBody] UpdateStreakDTO updateStreakDTO)
     {
-        var responseMessage = await _publishingService.PublishUpdateStreak(id, updateStreakDTO);
-        return responseMessage.StatusCode switch
-        {
-            HttpStatusCode.Accepted => Accepted(responseMessage),
-            HttpStatusCode.BadRequest => BadRequest(responseMessage),
-            _ => StatusCode((int)HttpStatusCode.InternalServerError)
-        };
+        _logger.LogInformation("Received request for UpdateStreak for Id: {id}", id);
+        var updateStreakCommand = _mapper.Map<UpdateStreakCommand>(updateStreakDTO);
+        updateStreakCommand.stringStreakId = id;
+        var response = await _mediator.Send(updateStreakCommand);
+        return StatusCode((int)response.StatusCode, response);
     }
 
     [HttpDelete("{id}", Name = "DeleteStreak")]
@@ -141,12 +131,8 @@ public class StreakController : ControllerBase
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult<ResponseMessage>> DeleteStreak(string id)
     {
-        var responseMessage = await _publishingService.PublishDeleteStreak(id);
-        return responseMessage.StatusCode switch
-        {
-            HttpStatusCode.Accepted => Accepted(responseMessage),
-            HttpStatusCode.BadRequest => BadRequest(responseMessage),
-            _ => StatusCode((int)HttpStatusCode.InternalServerError)
-        };
+        _logger.LogInformation("Received request for DeleteStreak for Id: {id}", id);
+        var response = await _mediator.Send( new DeleteStreakCommand(){stringStreakId = id});
+        return StatusCode((int)response.StatusCode, response);
     }
 }

@@ -1,12 +1,14 @@
 using System.Data.Common;
 using AutoMapper;
 using MassTransit;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Npgsql;
 using StreakTracking.Infrastructure.Services;
 using StreakTracking.API.Extensions;
+using StreakTracking.Application;
 using StreakTracking.Application.Contracts.Business;
 using StreakTracking.Application.Contracts.Persistance;
 
@@ -59,6 +61,21 @@ public class ApiExtensionMethodsTests
     }
 
     [Fact]
+    public void Applicaton_Services_Are_Registers()
+    {
+        // Arrange
+        
+        // Act
+        _serviceCollection.AddApplicationServices();
+        
+        // Assert
+        var provider = _serviceCollection.BuildServiceProvider();
+        
+        Assert.IsAssignableFrom<IMapper>(provider.GetRequiredService<IMapper>());
+        Assert.IsAssignableFrom<IMediator>(provider.GetRequiredService<IMediator>());
+    }
+
+    [Fact]
     public void API_Specific_Services_Are_Registered()
     {
         // Arrange
@@ -67,13 +84,13 @@ public class ApiExtensionMethodsTests
         var mockIPublishEndpoint = new Mock<IPublishEndpoint>();
         _serviceCollection.AddScoped<IStreakReadRepository>((service)=> mockStreakRepository.Object);
         _serviceCollection.AddScoped<IPublishEndpoint>((service) => mockIPublishEndpoint.Object);
+        _serviceCollection.AddApplicationServices();
 
         // Act
         _serviceCollection.AddServices();
-        
+
         // Assert
         var provider = _serviceCollection.BuildServiceProvider();
-        Assert.IsAssignableFrom<IMapper>(provider.GetRequiredService<IMapper>());
         Assert.IsAssignableFrom<IStreakReadingService>(provider.GetRequiredService<IStreakReadingService>());
         Assert.IsAssignableFrom<IEventPublishingService>(provider.GetRequiredService<IEventPublishingService>());
     }

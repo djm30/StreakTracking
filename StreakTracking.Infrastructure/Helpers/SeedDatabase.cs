@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
-using Npgsql;
 using Dapper;
+using Microsoft.Extensions.Logging;
+using Npgsql;
 using StreakTracking.Application.Contracts.Persistance;
+using StreakTracking.Application.Helpers;
 
-namespace StreakTracking.Application.Helpers;
+namespace StreakTracking.Infrastructure.Helpers;
 
-public class SeedDatabase
+public class SeedDatabase : ISeedDatabase
 {
     private readonly ISqlConnectionService<NpgsqlConnection> _connection;
     private readonly ILogger<SeedDatabase> _logger;

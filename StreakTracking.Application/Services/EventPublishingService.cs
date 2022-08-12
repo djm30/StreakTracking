@@ -1,8 +1,10 @@
-using System.Net;
 using AutoMapper;
 using MassTransit;
 using StreakTracking.Application.Contracts.Business;
-using StreakTracking.Application.Models;
+using StreakTracking.Application.Streaks.Commands.AddStreak;
+using StreakTracking.Application.Streaks.Commands.DeleteStreak;
+using StreakTracking.Application.Streaks.Commands.StreakComplete;
+using StreakTracking.Application.Streaks.Commands.UpdateStreak;
 using StreakTracking.Events.Events;
 
 namespace StreakTracking.Application.Services;
@@ -18,113 +20,33 @@ public class EventPublishingService : IEventPublishingService
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
+    
+    // TODO RECONFIGURE MAPPING PROFILES
 
-    public async Task<ResponseMessage> PublishCreateStreak(AddStreakDTO addStreakDTO)
+    public async Task PublishCreateStreak(AddStreakCommand addStreakCommand)
     {
-        // TODO RETURN GUID TO CONTROLLER TO RETURN
-        if (addStreakDTO.StreakDescription == "" || addStreakDTO.StreakName == "")
-        {
-            return new ResponseMessage()
-            {
-                Message = "Validation failed: Please provide both a name and a description",
-                StatusCode = HttpStatusCode.BadRequest
-            };
-        }
 
-        addStreakDTO.StreakId = addStreakDTO.StreakId;
-        var addStreakEvent = _mapper.Map<AddStreakEvent>(addStreakDTO);
+        var addStreakEvent = _mapper.Map<AddStreakEvent>(addStreakCommand);
         await _publishEndpoint.Publish<AddStreakEvent>(addStreakEvent);
-        return new ResponseMessage()
-        {
-            Message = $"Creating new Streak with ID: {addStreakEvent.StreakId}", 
-            StatusCode = HttpStatusCode.Accepted
-        };
+
     }
 
-    public async Task<ResponseMessage> PublishUpdateStreak(string streakId, UpdateStreakDTO updateStreakDTO)
+    public async Task PublishUpdateStreak(UpdateStreakCommand updateStreakCommand)
     {
-        if (updateStreakDTO.LongestStreak < 0 || updateStreakDTO.StreakDescription == "" ||
-            updateStreakDTO.StreakName == "")
-        {
-            return new ResponseMessage()
-            {
-                Message = "Validation failed: Please provide a name, description and a valid value for the longest streak",
-                StatusCode = HttpStatusCode.BadRequest
-            };
-        }
-
-        var validGuid = Guid.TryParse(streakId, out Guid parsedResult);
-
-        if (!validGuid)
-        {
-            return new ResponseMessage()
-            {
-                Message = "Invalid GUID provided",
-                StatusCode = HttpStatusCode.BadRequest
-            };
-        }
-        
-        updateStreakDTO.StreakId = parsedResult;
-        var updateStreakEvent = _mapper.Map<UpdateStreakEvent>(updateStreakDTO);
+        var updateStreakEvent = _mapper.Map<UpdateStreakEvent>(updateStreakCommand);
         await _publishEndpoint.Publish<UpdateStreakEvent>(updateStreakEvent);
-        return new ResponseMessage()
-        {
-            Message = $"Currently updating Streak with ID: {updateStreakEvent.StreakId}", 
-            StatusCode = HttpStatusCode.Accepted
-        };
     }
 
-    public async Task<ResponseMessage> PublishDeleteStreak(string streakId)
+    public async Task PublishDeleteStreak(DeleteStreakCommand deleteStreakCommand)
     {
-        var validGuid = Guid.TryParse(streakId, out Guid parsedResult);
-
-        if (!validGuid)
-        {
-            return new ResponseMessage()
-            {
-                Message = "Invalid GUID provided",
-                StatusCode = HttpStatusCode.BadRequest
-            };
-        }
-        var deleteStreakEvent = new DeleteStreakEvent { StreakId = parsedResult };
+        var deleteStreakEvent = _mapper.Map<DeleteStreakEvent>(deleteStreakCommand);
         await _publishEndpoint.Publish<DeleteStreakEvent>(deleteStreakEvent);
-        return new ResponseMessage()
-        {
-            Message = $"Currently deleting Streak with ID: {deleteStreakEvent.StreakId}",
-            StatusCode = HttpStatusCode.Accepted
-        };
+
     }
 
-    public async Task<ResponseMessage> PublishStreakComplete(string streakId, StreakCompleteDTO streakCompleteDTO)
+    public async Task PublishStreakComplete(StreakCompleteCommand streakCompleteCommand)
     {
-        if (streakCompleteDTO.Date > DateTime.Today)
-        {
-            return new ResponseMessage()
-            {
-                Message = "Provided date cannot be in the future",
-                StatusCode = HttpStatusCode.BadRequest
-            };
-        }
-        
-        var validGuid = Guid.TryParse(streakId, out Guid parsedResult);
-
-        if (!validGuid)
-        {
-            return new ResponseMessage()
-            {
-                Message = "Invalid GUID provided",
-                StatusCode = HttpStatusCode.BadRequest
-            };
-        }
-        
-        streakCompleteDTO.StreakId = parsedResult;
-        var streakCompleteEvent = _mapper.Map<StreakCompleteEvent>(streakCompleteDTO);
+        var streakCompleteEvent = _mapper.Map<StreakCompleteEvent>(streakCompleteCommand);
         await _publishEndpoint.Publish<StreakCompleteEvent>(streakCompleteEvent);
-        return new ResponseMessage()
-        {
-            Message =
-                $"Currently marking Streak with ID: {streakCompleteEvent.StreakId} complete for day: {streakCompleteEvent.Date.Date}",
-            StatusCode = HttpStatusCode.Accepted
-        };
     }
 }
