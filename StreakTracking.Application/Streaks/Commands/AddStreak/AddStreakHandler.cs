@@ -25,8 +25,8 @@ public class AddStreakHandler : IRequestHandler<AddStreakCommand, ResponseMessag
                 StatusCode = HttpStatusCode.BadRequest
             };
         }
-        
-        request.StreakId = new Guid();
+
+        request.StreakId = Guid.NewGuid();
 
         await _publishingService.PublishCreateStreak(request);
         

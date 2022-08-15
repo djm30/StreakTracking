@@ -2461,6 +2461,7 @@
         "dependencies": {
           "Dapper": "2.0.123",
           "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
           "MassTransit.Extensions.DependencyInjection": "7.3.1",
           "MassTransit.RabbitMQ": "7.3.1",
           "Microsoft.Extensions.Hosting": "6.0.0",
@@ -7955,32 +7956,32 @@
     "StreakTracking.API/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.API/StreakTracking.API.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
+      "msbuildProject": "../StreakTracking.API/StreakTracking.API.csproj"
     },
     "StreakTracking.Application/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Application/StreakTracking.Application.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj"
+      "msbuildProject": "../StreakTracking.Application/StreakTracking.Application.csproj"
     },
     "StreakTracking.Domain/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Domain/StreakTracking.Domain.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+      "msbuildProject": "../StreakTracking.Domain/StreakTracking.Domain.csproj"
     },
     "StreakTracking.EventHandler/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
+      "msbuildProject": "../StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
     },
     "StreakTracking.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+      "msbuildProject": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
     },
     "StreakTracking.Messages/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Messages/StreakTracking.Messages.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+      "msbuildProject": "../StreakTracking.Messages/StreakTracking.Messages.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8004,11 +8005,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
+      "projectUniqueName": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
       "projectName": "StreakTracking.Tests",
-      "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
+      "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
       "packagesPath": "/Users/dylan/.nuget/packages/",
-      "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Tests/obj/",
+      "outputPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dylan/.nuget/NuGet/NuGet.Config"
@@ -8023,20 +8024,20 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
+            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
+              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
+              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
+            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
+              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
             }
           }
         }

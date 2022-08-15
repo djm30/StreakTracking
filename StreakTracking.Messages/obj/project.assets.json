@@ -637,11 +637,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+      "projectUniqueName": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
       "projectName": "StreakTracking.Messages",
-      "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+      "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
       "packagesPath": "/Users/dylan/.nuget/packages/",
-      "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/obj/",
+      "outputPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dylan/.nuget/NuGet/NuGet.Config"

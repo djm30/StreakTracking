@@ -1,3 +1,4 @@
+using System;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using StreakTracking.EventHandler.Consumers;
@@ -7,7 +8,7 @@ namespace StreakTracking.EventHandler.Extensions;
 
 public static class MassTransitConfiguration
 {
-    public static IServiceCollection ConfigureMassTransit(this IServiceCollection services)
+    public static IServiceCollection ConfigureMassTransitConsumers(this IServiceCollection services)
     {
         services.AddMassTransit(x =>
         {
@@ -17,7 +18,6 @@ public static class MassTransitConfiguration
             x.AddConsumer<StreakCompleteConsumer>();
             x.UsingRabbitMq((ctx, cfg) =>
             {
-                            
                 cfg.ReceiveEndpoint("streaks-queue", c =>
                 {
                     c.ConfigureConsumer<AddStreakConsumer>(ctx);
@@ -25,10 +25,9 @@ public static class MassTransitConfiguration
                     c.ConfigureConsumer<DeleteStreakConsumer>(ctx);
                     c.ConfigureConsumer<StreakCompleteConsumer>(ctx);
                 });
-    
-                            
             });
         });
+        services.AddMassTransitHostedService();
         return services;
     }
 }

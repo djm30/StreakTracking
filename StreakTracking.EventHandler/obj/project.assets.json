@@ -2199,28 +2199,29 @@
     "StreakTracking.Application/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Application/StreakTracking.Application.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj"
+      "msbuildProject": "../StreakTracking.Application/StreakTracking.Application.csproj"
     },
     "StreakTracking.Domain/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Domain/StreakTracking.Domain.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+      "msbuildProject": "../StreakTracking.Domain/StreakTracking.Domain.csproj"
     },
     "StreakTracking.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+      "msbuildProject": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
     },
     "StreakTracking.Messages/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Messages/StreakTracking.Messages.csproj",
-      "msbuildProject": "../../../C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+      "msbuildProject": "../StreakTracking.Messages/StreakTracking.Messages.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Dapper >= 2.0.123",
       "MassTransit >= 7.3.1",
+      "MassTransit.AspNetCore >= 7.3.1",
       "MassTransit.Extensions.DependencyInjection >= 7.3.1",
       "MassTransit.RabbitMQ >= 7.3.1",
       "Microsoft.Extensions.Hosting >= 6.0.0",
@@ -2235,11 +2236,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
+      "projectUniqueName": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
       "projectName": "StreakTracking.EventHandler",
-      "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
+      "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
       "packagesPath": "/Users/dylan/.nuget/packages/",
-      "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.EventHandler/obj/",
+      "outputPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dylan/.nuget/NuGet/NuGet.Config"
@@ -2254,11 +2255,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
+            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
+              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
             },
-            "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-              "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
             }
           }
         }
@@ -2278,6 +2279,10 @@
             "version": "[2.0.123, )"
           },
           "MassTransit": {
+            "target": "Package",
+            "version": "[7.3.1, )"
+          },
+          "MassTransit.AspNetCore": {
             "target": "Package",
             "version": "[7.3.1, )"
           },

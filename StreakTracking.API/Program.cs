@@ -5,6 +5,7 @@ using StreakTracking.Application;
 using StreakTracking.Application.Helpers;
 using StreakTracking.Infrastructure.ServiceRegistration;
 
+var CorsPolicy = "CorsPolicy";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,6 +22,14 @@ builder.Services.AddServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: CorsPolicy,
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000");
+        });
+});
 
 // ONLY FOR SEEDING DATABASE
 builder.Services.AddDatabaseSeedingService();
@@ -29,11 +38,13 @@ builder.Services.AddDatabaseSeedingService();
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors(CorsPolicy);
 }
 
 app.UseHttpsRedirection();

@@ -1,6 +1,7 @@
 using System.Net;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using StreakTracking.Application.Models;
 using StreakTracking.Application.Streaks.Commands.AddStreak;
@@ -17,15 +18,16 @@ using StreakTracking.Domain.Entities;
 
 namespace StreakTracking.API.Controllers;
 
+
 [ApiController]
 [Route("/api/v1/[controller]")]
-public class StreakController : ControllerBase
+public class StreaksController : ControllerBase
 {
-    private readonly ILogger<StreakController> _logger;
+    private readonly ILogger<StreaksController> _logger;
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
 
-    public StreakController(ILogger<StreakController> logger, IMediator mediator, IMapper mapper)
+    public StreaksController(ILogger<StreaksController> logger, IMediator mediator, IMapper mapper)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
@@ -51,7 +53,7 @@ public class StreakController : ControllerBase
         return StatusCode((int)response.StatusCode, response);
     }
     
-    [HttpGet("{id}/[action]", Name = "GetCurrentStreak")]
+    [HttpGet("[action]/{id}", Name = "GetCurrentStreak")]
     [ActionName("Current")]
     [ProducesResponseType(typeof(CurrentStreak), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.NotFound)]
@@ -74,7 +76,7 @@ public class StreakController : ControllerBase
         return StatusCode((int)response.StatusCode, response);
     }
 
-    [HttpGet("{id}/[action]")]
+    [HttpGet("[action]/{id}")]
     [ActionName("Full")]
     [ProducesResponseType(typeof(FullStreakInfo), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(ResponseMessage), (int)HttpStatusCode.NotFound)]
@@ -98,7 +100,7 @@ public class StreakController : ControllerBase
         return StatusCode((int)response.StatusCode, response);
     }
     
-    [HttpPost("{id}/[action]")]
+    [HttpPost("[action]/{id}")]
     [ActionName("Complete")]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.Accepted)]
     [ProducesResponseType(typeof(ResponseMessage),(int)HttpStatusCode.BadRequest)]

@@ -10,6 +10,7 @@
         "dependencies": {
           "Dapper": "2.0.123",
           "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
           "MassTransit.Extensions.DependencyInjection": "7.3.1",
           "MassTransit.RabbitMQ": "7.3.1",
           "Microsoft.Extensions.Hosting": "6.0.0",

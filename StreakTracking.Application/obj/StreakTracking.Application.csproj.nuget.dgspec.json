@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj": {}
+    "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj": {}
   },
   "projects": {
-    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj": {
+    "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj",
+        "projectUniqueName": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj",
         "projectName": "StreakTracking.Application",
-        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj",
+        "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Application/StreakTracking.Application.csproj",
         "packagesPath": "/Users/dylan/.nuget/packages/",
-        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Application/obj/",
+        "outputPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/dylan/.nuget/NuGet/NuGet.Config"
@@ -26,11 +26,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
-                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
+              "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
+                "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
               },
-              "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
-                "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
+              "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+                "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"
               }
             }
           }
@@ -105,14 +105,14 @@
         }
       }
     },
-    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
+    "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
+        "projectUniqueName": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
         "projectName": "StreakTracking.Domain",
-        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
+        "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj",
         "packagesPath": "/Users/dylan/.nuget/packages/",
-        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Domain/obj/",
+        "outputPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/dylan/.nuget/NuGet/NuGet.Config"
@@ -157,14 +157,14 @@
         }
       }
     },
-    "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
+    "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+        "projectUniqueName": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
         "projectName": "StreakTracking.Messages",
-        "projectPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
+        "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj",
         "packagesPath": "/Users/dylan/.nuget/packages/",
-        "outputPath": "/Users/dylan/Code/C#/StreakTracking/StreakTracking.Messages/obj/",
+        "outputPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/dylan/.nuget/NuGet/NuGet.Config"

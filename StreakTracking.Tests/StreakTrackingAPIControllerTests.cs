@@ -23,9 +23,9 @@ namespace StreakTracking.Tests;
 
 public class StreakTrackingAPIControllerTests
 {
-    private readonly StreakController _sut;
+    private readonly StreaksController _sut;
     
-    private readonly ILogger<StreakController> _mockLogger;
+    private readonly ILogger<StreaksController> _mockLogger;
     private readonly Mock<IMapper> _mapper;
     private readonly Mock<IMediator> _mediator;
 
@@ -66,7 +66,7 @@ public class StreakTrackingAPIControllerTests
     public StreakTrackingAPIControllerTests()
     {
         _knownGuid = new Guid("1059d8d7-c5f4-4ea8-b5af-b08f7f8008b5");
-        _mockLogger = new NullLogger<StreakController>();
+        _mockLogger = new NullLogger<StreaksController>();
         _mediator = new();
         _mapper = new();
         _sut = new(_mockLogger,_mediator.Object, _mapper.Object);

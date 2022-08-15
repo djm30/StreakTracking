@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6rjL4k+P7kq7TyHRQiFcCGkOK01VxlQQbXwhTHwcraQcEy6FMwfBSTYG4Yqj2AMU0zQFAojZqBFYRtvf2+YWng==",
+  "dgSpecHash": "nQsAtgdTyLDR5XCkMyC98mDVQ08iuXYXqoWRrQogIdCTJB/ccJcYvVRTQhffTNTozrbEZR8ATDYTadOAMVBGiA==",
   "success": true,
-  "projectFilePath": "/Users/dylan/Code/c#/StreakTracking/StreakTracking.API/StreakTracking.API.csproj",
+  "projectFilePath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.API/StreakTracking.API.csproj",
   "expectedPackageFiles": [
     "/Users/dylan/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
     "/Users/dylan/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

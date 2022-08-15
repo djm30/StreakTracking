@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OYPzjxYTsvC9x3UCvSLxumNUmDpDxW9KtOklBS6YxZNu4jA/5FRXgh/YXWykht4OQBDkoMsvrAhSDlElB85c0A==",
+  "dgSpecHash": "qojk4q3zUqtqOSIxIAyaF/5PFVoqhuPog/m1AhYahI6v+SoQCKKQZyYrhdqnGik0MgwESEe+vaNAvoop3YDd7w==",
   "success": true,
-  "projectFilePath": "/Users/dylan/Code/c#/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
+  "projectFilePath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
   "expectedPackageFiles": [
     "/Users/dylan/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
     "/Users/dylan/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

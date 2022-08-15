@@ -52,7 +52,7 @@ public class EventHandlerExtensionMethodTests
         _serviceCollection.AddScoped<IStreakWriteService>((service) => mockStreakWriteService);
 
         // Act
-        _serviceCollection.ConfigureMassTransit();
+        _serviceCollection.ConfigureMassTransitConsumers();
 
         // Assert
         var provider = _serviceCollection.BuildServiceProvider();

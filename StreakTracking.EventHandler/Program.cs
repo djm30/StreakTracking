@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using StreakTracking.EventHandler.Extensions;
@@ -16,9 +17,10 @@ namespace StreakTracking.EventHandler
                 .ConfigureServices((hostContext, services) =>
                 {
                     // Extension methods to register all required services
-                    services.ConfigureMassTransit();
                     services.AddServices();
                     services.AddInfrastructureServices();
+                    services.ConfigureMassTransitConsumers();
+                    Console.WriteLine("hello?");
                 });
     }
 }
