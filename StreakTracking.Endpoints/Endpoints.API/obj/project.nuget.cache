@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Y+dYFHsB945kcwjNn+RkyPlcW1SSnCTzWMBgThCVT3sl5GgPVD/HVzFScfLKawmfoz10RMDGMZO8j4ZyA2JHIA==",
+  "dgSpecHash": "xsKyuNuqavf/+x9iWl9v/EzR5BdOdXCUPF3DDbPzSjbfXTPU8MXnidYpISWEBXzufO8tdZd99LyRPXlgBwqHlg==",
   "success": true,
   "projectFilePath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Endpoints/Endpoints.API/Endpoints.API.csproj",
   "expectedPackageFiles": [

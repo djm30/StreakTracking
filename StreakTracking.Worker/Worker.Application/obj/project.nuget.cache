@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7GJmUX8czwhnegEGT0BcWlzcJqH2FBmaSFm6p/gZEHS+lBhl9ORI9U0LygRyNbSA+euJuE/v2D9a8JeHBvePgw==",
+  "dgSpecHash": "Irgs2FIGurjlGOly0Od3lUiUr08E+N/GwBgwdbz6ZAjgn/oS3cl85jhoKUTm398YGgs1avI2BH7o53Tsrrg58Q==",
   "success": true,
   "projectFilePath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Worker/Worker.Application/Worker.Application.csproj",
   "expectedPackageFiles": [
@@ -18,7 +18,9 @@
     "/Users/dylan/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/10.0.1/mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.bcl.asyncinterfaces/5.0.0/microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
-    "/Users/dylan/.nuget/packages/microsoft.extensions.configuration.abstractions/3.1.18/microsoft.extensions.configuration.abstractions.3.1.18.nupkg.sha512",
+    "/Users/dylan/.nuget/packages/microsoft.extensions.configuration/6.0.0/microsoft.extensions.configuration.6.0.0.nupkg.sha512",
+    "/Users/dylan/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "/Users/dylan/.nuget/packages/microsoft.extensions.configuration.binder/6.0.0/microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.extensions.diagnostics.healthchecks/3.1.18/microsoft.extensions.diagnostics.healthchecks.3.1.18.nupkg.sha512",
     "/Users/dylan/.nuget/packages/microsoft.extensions.diagnostics.healthchecks.abstractions/3.1.18/microsoft.extensions.diagnostics.healthchecks.abstractions.3.1.18.nupkg.sha512",

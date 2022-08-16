@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Extension methods
-builder.Services.ConfigureMassTransit();
+builder.Services.ConfigureMassTransit(builder.Configuration);
 builder.Services.AddServices();
 
 builder.Services.AddInfrastructureServices();

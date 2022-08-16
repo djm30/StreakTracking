@@ -19,16 +19,17 @@ namespace StreakTracking.Tests;
 public class ApiExtensionMethodsTests
 {
     private readonly IServiceCollection _serviceCollection;
-    private readonly Dictionary<string, string> _inMemorySettings = new Dictionary<string, string>() { { "ConnectionString", "String" } };
-
+    private readonly Dictionary<string, string> _inMemorySettings = new Dictionary<string, string>() { { "ConnectionString", "String" }, {"EventBusConnection", "String"} };
+    private readonly IConfiguration _configuration;
+        
     public ApiExtensionMethodsTests()
     {
         _serviceCollection = new ServiceCollection();
-        IConfiguration configuration = new ConfigurationBuilder()
+         _configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(_inMemorySettings)
             .Build();
         
-        _serviceCollection.AddSingleton<IConfiguration>(configuration);
+        _serviceCollection.AddSingleton<IConfiguration>(_configuration);
         _serviceCollection.AddLogging();
     }
     
@@ -53,7 +54,7 @@ public class ApiExtensionMethodsTests
         // Arrange
         
         // Act
-        _serviceCollection.ConfigureMassTransit();
+        _serviceCollection.ConfigureMassTransit(_configuration);
         
         // Assert
         var provider = _serviceCollection.BuildServiceProvider();

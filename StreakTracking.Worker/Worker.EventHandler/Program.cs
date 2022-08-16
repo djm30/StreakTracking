@@ -19,7 +19,7 @@ namespace StreakTracking.Worker.EventHandler
                     // Extension methods to register all required services
                     services.AddServices();
                     services.AddInfrastructureServices();
-                    services.ConfigureMassTransitConsumers();
+                    services.ConfigureMassTransitConsumers(hostContext.Configuration);
                     Console.WriteLine("hello?");
                 });
     }

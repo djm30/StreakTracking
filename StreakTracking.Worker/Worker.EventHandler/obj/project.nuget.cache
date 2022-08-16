@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "T7yAQ7Xjogk5AKx9q2IoFYSrNbvYfZ8zCNRSdlGr6bgWz2aAd4QGuh3od8MRQKE1iKgU7klR1du349+UHTd76w==",
+  "dgSpecHash": "iLai9FBKyY4nmbEEjDBKD08+MvPL0GsKYFdt0220kWD3tigwpHgj4zKmYoHixD/RZSqJWnBwwqxPaNp4UWEo2w==",
   "success": true,
   "projectFilePath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Worker/Worker.EventHandler/Worker.EventHandler.csproj",
   "expectedPackageFiles": [

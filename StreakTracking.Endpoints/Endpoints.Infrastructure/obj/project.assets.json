@@ -499,6 +499,7 @@
           "MediatR": "10.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
           "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Common": "1.0.0",
           "StreakTracking.Domain": "1.0.0",
           "StreakTracking.Messages": "1.0.0"
         },

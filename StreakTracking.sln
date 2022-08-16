@@ -7,8 +7,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Tests", "StreakTracking.Tests\StreakTracking.Tests.csproj", "{DB5D709E-60A0-456E-B9AE-18B432731D57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreakTracking.Endpoints", "StreakTracking.Endpoints", "{7381A6B6-DBB0-4BEB-B965-83D9363EF0BF}"
+	ProjectSection(SolutionItems) = preProject
+		StreakTracking.Endpoints\Dockerfile = StreakTracking.Endpoints\Dockerfile
+		StreakTracking.Endpoints\.dockerignore = StreakTracking.Endpoints\.dockerignore
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreakTracking.Worker", "StreakTracking.Worker", "{8E92A2A6-D324-4D81-9E12-B5820018817C}"
+	ProjectSection(SolutionItems) = preProject
+		StreakTracking.Worker\Dockerfile = StreakTracking.Worker\Dockerfile
+		StreakTracking.Worker\.dockerignore = StreakTracking.Worker\.dockerignore
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker.EventHandler", "StreakTracking.Worker\Worker.EventHandler\Worker.EventHandler.csproj", "{D1CB4D95-E03E-44B8-85BA-DC8A434071F7}"
 EndProject
@@ -22,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker.Application", "Strea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker.Infrastructure", "StreakTracking.Worker\Worker.Infrastructure\Worker.Infrastructure.csproj", "{D4DA9598-A445-4502-8887-C872A69BEB06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Common", "StreakTracking.Common\StreakTracking.Common.csproj", "{F4E5DF65-417F-4DDC-8EF4-B589A43F8DBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Common", "StreakTracking.Common\StreakTracking.Common.csproj", "{902D559C-124E-4B90-AEE8-1FE923AB565D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,10 +74,10 @@ Global
 		{D4DA9598-A445-4502-8887-C872A69BEB06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4DA9598-A445-4502-8887-C872A69BEB06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4DA9598-A445-4502-8887-C872A69BEB06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4E5DF65-417F-4DDC-8EF4-B589A43F8DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4E5DF65-417F-4DDC-8EF4-B589A43F8DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4E5DF65-417F-4DDC-8EF4-B589A43F8DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4E5DF65-417F-4DDC-8EF4-B589A43F8DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{902D559C-124E-4B90-AEE8-1FE923AB565D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{902D559C-124E-4B90-AEE8-1FE923AB565D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{902D559C-124E-4B90-AEE8-1FE923AB565D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{902D559C-124E-4B90-AEE8-1FE923AB565D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D1CB4D95-E03E-44B8-85BA-DC8A434071F7} = {8E92A2A6-D324-4D81-9E12-B5820018817C}

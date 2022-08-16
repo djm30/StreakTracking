@@ -244,6 +244,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/StreakTracking.Common.csproj": {
+                "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/StreakTracking.Common.csproj"
+              },
               "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
                 "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
               },

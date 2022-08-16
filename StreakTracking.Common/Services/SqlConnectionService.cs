@@ -10,12 +10,12 @@ namespace StreakTracking.Common.Services;
 /// </summary>
 public class SqlConnectionService : ISqlConnectionService<NpgsqlConnection>
 {
-  private string ConnectionString { get; }
+    private string ConnectionString { get; }
   
-  public SqlConnectionService(IConfiguration configuration)
-  {
-    ConnectionString = configuration.GetValue<string>("ConnectionString");
-  }
+    public SqlConnectionService(IConfiguration configuration)
+    {
+        ConnectionString = configuration.GetValue<string>("ConnectionString");
+    }
 
-  public NpgsqlConnection GetConnection() => new(ConnectionString);
+    public NpgsqlConnection GetConnection() => new(ConnectionString);
 }

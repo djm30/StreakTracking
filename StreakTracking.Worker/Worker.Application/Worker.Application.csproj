@@ -10,6 +10,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\StreakTracking.Domain\StreakTracking.Domain.csproj" />
       <ProjectReference Include="..\..\StreakTracking.Messages\StreakTracking.Messages.csproj" />
+        <ProjectReference Include="..\..\StreakTracking.Common\StreakTracking.Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>

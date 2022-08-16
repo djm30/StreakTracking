@@ -24,11 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\StreakTracking.API\StreakTracking.API.csproj" />
       <ProjectReference Include="..\StreakTracking.Domain\StreakTracking.Domain.csproj" />
       <ProjectReference Include="..\StreakTracking.Endpoints\Endpoints.API\Endpoints.API.csproj" />
-      <ProjectReference Include="..\StreakTracking.EventHandler\StreakTracking.EventHandler.csproj" />
-      <ProjectReference Include="..\StreakTracking.Infrastructure\StreakTracking.Infrastructure.csproj" />
       <ProjectReference Include="..\StreakTracking.Messages\StreakTracking.Messages.csproj" />
       <ProjectReference Include="..\StreakTracking.Worker\Worker.EventHandler\Worker.EventHandler.csproj" />
     </ItemGroup>
