@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import streaksRecuder from "../reducers/streakReducer";
+import notificationReducer from '../reducers/notificationReducer';
 
 export const store = configureStore({
   reducer: {
-    streaks: streaksRecuder
+    streaks: streaksRecuder,
+    notification: notificationReducer
   },
 });
 

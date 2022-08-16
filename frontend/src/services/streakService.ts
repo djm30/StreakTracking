@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FullStreak } from "../types";
 
-const baseUrl = "https://localhost:7101/api/v1/streaks"
+const baseUrl = "http://localhost:3001/api/v1/streaks"
 type GetStreaksResponse = {
     content: Array<FullStreak>
     message: string
@@ -9,7 +9,7 @@ type GetStreaksResponse = {
 
 const getStreaks = async () => {
     try {
-        const { data } = await axios.get<GetStreaksResponse>(`${baseUrl}/full`, {
+        const { data } = await axios.get<GetStreaksResponse>(`/streaks/full`, {
             headers: {
                 Accept: 'application/json',
 
@@ -27,4 +27,18 @@ const getStreaks = async () => {
     return new Array<FullStreak>
 }
 
-export { getStreaks }
+interface AddPostRequest {
+    streakName: string,
+    streakDescription: string
+}
+const postStreak = async (streakName: string, streakDescription: string) => {
+    const body: AddPostRequest = { streakName, streakDescription }
+    try {
+        const { data } = await axios.post<{ message: string }>("/streaks", body);
+        console.log(data)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export { getStreaks, postStreak }

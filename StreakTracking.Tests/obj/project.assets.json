@@ -2466,56 +2466,6 @@
           "bin/placeholder/Endpoints.Infrastructure.dll": {}
         }
       },
-      "StreakTracking.API/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "AutoMapper": "11.0.0",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
-          "Dapper": "2.0.123",
-          "MassTransit": "7.3.1",
-          "MassTransit.AspNetCore": "7.3.1",
-          "MassTransit.Extensions.DependencyInjection": "7.3.1",
-          "MassTransit.RabbitMQ": "7.3.1",
-          "Npgsql": "7.0.0-preview.6",
-          "StreakTracking.Infrastructure": "1.0.0",
-          "StreakTracking.Messages": "1.0.0",
-          "Swashbuckle.AspNetCore": "6.2.3"
-        },
-        "compile": {
-          "bin/placeholder/StreakTracking.API.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/StreakTracking.API.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "StreakTracking.Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "AutoMapper": "11.0.0",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
-          "Dapper": "2.0.123",
-          "MassTransit": "7.3.1",
-          "MassTransit.AspNetCore": "7.3.1",
-          "MassTransit.Extensions.DependencyInjection": "7.3.1",
-          "MassTransit.RabbitMQ": "7.3.1",
-          "MediatR": "10.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
-          "Npgsql": "7.0.0-preview.6",
-          "StreakTracking.Domain": "1.0.0",
-          "StreakTracking.Messages": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/StreakTracking.Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/StreakTracking.Application.dll": {}
-        }
-      },
       "StreakTracking.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2539,46 +2489,6 @@
         },
         "runtime": {
           "bin/placeholder/StreakTracking.Domain.dll": {}
-        }
-      },
-      "StreakTracking.EventHandler/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Dapper": "2.0.123",
-          "MassTransit": "7.3.1",
-          "MassTransit.AspNetCore": "7.3.1",
-          "MassTransit.Extensions.DependencyInjection": "7.3.1",
-          "MassTransit.RabbitMQ": "7.3.1",
-          "Microsoft.Extensions.Hosting": "6.0.0",
-          "Npgsql": "7.0.0-preview.6",
-          "StreakTracking.Infrastructure": "1.0.0",
-          "StreakTracking.Messages": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/StreakTracking.EventHandler.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/StreakTracking.EventHandler.dll": {}
-        }
-      },
-      "StreakTracking.Infrastructure/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Dapper": "2.0.123",
-          "Microsoft.Extensions.Configuration": "6.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
-          "Microsoft.Extensions.Logging": "6.0.0",
-          "Npgsql": "7.0.0-preview.6",
-          "StreakTracking.Application": "1.0.0",
-          "StreakTracking.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/StreakTracking.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/StreakTracking.Infrastructure.dll": {}
         }
       },
       "StreakTracking.Messages/1.0.0": {
@@ -8120,16 +8030,6 @@
       "path": "../StreakTracking.Endpoints/Endpoints.Infrastructure/Endpoints.Infrastructure.csproj",
       "msbuildProject": "../StreakTracking.Endpoints/Endpoints.Infrastructure/Endpoints.Infrastructure.csproj"
     },
-    "StreakTracking.API/1.0.0": {
-      "type": "project",
-      "path": "../StreakTracking.API/StreakTracking.API.csproj",
-      "msbuildProject": "../StreakTracking.API/StreakTracking.API.csproj"
-    },
-    "StreakTracking.Application/1.0.0": {
-      "type": "project",
-      "path": "../StreakTracking.Application/StreakTracking.Application.csproj",
-      "msbuildProject": "../StreakTracking.Application/StreakTracking.Application.csproj"
-    },
     "StreakTracking.Common/1.0.0": {
       "type": "project",
       "path": "../StreakTracking.Common/StreakTracking.Common.csproj",
@@ -8139,16 +8039,6 @@
       "type": "project",
       "path": "../StreakTracking.Domain/StreakTracking.Domain.csproj",
       "msbuildProject": "../StreakTracking.Domain/StreakTracking.Domain.csproj"
-    },
-    "StreakTracking.EventHandler/1.0.0": {
-      "type": "project",
-      "path": "../StreakTracking.EventHandler/StreakTracking.EventHandler.csproj",
-      "msbuildProject": "../StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
-    },
-    "StreakTracking.Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj",
-      "msbuildProject": "../StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
     },
     "StreakTracking.Messages/1.0.0": {
       "type": "project",
@@ -8177,10 +8067,7 @@
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.2-mauipre.1.22102.15",
       "Microsoft.NET.Test.Sdk >= 17.1.0",
       "Moq >= 4.18.1",
-      "StreakTracking.API >= 1.0.0",
       "StreakTracking.Domain >= 1.0.0",
-      "StreakTracking.EventHandler >= 1.0.0",
-      "StreakTracking.Infrastructure >= 1.0.0",
       "StreakTracking.Messages >= 1.0.0",
       "Worker.EventHandler >= 1.0.0",
       "coverlet.collector >= 3.1.2",
@@ -8213,20 +8100,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.API/StreakTracking.API.csproj": {
-              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.API/StreakTracking.API.csproj"
-            },
             "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj": {
               "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Domain/StreakTracking.Domain.csproj"
             },
             "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Endpoints/Endpoints.API/Endpoints.API.csproj": {
               "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Endpoints/Endpoints.API/Endpoints.API.csproj"
-            },
-            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj": {
-              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.EventHandler/StreakTracking.EventHandler.csproj"
-            },
-            "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj": {
-              "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Infrastructure/StreakTracking.Infrastructure.csproj"
             },
             "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj": {
               "projectPath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Messages/StreakTracking.Messages.csproj"

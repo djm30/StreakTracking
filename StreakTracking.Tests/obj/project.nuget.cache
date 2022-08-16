@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PQ1wXqTerlEuPj81EH3wywdhD+Vt0oxLnRsLBI+/J4jN71/u+UQwJL15aDobvODrtaX0zDsmMKHZ+SUs3KLqSw==",
+  "dgSpecHash": "k5Xk7EuSVfAHGqOhXssnlQebX3GFDWpHNwb8p2Plmg0yhRUaLraEkKLiV3XQiDkrrbqv+ckFnb933FazSzAmSw==",
   "success": true,
   "projectFilePath": "/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/StreakTracking.Tests.csproj",
   "expectedPackageFiles": [

@@ -6,7 +6,7 @@ export interface Streak {
 };
 
 export interface StreakComplete {
-    id: Date,
+    id: string,
     streakId: string,
     complte: boolean
 }
@@ -23,4 +23,16 @@ export interface FullStreak {
     longestStreak: number
     currentStreak: number
     completions: StreakComplete[]
+}
+
+export interface Notification {
+    title: string,
+    type: NotificationType,
+    message: string
+}
+
+export enum NotificationType {
+    INFO = "Info",
+    ERROR = "Error",
+    SUCCESS = "Success"
 }

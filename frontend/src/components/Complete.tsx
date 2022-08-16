@@ -10,9 +10,9 @@ const Tick: React.FC = ({ fill, height, width }: SvgProps) => (
   >
     <path
       stroke="#2FC73E"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
       d="m7.219 22.969 9.187 9.187L34.781 12.47"
     />
   </svg>
@@ -27,9 +27,9 @@ const Cross: React.FC = ({ fill, height, width }: SvgProps) => (
   >
     <path
       stroke="#E60000"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
       d="M29.531 12.469 12.47 29.53m0-17.062L29.53 29.53"
     />
   </svg>
