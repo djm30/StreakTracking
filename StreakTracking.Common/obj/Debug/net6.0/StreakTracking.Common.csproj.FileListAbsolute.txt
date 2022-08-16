@@ -1,0 +1,12 @@
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/bin/Debug/net6.0/StreakTracking.Common.deps.json
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/bin/Debug/net6.0/StreakTracking.Common.dll
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/bin/Debug/net6.0/StreakTracking.Common.pdb
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/StreakTracking.Common.csproj.AssemblyReference.cache
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/StreakTracking.Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/StreakTracking.Common.AssemblyInfoInputs.cache
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/StreakTracking.Common.AssemblyInfo.cs
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/StreakTracking.Common.csproj.CoreCompileInputs.cache
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/StreakTracking.Common.dll
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/refint/StreakTracking.Common.dll
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/StreakTracking.Common.pdb
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Common/obj/Debug/net6.0/ref/StreakTracking.Common.dll

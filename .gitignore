@@ -2,3 +2,7 @@
 .idea
 appsettings.json
 docker-compose.yaml
+StreakTracking.API
+StreakTracking.EventHandler
+StreakTracking.Infrastructure
+StreakTracking.Application

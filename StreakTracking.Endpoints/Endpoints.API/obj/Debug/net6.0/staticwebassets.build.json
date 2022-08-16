@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AP8UkKgv3eVtDYksKAl3wdGfZB8uKcMNk3It/+wt9vk=",
+  "Source": "Endpoints.API",
+  "BasePath": "_content/Endpoints.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
