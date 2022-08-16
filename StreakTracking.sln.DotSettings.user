@@ -5,5 +5,5 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c0d1509f_002D2d2d_002D4b19_002Daff9_002D64b72f5daf13/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UpdateStreak_Returns_Accepted_For_Valid_Request" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Project Location="/Users/dylan/Code/c#/StreakTracking/StreakTracking.Tests" Presentation="&amp;lt;StreakTracking.Tests&amp;gt;" /&gt;
+  &lt;Project Location="/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests" Presentation="&amp;lt;StreakTracking.Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "StreakTracking.Tests/1.0.0": {
         "dependencies": {
+          "Endpoints.API": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.2-mauipre.1.22102.15",
           "Microsoft.NET.Test.Sdk": "17.1.0",
           "Moq": "4.18.1",
@@ -16,6 +17,7 @@
           "StreakTracking.EventHandler": "1.0.0",
           "StreakTracking.Infrastructure": "1.0.0",
           "StreakTracking.Messages": "1.0.0",
+          "Worker.EventHandler": "1.0.0",
           "coverlet.collector": "3.1.2",
           "xunit": "2.4.1",
           "xunit.runner.visualstudio": "2.4.3"
@@ -1492,25 +1494,25 @@
         }
       },
       "xunit.runner.visualstudio/2.4.3": {},
-      "StreakTracking.API/1.0.0": {
+      "Endpoints.API/1.0.0": {
         "dependencies": {
           "AutoMapper": "11.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Dapper": "2.0.123",
+          "Endpoints.Infrastructure": "1.0.0",
           "MassTransit": "7.3.1",
           "MassTransit.AspNetCore": "7.3.1",
           "MassTransit.Extensions.DependencyInjection": "7.3.1",
           "MassTransit.RabbitMQ": "7.3.1",
           "Npgsql": "7.0.0-preview.6",
-          "StreakTracking.Infrastructure": "1.0.0",
           "StreakTracking.Messages": "1.0.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
-          "StreakTracking.API.dll": {}
+          "Endpoints.API.dll": {}
         }
       },
-      "StreakTracking.Application/1.0.0": {
+      "Endpoints.Application/1.0.0": {
         "dependencies": {
           "AutoMapper": "11.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
@@ -1526,41 +1528,26 @@
           "StreakTracking.Messages": "1.0.0"
         },
         "runtime": {
-          "StreakTracking.Application.dll": {}
+          "Endpoints.Application.dll": {}
+        }
+      },
+      "Endpoints.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "Endpoints.Application": "1.0.0",
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Endpoints.Infrastructure.dll": {}
         }
       },
       "StreakTracking.Domain/1.0.0": {
         "runtime": {
           "StreakTracking.Domain.dll": {}
-        }
-      },
-      "StreakTracking.EventHandler/1.0.0": {
-        "dependencies": {
-          "Dapper": "2.0.123",
-          "MassTransit": "7.3.1",
-          "MassTransit.Extensions.DependencyInjection": "7.3.1",
-          "MassTransit.RabbitMQ": "7.3.1",
-          "Microsoft.Extensions.Hosting": "6.0.0",
-          "Npgsql": "7.0.0-preview.6",
-          "StreakTracking.Infrastructure": "1.0.0",
-          "StreakTracking.Messages": "1.0.0"
-        },
-        "runtime": {
-          "StreakTracking.EventHandler.dll": {}
-        }
-      },
-      "StreakTracking.Infrastructure/1.0.0": {
-        "dependencies": {
-          "Dapper": "2.0.123",
-          "Microsoft.Extensions.Configuration": "6.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
-          "Microsoft.Extensions.Logging": "6.0.0",
-          "Npgsql": "7.0.0-preview.6",
-          "StreakTracking.Application": "1.0.0",
-          "StreakTracking.Domain": "1.0.0"
-        },
-        "runtime": {
-          "StreakTracking.Infrastructure.dll": {}
         }
       },
       "StreakTracking.Messages/1.0.0": {
@@ -1570,6 +1557,55 @@
         },
         "runtime": {
           "StreakTracking.Messages.dll": {}
+        }
+      },
+      "Worker.Application/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "11.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Dapper": "2.0.123",
+          "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.Extensions.DependencyInjection": "7.3.1",
+          "MassTransit.RabbitMQ": "7.3.1",
+          "MediatR": "10.0.1",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Domain": "1.0.0",
+          "StreakTracking.Messages": "1.0.0"
+        },
+        "runtime": {
+          "Worker.Application.dll": {}
+        }
+      },
+      "Worker.EventHandler/1.0.0": {
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.Extensions.DependencyInjection": "7.3.1",
+          "MassTransit.RabbitMQ": "7.3.1",
+          "Microsoft.Extensions.Hosting": "6.0.0",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Messages": "1.0.0",
+          "Worker.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "Worker.EventHandler.dll": {}
+        }
+      },
+      "Worker.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Domain": "1.0.0",
+          "Worker.Application": "1.0.0"
+        },
+        "runtime": {
+          "Worker.Infrastructure.dll": {}
         }
       }
     }
@@ -2623,12 +2659,17 @@
       "path": "xunit.runner.visualstudio/2.4.3",
       "hashPath": "xunit.runner.visualstudio.2.4.3.nupkg.sha512"
     },
-    "StreakTracking.API/1.0.0": {
+    "Endpoints.API/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "StreakTracking.Application/1.0.0": {
+    "Endpoints.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Endpoints.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -2638,17 +2679,22 @@
       "serviceable": false,
       "sha512": ""
     },
-    "StreakTracking.EventHandler/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "StreakTracking.Infrastructure/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "StreakTracking.Messages/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Worker.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Worker.EventHandler/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Worker.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
