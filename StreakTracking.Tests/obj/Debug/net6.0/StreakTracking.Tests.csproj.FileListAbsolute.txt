@@ -566,3 +566,5 @@ C:/Users/dmorrison011/Documents/GitHub/StreakTracking/StreakTracking.Tests/obj/D
 /Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/obj/Debug/net6.0/StreakTracking.Tests.pdb
 /Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/obj/Debug/net6.0/StreakTracking.Tests.genruntimeconfig.cache
 /Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/obj/Debug/net6.0/ref/StreakTracking.Tests.dll
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/bin/Debug/net6.0/StreakTracking.Common.dll
+/Users/dylan/Code/CSharp/StreakTracking/StreakTracking.Tests/bin/Debug/net6.0/StreakTracking.Common.pdb

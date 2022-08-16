@@ -1539,10 +1539,21 @@
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Common": "1.0.0",
           "StreakTracking.Domain": "1.0.0"
         },
         "runtime": {
           "Endpoints.Infrastructure.dll": {}
+        }
+      },
+      "StreakTracking.Common/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
+          "Npgsql": "7.0.0-preview.6"
+        },
+        "runtime": {
+          "StreakTracking.Common.dll": {}
         }
       },
       "StreakTracking.Domain/1.0.0": {
@@ -1601,6 +1612,7 @@
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Common": "1.0.0",
           "StreakTracking.Domain": "1.0.0",
           "Worker.Application": "1.0.0"
         },
@@ -2670,6 +2682,11 @@
       "sha512": ""
     },
     "Endpoints.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StreakTracking.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -630,6 +630,16 @@
       },
       "System.Threading.Channels/4.7.1": {},
       "System.ValueTuple/4.5.0": {},
+      "StreakTracking.Common/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
+          "Npgsql": "7.0.0-preview.6"
+        },
+        "runtime": {
+          "StreakTracking.Common.dll": {}
+        }
+      },
       "StreakTracking.Domain/1.0.0": {
         "runtime": {
           "StreakTracking.Domain.dll": {}
@@ -670,6 +680,7 @@
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
           "Npgsql": "7.0.0-preview.6",
+          "StreakTracking.Common": "1.0.0",
           "StreakTracking.Domain": "1.0.0",
           "Worker.Application": "1.0.0"
         },
@@ -1076,6 +1087,11 @@
       "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
+    "StreakTracking.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "StreakTracking.Domain/1.0.0": {
       "type": "project",
