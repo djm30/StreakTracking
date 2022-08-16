@@ -12,15 +12,12 @@ COPY ["StreakTracking.Messages/", "StreakTracking.Messages/"]
 COPY ["StreakTracking.Domain/", "StreakTracking.Domain/"]
 COPY ["StreakTracking.Common/", "StreakTracking.Common/"]
 
-#RUN echo "fuck this like" > /tmp/fuck
-
 RUN dotnet restore "StreakTracking.Endpoints/Endpoints.API/Endpoints.API.csproj"
 
 
 WORKDIR "StreakTracking.Endpoints/Endpoints.API/"
 RUN dotnet build "Endpoints.API.csproj" -c Release -o /app/build
 
-RUN echo "fuck this like" > /tmp/fuck
 FROM build AS publish
 RUN dotnet publish "Endpoints.API.csproj" -c Release -o /app/publish
 
