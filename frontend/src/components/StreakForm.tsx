@@ -37,8 +37,8 @@ const StreakForm = () => {
       );
       return;
     }
-    // const res = await postStreak(name, desc);
-    // console.log(res);
+    const res = await postStreak(name, desc);
+    console.log(res);
     setButtonActive(false);
     timeout = setTimeout(() => {
       setButtonActive(true);
@@ -48,7 +48,7 @@ const StreakForm = () => {
   };
 
   return (
-    <div className="col-span-2 text-light  ">
+    <div className="col-span-2 text-light mx-auto mb-10  ">
       <form className="space-y-4" onSubmit={onSubmit}>
         <div>
           <input
@@ -66,11 +66,13 @@ const StreakForm = () => {
             onChange={(e) => setDesc(e.target.value)}
           />
         </div>
-        <button
-          className={`${buttonClasses} transition-colors rounded-[10px] px-8 py-2 `}
-        >
-          Submit
-        </button>
+        <div className="flex justify-center xl:justify-start">
+          <button
+            className={`${buttonClasses} transition-colors rounded-[10px] px-8 py-2 `}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

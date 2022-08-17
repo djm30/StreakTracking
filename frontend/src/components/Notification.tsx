@@ -24,7 +24,7 @@ const Notification = () => {
 
   return (
     <div
-      className={`fixed top-24 ${position} ${border} rounded-[12px] text-light border-2 transition-all`}
+      className={`fixed top-24 z-50 ${position} ${border} rounded-[12px] text-light border-2 transition-all`}
     >
       <div className="bg-accentInactive py-2 px-10  text-center rounded-t-[10px]">
         {notification.title}

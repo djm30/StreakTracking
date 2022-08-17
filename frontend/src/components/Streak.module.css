@@ -1,0 +1,22 @@
+.streak {
+  position: relative;
+  overflow: hidden;
+}
+
+.streak::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 150%;
+  height: 150%;
+  background-color: aliceblue;
+  opacity: 30%;
+  transition: transform 1s ease;
+  border-radius: 40px;
+}
+
+.streak:active::before {
+  transform: translate(-50%, -50%) scale(1);
+}

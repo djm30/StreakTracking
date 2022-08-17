@@ -1,14 +1,17 @@
 import React, { useState, useRef } from "react";
-import { FullStreak } from "../types";
+import { FullStreak, NotificationType } from "../types";
 import { differenceInDays } from "date-fns";
 import { Options, useLongPress } from "../app/hooks";
 import Complete from "./Complete";
+import { useAppDispatch } from "../app/hooks";
+import { setNotification } from "../reducers/notificationReducer";
+import { completeStreak } from "../reducers/streakReducer";
+
+import styles from "./Streak.module.css";
 
 interface Props {
   streak: FullStreak;
 }
-
-let timeout: ReturnType<typeof setTimeout>;
 
 type dateId = string | undefined;
 
@@ -19,49 +22,45 @@ const isCompleteToday = (latestCompletion: Date): boolean =>
   differenceInDays(new Date(), latestCompletion) === 0 ? true : false;
 
 const Streak: React.FC<Props> = ({ streak }) => {
+  let latestCompletionDate = getDate(streak.completions.at(0)?.id);
+  let isComplete = isCompleteToday(latestCompletionDate);
+
+  const dispatch = useAppDispatch();
+
   const divRef = useRef<HTMLDivElement>(null);
 
   const onLongPress = () => {
-    divRef.current?.classList.remove("bg-green-100");
-  };
-
-  const onClick = () => {
-    divRef.current?.classList.add("bg-green-100");
+    if (isComplete) {
+      dispatch(completeStreak(streak.streakId, new Date(), false));
+      dispatch(
+        setNotification("Streak Marked Incomplete!", NotificationType.SUCCESS),
+      );
+    } else {
+      dispatch(completeStreak(streak.streakId, new Date(), true));
+      dispatch(
+        setNotification("Streak Marked Complete!", NotificationType.SUCCESS),
+      );
+    }
   };
 
   const defaultOptions: Options = {
     shouldPreventDefault: true,
-    delay: 600,
+    delay: 500,
   };
 
   const baseLongPressEvents = useLongPress(
-    { onLongPress, onClick },
+    { onLongPress, onClick: () => {} },
     defaultOptions,
   );
-
-  const customLongPressEvents = {
-    ...baseLongPressEvents,
-    onMouseUp: (e: React.MouseEvent) => {
-      baseLongPressEvents.onMouseUp(e);
-      divRef.current?.classList.remove("bg-green-100");
-    },
-    onMouseDown: (e: React.MouseEvent) => {
-      baseLongPressEvents.onMouseDown(e);
-      divRef.current?.classList.add("bg-green-100");
-    },
-  };
-
-  let latestCompletionDate = getDate(streak.completions.at(0)?.id);
-  let isComplete = isCompleteToday(latestCompletionDate);
 
   return (
     <div
       ref={divRef}
-      {...customLongPressEvents}
-      className="h-[250px] w-[250px] bg-offGrey cursor-pointer rounded-[10px] border-2 border-accent flex flex-col items-center justify-between py-4 text-light font-bold hover:scale-105 transition-all select-none"
+      {...baseLongPressEvents}
+      className={`xl:h-[250px] xl:w-[250px]  bg-offGrey  cursor-pointer rounded-[10px] border-2 border-accent flex flex-col items-center justify-between py-4 text-light font-bold hover:scale-105 transition-all select-none ${styles.streak}`}
     >
-      <h4 className="text-lg">{streak.streakName}</h4>
-      <h5 className="text-5xl">{streak.currentStreak}</h5>
+      <h4 className="xl:text-lg md:text-base">{streak.streakName}</h4>
+      <h5 className="xl:text-5xl md:text-3xl">{streak.currentStreak}</h5>
       <span className="block">
         <Complete complete={isComplete} />
       </span>

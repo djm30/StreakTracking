@@ -1,5 +1,6 @@
 import axios from "axios";
 import { FullStreak } from "../types";
+import { format } from "date-fns";
 
 const baseUrl = "http://localhost:3001/api/v1/streaks"
 type GetStreaksResponse = {
@@ -27,6 +28,15 @@ const getStreaks = async () => {
     return new Array<FullStreak>
 }
 
+type GetStreakByIdResponse = {
+    content: FullStreak
+    message: string
+}
+const getStreakById = async (id: string) => {
+    const { data } = await axios.get<GetStreakByIdResponse>(`/streaks/full/${id}`)
+    return data.content;
+}
+
 interface AddPostRequest {
     streakName: string,
     streakDescription: string
@@ -41,4 +51,12 @@ const postStreak = async (streakName: string, streakDescription: string) => {
     }
 }
 
-export { getStreaks, postStreak }
+const markComplete = async (streakId: string, date: Date, complete: boolean) => {
+
+    const body = { complete, date: format(date, 'yyyy-MM-dd') }
+
+    const { data } = await axios.post<{ message: string }>(`/streaks/complete/${streakId}`, body)
+    return data.message;
+}
+
+export { getStreaks, postStreak, markComplete, getStreakById }
