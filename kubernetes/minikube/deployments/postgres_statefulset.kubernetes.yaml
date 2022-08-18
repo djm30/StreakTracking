@@ -1,0 +1,44 @@
+# PostgreSQL StatefulSet
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+spec:
+  serviceName: postgres
+  selector:
+    matchLabels:
+      app: v1
+      service: database
+  replicas: 1
+  template:
+    metadata:
+      labels:
+          app: v1
+          service: database
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        volumeMounts:
+        - name: postgresql-db-disk
+          mountPath: /data
+        env:
+          - name: POSTGRES_USER
+            value: admin
+          - name: POSTGRES_PASSWORD
+            value: admin1234
+          - name: POSTGRES_DB
+            value: StreaksDb
+          - name: PGDATA
+            value: /data/pgdata
+        ports:
+        - containerPort: 5432
+# Volume Claim
+  volumeClaimTemplates:
+    - metadata:
+        name: postgresql-db-disk
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 25Gi

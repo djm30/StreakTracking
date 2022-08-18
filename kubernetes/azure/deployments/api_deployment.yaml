@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    tier: business
+spec:
+  selector:
+    matchLabels:
+      app: v1
+      service: api
+  replicas: 3
+  template:
+    metadata:
+      name: api
+      labels:
+        app: v1
+        service: api
+    spec:
+      containers:
+        - name: api
+          image: djm30/streaktracking_api:latest
+          imagePullPolicy: Never 
+          ports:
+            - name: api
+              containerPort: 80
+          env:
+          - name:  ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ConnectionString
+            value: Server=postgres; Port=5432; Database=StreaksDb; User Id=admin; Password=admin1234;
+          - name: EventBusConnection
+            value: amqp://guest:guest@rabbitmq:5672    

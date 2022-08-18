@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    tier: frontend
+spec:
+  selector:
+    matchLabels:
+      app: v1
+      service: frontend
+  replicas: 3
+  template:
+    metadata:
+      name: frontend
+      labels:
+        app: v1
+        service: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: djm30/streaktracking_frontend:latest
+          imagePullPolicy: Never 
+          ports:
+            - containerPort: 80
