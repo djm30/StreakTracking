@@ -10,10 +10,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER={user}
-      - POSTGRES_PASSWORD={password}
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
       - POSTGRES_DB=StreaksDb
-
+ 
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3.10-management
@@ -31,8 +31,8 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin 
     environment:
-      - PGADMIN_DEFAULT_EMAIL={email}
-      - PGADMIN_DEFAULT_PASSWORD={password}
+      - PGADMIN_DEFAULT_EMAIL=dylanjmorrison30@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
       - PGADMIN_LISTEN_PORT=5050
 
   event_handler:
@@ -66,6 +66,19 @@ services:
       - rabbitmq
       - postgres
     restart: always
+  
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+    restart: always
+
 
   portainer:
     image: portainer/portainer-ce
@@ -77,6 +90,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+      
 volumes:
   postgres_data:
   pgadmin_data:

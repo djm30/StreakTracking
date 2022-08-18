@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { postStreak } from "../services/streakService";
 import { setNotification } from "../reducers/notificationReducer";
 import { useAppDispatch } from "../app/hooks";
+import { addStreak } from "../reducers/streakReducer";
 import { NotificationType } from "../types";
 
 const StreakForm = () => {
@@ -37,8 +38,7 @@ const StreakForm = () => {
       );
       return;
     }
-    const res = await postStreak(name, desc);
-    console.log(res);
+    dispatch(addStreak(name, desc));
     setButtonActive(false);
     timeout = setTimeout(() => {
       setButtonActive(true);

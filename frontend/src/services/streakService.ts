@@ -45,13 +45,13 @@ const postStreak = async (streakName: string, streakDescription: string) => {
     const body: AddPostRequest = { streakName, streakDescription }
     try {
         const { data } = await axios.post<{ message: string }>("/streaks", body);
-        console.log(data)
+        return data.message.split(": ").at(1);
     } catch (error) {
         console.error(error)
     }
 }
 
-const markComplete = async (streakId: string, date: Date, complete: boolean) => {
+const markStreakComplete = async (streakId: string, date: Date, complete: boolean) => {
 
     const body = { complete, date: format(date, 'yyyy-MM-dd') }
 
@@ -59,4 +59,10 @@ const markComplete = async (streakId: string, date: Date, complete: boolean) => 
     return data.message;
 }
 
-export { getStreaks, postStreak, markComplete, getStreakById }
+const deleteStreakById = async (streakId: string) => {
+
+    const { data } = await axios.delete<{ message: string }>(`/streaks/${streakId}`)
+    return data.message;
+}
+
+export { getStreaks, postStreak, markStreakComplete, getStreakById, deleteStreakById }

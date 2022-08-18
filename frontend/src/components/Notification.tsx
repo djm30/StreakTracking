@@ -2,24 +2,11 @@ import React from "react";
 import { useAppSelector } from "../app/hooks";
 import { NotificationType } from "../types";
 
-const getBorder = (type: NotificationType): string => {
-  switch (type) {
-    case NotificationType.ERROR:
-      return "border-red-500";
-    case NotificationType.INFO:
-      return "border-green-500";
-    case NotificationType.SUCCESS:
-      return "";
-    default:
-      return "";
-  }
-};
-
 const Notification = () => {
   const notification = useAppSelector((state) => state.notification);
 
   const position = notification.message ? "left-5" : "-left-48";
-  const border = getBorder(notification.type);
+  const border = "border-[#a5b3cc]";
   //   let position = "left-5";
 
   return (

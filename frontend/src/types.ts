@@ -8,7 +8,7 @@ export interface Streak {
 export interface StreakComplete {
     id: string,
     streakId: string,
-    complte: boolean
+    complete: boolean
 }
 
 export interface CurrentStreak {

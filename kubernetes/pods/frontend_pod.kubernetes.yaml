@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  labels:
+    app: v1
+    service: frontend
+spec:
+  containers:
+    - name: frontend
+      image: streaktracking_frontend
+      imagePullPolicy: Never 
+      ports:
+        - containerPort: 80
