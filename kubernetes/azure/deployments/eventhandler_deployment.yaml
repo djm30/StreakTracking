@@ -20,7 +20,6 @@ spec:
       containers:
         - name: event-handler
           image: djm30/streaktracking_event_handler:latest
-          imagePullPolicy: Never 
           env:
           - name:  ASPNETCORE_ENVIRONMENT
             value: Development

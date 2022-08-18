@@ -20,6 +20,5 @@ spec:
       containers:
         - name: frontend
           image: djm30/streaktracking_frontend:latest
-          imagePullPolicy: Never 
           ports:
             - containerPort: 80

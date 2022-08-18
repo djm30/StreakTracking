@@ -20,7 +20,6 @@ spec:
       containers:
         - name: api
           image: djm30/streaktracking_api:latest
-          imagePullPolicy: Never 
           ports:
             - name: api
               containerPort: 80
