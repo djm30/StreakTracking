@@ -1,0 +1,100 @@
+version: "3.4"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=StreaksDb
+ 
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.10-management
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "5050:5050"
+    volumes:
+      - pgadmin_data:/root/.pgadmin 
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=dylanjmorrison30@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+      - PGADMIN_LISTEN_PORT=5050
+
+  event_handler:
+    platform: linux/amd64
+    container_name: djm30/streaktracking_event_handler:latest
+    # image: worker
+    build:
+      context: .
+      dockerfile: ./StreakTracking.Worker/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionString=Server=postgres; Port=5432; Database=StreaksDb; User Id=admin; Password=admin1234;"
+      - "EventBusConnection=amqp://guest:guest@rabbitmq:5672"
+    depends_on:
+      - rabbitmq
+      - postgres
+    restart: always
+
+  api:
+    platform: linux/amd64
+    container_name: djm30/streaktracking_api:latest
+    # image: api
+    build:
+      context: .
+      dockerfile: ./StreakTracking.Endpoints/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionString=Server=postgres; Port=5432; Database=StreaksDb; User Id=admin; Password=admin1234;"
+      - "EventBusConnection=amqp://guest:guest@rabbitmq:5672"
+    ports:
+      - "3001:80"
+    depends_on:
+      - rabbitmq
+      - postgres
+    restart: always
+  
+  frontend:
+    platform: linux/amd64
+    container_name: djm30/streaktracking_frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+    restart: always
+
+
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+      
+volumes:
+  postgres_data:
+  pgadmin_data:
+  portainer_data:
