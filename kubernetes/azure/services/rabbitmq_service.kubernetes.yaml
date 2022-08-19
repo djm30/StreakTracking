@@ -7,8 +7,6 @@ spec:
   ports:
     - targetPort: 5672
       port: 5672
-    - targetPort: 15672
-      port: 15672
   selector:
     app: v1
     service: messages
