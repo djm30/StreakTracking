@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker.Infrastructure", "St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Common", "StreakTracking.Common\StreakTracking.Common.csproj", "{902D559C-124E-4B90-AEE8-1FE923AB565D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreakTracking.Notifications", "StreakTracking.Notifications\StreakTracking.Notifications.csproj", "{D8B1322E-14A6-4C8F-B436-3419A53D2AE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{902D559C-124E-4B90-AEE8-1FE923AB565D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{902D559C-124E-4B90-AEE8-1FE923AB565D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{902D559C-124E-4B90-AEE8-1FE923AB565D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B1322E-14A6-4C8F-B436-3419A53D2AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B1322E-14A6-4C8F-B436-3419A53D2AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B1322E-14A6-4C8F-B436-3419A53D2AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B1322E-14A6-4C8F-B436-3419A53D2AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D1CB4D95-E03E-44B8-85BA-DC8A434071F7} = {8E92A2A6-D324-4D81-9E12-B5820018817C}
