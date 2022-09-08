@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Npgsql;
 using StreakTracking.Common.Contracts;
 using StreakTracking.Domain.Entities;
+using StreakTracking.Worker.Application;
 using StreakTracking.Worker.Application.Contracts.Persistence;
 
 namespace StreakTracking.Worker.Infrastructure.Repositories;
@@ -18,7 +19,7 @@ public class StreakWriteRepository : IStreakWriteRepository
         _connection = connection ?? throw new ArgumentNullException(nameof(connection));
     }
 
-    public async Task Create(Streak streak)
+    public async Task<DatabaseWriteResult> Create(Streak streak)
     {
         await using var connection = _connection.GetConnection();
         try
@@ -27,14 +28,16 @@ public class StreakWriteRepository : IStreakWriteRepository
                         "VALUES (@StreakId, @StreakName, @StreakDescription, @LongestStreak)";
             _logger.LogInformation("Attempting to write streak: {streak} to the database", streak);
             await connection.QueryAsync(query, streak);
+            return DatabaseWriteResult.Success;
         }
         catch (PostgresException e)
         {
             _logger.LogError("Error inserting Streak: {streak} into database with Error: {error}", streak, e);
+            return DatabaseWriteResult.Fail;
         }
     }
 
-    public async Task Update(Streak streak)
+    public async Task<DatabaseWriteResult> Update(Streak streak)
     {
         await using var connection = _connection.GetConnection();
         try
@@ -49,14 +52,16 @@ public class StreakWriteRepository : IStreakWriteRepository
                 "WHERE streakid::text = @StreakId;";
             _logger.LogInformation("Attempting to update streak with id: {streakId} to the database", streak.StreakId);
             await connection.QueryAsync(query, queryParams);
+            return DatabaseWriteResult.Success;
         }
         catch (PostgresException e)
         {
             _logger.LogError("Error updating Streak: {streak} into database with Error: {error}", streak, e);
+            return DatabaseWriteResult.Fail;
         }
     }
 
-    public async Task Delete(string Id)
+    public async Task<DatabaseWriteResult> Delete(string Id)
     {
         await using var connection = _connection.GetConnection();
         try
@@ -66,10 +71,12 @@ public class StreakWriteRepository : IStreakWriteRepository
                 "DELETE FROM streak WHERE streakid::text = @StreakId";
             _logger.LogInformation("Attempting to delete streak with id: {streakId} to the database", Id);
             await connection.QueryAsync(query, queryParams);
+            return DatabaseWriteResult.Success;
         }
         catch (PostgresException e)
         {
             _logger.LogError("Error deleting streak with id: {streakId} into database with Error: {error}", Id, e);
+            return DatabaseWriteResult.Fail;
         }
     }
 }

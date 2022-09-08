@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Npgsql;
 using StreakTracking.Common.Contracts;
 using StreakTracking.Domain.Entities;
+using StreakTracking.Worker.Application;
 using StreakTracking.Worker.Application.Contracts.Persistence;
 
 namespace StreakTracking.Worker.Infrastructure.Repositories;
@@ -20,7 +21,7 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
     }
 
 
-    public async Task Create(StreakDay day)
+    public async Task<DatabaseWriteResult> Create(StreakDay day)
     {
         await using var connection = _connection.GetConnection();
         try
@@ -36,14 +37,16 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
                 "INSERT INTO streak_day(id, complete, streakid) VALUES (@Id, @Complete , @StreakId);";
             _logger.LogInformation("Attempting to make Streak complete for day: {day} for streak: {streak}", day.Id, day.StreakId);
             await connection.QueryAsync(query, queryParams);
+            return DatabaseWriteResult.Success;
         }
         catch (PostgresException e)
         {
             _logger.LogError("Error inserting StreakDay: {streakDay} into database with Error: {error}", day, e);
+            return DatabaseWriteResult.Fail;
         }
     }
 
-    public async Task Update(StreakDay day)
+    public async Task<DatabaseWriteResult> Update(StreakDay day)
     {
         await using var connection = _connection.GetConnection();
         try
@@ -59,14 +62,16 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
                 "UPDATE streak_day SET complete = @Complete WHERE Id = @Id AND streakid::text = @StreakId";
             _logger.LogInformation("Attempting to update streak completion for day: {day} for streak: {streak}", day.Id, day.StreakId);
             await connection.QueryAsync(query, queryParams);
+            return DatabaseWriteResult.Success;
         }
         catch (PostgresException e)
         {
             _logger.LogError("Error updating StreakDay: {streakDay} in database with Error: {error}", day, e);
+            return DatabaseWriteResult.Fail;
         }
     }
 
-    public async Task Delete(StreakDay day)
+    public async Task<DatabaseWriteResult> Delete(StreakDay day)
     {
         await using var connection = _connection.GetConnection();
         try
@@ -81,14 +86,16 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
                 "DELETE FROM streak_day WHERE Id = @Id AND streakid::text = @StreakId";
             _logger.LogInformation("Attempting to delete streak completion for day: {day} for streak: {streak}", day.Id, day.StreakId);
             await connection.QueryAsync(query, queryParams);
+            return DatabaseWriteResult.Success;
         }
         catch (PostgresException e)
         {
             _logger.LogError("Error deleting StreakDay: {streakDay} from database with Error: {error}", day, e);
+            return DatabaseWriteResult.Fail;
         }
     }
 
-    public async Task DeleteAll(string streakId)
+    public async Task<DatabaseWriteResult> DeleteAll(string streakId)
     {
         await using var connection = _connection.GetConnection();
         try
@@ -101,10 +108,12 @@ public class StreakDayWriteRepository : IStreakDayWriteRepository
                 "DELETE FROM streak_day WHERE streakid::text = @StreakId";
             _logger.LogInformation("Attempting to delete all streak completions for streak: {streak}", streakId);
             await connection.QueryAsync(query, queryParams);
+            return DatabaseWriteResult.Success;
         }
         catch (PostgresException e)
         {
             _logger.LogError("Error deleting Streak Completion records for streak: {streak} from database with Error: {error}", streakId, e);
+            return DatabaseWriteResult.Fail;
         }
     }
 }

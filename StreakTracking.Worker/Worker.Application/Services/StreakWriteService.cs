@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using StreakTracking.Domain.Entities;
+using StreakTracking.Events;
 using StreakTracking.Events.Events;
 using StreakTracking.Worker.Application.Contracts.Business;
 using StreakTracking.Worker.Application.Contracts.Persistence;
@@ -11,13 +12,15 @@ public class StreakWriteService : IStreakWriteService
     private readonly IStreakWriteRepository _streakRepository;
     private readonly IStreakDayWriteRepository _streakDayRepository;
     private readonly ILogger<StreakWriteService> _logger;
+    private readonly INotificationPublisher _notificationPublisher;
 
     public StreakWriteService(IStreakWriteRepository streakRepository, IStreakDayWriteRepository streakDayRepository,
-        ILogger<StreakWriteService> logger)
+        ILogger<StreakWriteService> logger, INotificationPublisher notificationPublisher)
     {
         _streakRepository = streakRepository ?? throw new ArgumentNullException(nameof(streakRepository));
         _streakDayRepository = streakDayRepository ?? throw new ArgumentNullException(nameof(streakDayRepository));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _notificationPublisher = notificationPublisher ?? throw new ArgumentNullException(nameof(notificationPublisher));
     }
 
     public async Task CreateStreak(AddStreakEvent addStreakEvent)
@@ -31,7 +34,9 @@ public class StreakWriteService : IStreakWriteService
         };
 
         _logger.LogInformation("Received message: {addStreakEvent}, consuming it now", addStreakEvent);
-        await _streakRepository.Create(streak: streak);
+        var databaseWriteResult = await _streakRepository.Create(streak: streak);
+        
+        _notificationPublisher.Notify(NotificationType.Refetch, message: "Streak Created", addStreakEvent.StreakId);
     }
 
     public async Task UpdateStreak(UpdateStreakEvent updateStreakEvent)
@@ -45,6 +50,7 @@ public class StreakWriteService : IStreakWriteService
             LongestStreak = updateStreakEvent.LongestStreak
         };
         await _streakRepository.Update(streak);
+        _notificationPublisher.Notify(NotificationType.Refetch, message: "Streak Updated", updateStreakEvent.StreakId);
     }
 
     public async Task MarkComplete(StreakCompleteEvent streakCompleteEvent)
@@ -65,12 +71,16 @@ public class StreakWriteService : IStreakWriteService
             // DELETING INSTEAD OF MODIFYING, SAVES MORE SPACE
             await _streakDayRepository.Delete(streakDay);
         }
+        _notificationPublisher.Notify(NotificationType.Refetch, message: "Streak Completion Status Updated", streakCompleteEvent.StreakId);
     }
 
     public async Task DeleteStreak(DeleteStreakEvent deleteStreakEvent)
     {
         var streakId = deleteStreakEvent.StreakId.ToString();
         await _streakDayRepository.DeleteAll(streakId);
-        await _streakRepository.Delete(streakId);
+        var databaseResult =  await _streakRepository.Delete(streakId);
+        if(databaseResult == DatabaseWriteResult.Success)
+            _notificationPublisher.Notify(NotificationType.Delete, message: "Streak Deleted", deleteStreakEvent.StreakId);
+        
     }
 }
