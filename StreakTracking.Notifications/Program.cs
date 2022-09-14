@@ -7,6 +7,7 @@ using StreakTracking.Notifications.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSignalR();
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddMassTransit(config =>
 {
@@ -26,7 +27,7 @@ builder.Services.AddSingleton<INotificationService, NotificationService>();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "This is the SignalR Notification Service");
 app.MapHub<NotificationHub>("/notification");
 
 app.Run();

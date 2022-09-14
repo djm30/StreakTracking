@@ -78,6 +78,18 @@ services:
       - api
 
     restart: always
+    
+  notifications:
+    container_name: notifications
+    build:
+      context: .
+      dockerfile: ./StreakTracking.Notifications/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionString=Server=postgres; Port=5432; Database=StreaksDb; User Id=admin; Password=admin1234;"
+      - "EventBusConnection=amqp://guest:guest@rabbitmq:5672"
+    depends_on:
+      - rabbitmq
 
 
   portainer:
